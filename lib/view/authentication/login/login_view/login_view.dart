@@ -1,5 +1,6 @@
 import 'package:cleanerapp/custom_widget/button.dart';
 import 'package:cleanerapp/custom_widget/cleaner_textfield.dart';
+import 'package:cleanerapp/view/dashboard/dashboard_view/dashboard_view.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatelessWidget {
@@ -31,7 +32,10 @@ class LoginView extends StatelessWidget {
                   size: 15,
                 ),
                 hintlabel: 'Enter your password'),
-            CleanerButton.elevated(label: 'login', onPressed: () {})
+            CleanerButton.navigation(
+              label: 'login',
+              destination: DashboardView(),
+            )
           ],
         ),
       ),

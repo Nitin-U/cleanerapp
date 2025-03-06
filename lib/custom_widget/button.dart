@@ -1,29 +1,41 @@
+import 'package:cleanerapp/custom_widget/transaction_route.dart';
 import 'package:flutter/material.dart';
 
-enum CleanerButtonType { elevated, outline, text }
+enum CleanerButtonType { elevated, outline, text, navigation }
 
 class CleanerButton extends StatelessWidget {
   final CleanerButtonType type;
   final String label;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
+  final Widget? destination;
 
   const CleanerButton.elevated({
     super.key,
     required this.label,
     required this.onPressed,
-  }) : type = CleanerButtonType.elevated;
+  })  : type = CleanerButtonType.elevated,
+        destination = null;
 
   const CleanerButton.outline({
     super.key,
     required this.label,
     required this.onPressed,
-  }) : type = CleanerButtonType.outline;
+  })  : type = CleanerButtonType.outline,
+        destination = null;
 
   const CleanerButton.text({
     super.key,
     required this.label,
     required this.onPressed,
-  }) : type = CleanerButtonType.text;
+  })  : type = CleanerButtonType.text,
+        destination = null;
+
+  const CleanerButton.navigation({
+    super.key,
+    required this.label,
+    required this.destination,
+  })  : type = CleanerButtonType.navigation,
+        onPressed = null;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +72,20 @@ class CleanerButton extends StatelessWidget {
           ),
           onPressed: onPressed,
           child: Text(label),
+        );
+      case CleanerButtonType.navigation:
+        return ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor:
+                Colors.green, // Background color for Navigation Button
+          ),
+          onPressed: () {
+            Navigator.push(context, CustomPageRoute(child: destination!));
+          },
+          child: Text(
+            label,
+            style: const TextStyle(color: Colors.white),
+          ),
         );
     }
   }
