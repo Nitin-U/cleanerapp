@@ -19,80 +19,124 @@ class DashboardView extends StatelessWidget {
                   onTap: () {
                     dash.screenTabs(dash.currenttab = 0);
                   },
-                  child: Column(
-                    children: [
-                      Icon(
-                        Icons.home,
-                        color:
-                            dash.currenttab == 0 ? Colors.green : Colors.black,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: dash.currenttab == 0 ? Colors.green : null),
+                    child: Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.home,
+                            size: 17,
+                            color: dash.currenttab == 0
+                                ? Colors.white
+                                : Colors.black,
+                          ),
+                          Text(
+                            'Home',
+                            style: dash.currenttab == 0
+                                ? dashboardlablefontwhite
+                                : dashboardlabelfontblack,
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Home',
-                        style: dash.currenttab == 0
-                            ? dashboardlablefontgreen
-                            : dashboardlabelfontblack,
-                      ),
-                    ],
+                    ),
                   ),
                 ),
                 GestureDetector(
                   onTap: () {
                     dash.screenTabs(dash.currenttab = 1);
                   },
-                  child: Column(
-                    children: [
-                      Icon(
-                        Icons.check_circle,
-                        color:
-                            dash.currenttab == 1 ? Colors.green : Colors.black,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: dash.currenttab == 1 ? Colors.green : null),
+                    child: Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.check_circle,
+                            size: 17,
+                            color: dash.currenttab == 1
+                                ? Colors.white
+                                : Colors.black,
+                          ),
+                          Text(
+                            'Active Orders',
+                            style: dash.currenttab == 1
+                                ? dashboardlablefontwhite
+                                : dashboardlabelfontblack,
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Active orders',
-                        style: dash.currenttab == 1
-                            ? dashboardlablefontgreen
-                            : dashboardlabelfontblack,
-                      ),
-                    ],
+                    ),
                   ),
                 ),
                 GestureDetector(
                   onTap: () {
                     dash.screenTabs(dash.currenttab = 2);
                   },
-                  child: Column(
-                    children: [
-                      Icon(
-                        Icons.history,
-                        color:
-                            dash.currenttab == 2 ? Colors.green : Colors.black,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: dash.currenttab == 2 ? Colors.green : null),
+                    child: Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.history,
+                            size: 17,
+                            color: dash.currenttab == 2
+                                ? Colors.white
+                                : Colors.black,
+                          ),
+                          Text(
+                            'My Orders',
+                            style: dash.currenttab == 2
+                                ? dashboardlablefontwhite
+                                : dashboardlabelfontblack,
+                          ),
+                        ],
                       ),
-                      Text(
-                        'My Orders',
-                        style: dash.currenttab == 2
-                            ? dashboardlablefontgreen
-                            : dashboardlabelfontblack,
-                      ),
-                    ],
+                    ),
                   ),
                 ),
                 GestureDetector(
                   onTap: () {
                     dash.screenTabs(dash.currenttab = 3);
                   },
-                  child: Column(
-                    children: [
-                      Icon(
-                        Icons.person_pin,
-                        color:
-                            dash.currenttab == 3 ? Colors.green : Colors.black,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: dash.currenttab == 3 ? Colors.green : null),
+                    child: Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.person,
+                            size: 17,
+                            color: dash.currenttab == 3
+                                ? Colors.white
+                                : Colors.black,
+                          ),
+                          Text(
+                            'Profile',
+                            style: dash.currenttab == 3
+                                ? dashboardlablefontwhite
+                                : dashboardlabelfontblack,
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Profile',
-                        style: dash.currenttab == 3
-                            ? dashboardlablefontgreen
-                            : dashboardlabelfontblack,
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ],
