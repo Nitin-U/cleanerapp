@@ -1,6 +1,8 @@
 import 'package:cleanerapp/custom_widget/button.dart';
 import 'package:cleanerapp/custom_widget/cleaner_textfield.dart';
+import 'package:cleanerapp/custom_widget/transaction_route.dart';
 import 'package:cleanerapp/utils/style.dart';
+import 'package:cleanerapp/view/authentication/forgot_password/forgot_password_view/forgot_password_screen.dart';
 import 'package:cleanerapp/view/dashboard/dashboard_view/dashboard_view.dart';
 import 'package:flutter/material.dart';
 
@@ -56,7 +58,11 @@ class LoginView extends StatelessWidget {
             Align(
                 alignment: Alignment.bottomRight,
                 child: CleanerButton.text(
-                    label: 'Forgot Password', onPressed: () {})),
+                    label: 'Forgot Password',
+                    onPressed: () {
+                      Navigator.push(context,
+                          CustomPageRoute(child: ForgotPasswordScreen()));
+                    })),
             SizedBox(
               height: 0,
             ),

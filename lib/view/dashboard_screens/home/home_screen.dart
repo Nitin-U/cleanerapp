@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
       builder: (context, home, child) {
         return Scaffold(
           body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 25),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 40),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 10,
@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                         onPressed: () {},
                         label: 'UpComing Orders')
                   ],
-                )
+                ),
               ],
             ),
           ),

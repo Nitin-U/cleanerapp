@@ -71,11 +71,9 @@ class CleanerButton extends StatelessWidget {
                   backgroundcolor, // Background color for ElevatedButton
             ),
             onPressed: onPressed,
-            child: Text(
-              label,
-              style: const TextStyle(
-                  color: Colors.white), // Text color for ElevatedButton
-            ),
+            child:
+                Text(label, style: buttonfond // Text color for ElevatedButton
+                    ),
           ),
         );
       case CleanerButtonType.outline:
@@ -89,11 +87,9 @@ class CleanerButton extends StatelessWidget {
                   : BorderSide.none, // Border color for OutlinedButton
             ),
             onPressed: onPressed,
-            child: Text(
-              label,
-              style: const TextStyle(
-                  color: Colors.blue), // Text color for OutlinedButton
-            ),
+            child:
+                Text(label, style: buttonfond // Text color for OutlinedButton
+                    ),
           ),
         );
       case CleanerButtonType.text:

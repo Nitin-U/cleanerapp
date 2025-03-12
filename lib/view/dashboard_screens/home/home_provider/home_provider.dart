@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
 class HomeProvider extends ChangeNotifier {
+  int tabs = 0;
+
+  void getTab(int index) {
+    tabs = index;
+    notifyListeners();
+  }
+
   String getGreeting() {
     final hour = DateTime.now().hour;
     if (hour < 12) {
