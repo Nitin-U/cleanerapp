@@ -16,38 +16,40 @@ class HomeScreen extends StatelessWidget {
         return Scaffold(
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 40),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 10,
-              children: [
-                Row(
-                  spacing: 5,
-                  children: [
-                    Expanded(
-                        child: CleanerTextfield(
-                            suffix: Icon(Icons.search), hintlabel: 'Search')),
-                    Icon(Icons.filter)
-                  ],
-                ),
-                GreetingsCard(),
-                Text(
-                  'Active Orders',
-                  style: greetingsStyleblack,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    CleanerChip(
-                        backgroundColor: Colors.red,
-                        onPressed: () {},
-                        label: 'My Orders'),
-                    CleanerChip(
-                        backgroundColor: Colors.grey,
-                        onPressed: () {},
-                        label: 'UpComing Orders')
-                  ],
-                ),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 10,
+                children: [
+                  Row(
+                    spacing: 5,
+                    children: [
+                      Expanded(
+                          child: CleanerTextfield(
+                              suffix: Icon(Icons.search), hintlabel: 'Search')),
+                      Icon(Icons.filter)
+                    ],
+                  ),
+                  GreetingsCard(),
+                  Text(
+                    'Active Orders',
+                    style: greetingsStyleblack,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      CleanerChip(
+                          backgroundColor: Colors.red,
+                          onPressed: () {},
+                          label: 'My Orders'),
+                      CleanerChip(
+                          backgroundColor: Colors.grey,
+                          onPressed: () {},
+                          label: 'UpComing Orders')
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         );

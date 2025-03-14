@@ -13,7 +13,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 90),
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 110),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -23,7 +23,7 @@ class LoginView extends StatelessWidget {
             ),
             Text('Welcome Back', style: loginscreentitlefont),
             SizedBox(
-              height: 30,
+              height: 15,
             ),
             Text(
               'Email',

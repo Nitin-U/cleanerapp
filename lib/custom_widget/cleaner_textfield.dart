@@ -22,7 +22,7 @@ class CleanerTextfield extends StatelessWidget {
       controller: controller,
       style: dashboardlabelfontblack,
       decoration: InputDecoration(
-          constraints: BoxConstraints(maxHeight: 30),
+          constraints: BoxConstraints(maxHeight: 40),
           errorStyle: errorstyle,
           isDense: true,
           focusedBorder: OutlineInputBorder(
