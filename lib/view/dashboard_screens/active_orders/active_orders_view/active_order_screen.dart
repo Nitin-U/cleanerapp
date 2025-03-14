@@ -1,3 +1,4 @@
+import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:flutter/material.dart';
 
 class ActiveOrderScreen extends StatelessWidget {
@@ -5,10 +6,8 @@ class ActiveOrderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-       appBar: AppBar(
-        backgroundColor: Colors.green,
-      ),
+    return Scaffold(
+      backgroundColor: CleanerAppcolors.primarylightgreycolor,
     );
   }
 }

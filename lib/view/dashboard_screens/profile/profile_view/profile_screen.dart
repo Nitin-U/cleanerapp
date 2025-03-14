@@ -1,3 +1,4 @@
+import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -6,9 +7,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.purple,
-      ),
+      backgroundColor: CleanerAppcolors.primarylightgreycolor,
     );
   }
 }

@@ -5,4 +5,5 @@ class CleanerAppcolors {
   static const primaryWhitecolor = Color(0xffffffff);
   static const primaryRedcolor = Color(0xffFA2C2C);
   static const primaryGreencolor = Color(0xff76BA1B);
+  static const primarylightgreycolor = Color(0xfff2f4f4);
 }

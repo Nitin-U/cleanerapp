@@ -1,4 +1,5 @@
 import 'package:cleanerapp/providers/cleaner_app_provider.dart';
+import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/view/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,10 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        theme: ThemeData(),
         home: SplashScreen());
   }
 }

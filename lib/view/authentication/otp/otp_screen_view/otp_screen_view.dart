@@ -17,6 +17,7 @@ class OtpScreenView extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.51),
             border: Border.all(color: CleanerAppcolors.primarygreycolor)));
     return Scaffold(
+      backgroundColor: CleanerAppcolors.primarylightgreycolor,
       appBar: AppBar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 60),

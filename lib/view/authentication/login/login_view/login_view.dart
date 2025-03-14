@@ -1,6 +1,7 @@
 import 'package:cleanerapp/custom_widget/button.dart';
 import 'package:cleanerapp/custom_widget/cleaner_textfield.dart';
 import 'package:cleanerapp/custom_widget/transaction_route.dart';
+import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/style.dart';
 import 'package:cleanerapp/view/authentication/forgot_password/forgot_password_view/forgot_password_screen.dart';
 import 'package:cleanerapp/view/dashboard/dashboard_view/dashboard_view.dart';
@@ -12,6 +13,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: CleanerAppcolors.primarylightgreycolor,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 110),
         child: Column(

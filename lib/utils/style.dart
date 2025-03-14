@@ -44,6 +44,14 @@ TextStyle get resendfont {
   );
 }
 
+TextStyle get resendwhitefont {
+  return GoogleFonts.poppins(
+    fontWeight: FontWeight.w600,
+    color: CleanerAppcolors.primaryWhitecolor,
+    fontSize: 10,
+  );
+}
+
 TextStyle get loginscreentitlefont {
   return GoogleFonts.poppins(
     fontWeight: FontWeight.w600,
