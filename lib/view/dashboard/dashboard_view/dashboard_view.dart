@@ -1,7 +1,9 @@
 import 'package:cleanerapp/utils/appcolors.dart';
+import 'package:cleanerapp/utils/cleanericonspng.dart';
 import 'package:cleanerapp/utils/style.dart';
 import 'package:cleanerapp/view/dashboard/dashboard_provider/dashboard_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class DashboardView extends StatelessWidget {
@@ -33,24 +35,24 @@ class DashboardView extends StatelessWidget {
                         child: DecoratedBox(
                             decoration: BoxDecoration(
                                 color: dash.currenttab == 0
-                                    ? CleanerAppcolors.primaryGreencolor
+                                    ? CleanerAppcolors.primarybrowncolor
                                     : null)),
                       ),
-                      Icon(
-                        Icons.home,
-                        size: 17,
+                      Image.asset(
+                        AppIcons.homeicon,
+                        height: 20.h,
                         color: dash.currenttab == 0
-                            ? CleanerAppcolors.primaryGreencolor
-                            : Colors.black,
+                            ? CleanerAppcolors.primarybrowncolor
+                            : null,
                       ),
                       Text(
                         'Home',
                         style: dash.currenttab == 0
-                            ? dashboardlablefontgreen
+                            ? dashboardlablefontbrown
                             : dashboardlabelfontblack,
                       ),
                       SizedBox(
-                        height: 5,
+                        height: 5.h,
                       )
                     ],
                   ),
@@ -64,29 +66,29 @@ class DashboardView extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(
-                        height: 2,
-                        width: 50,
+                        height: 2.h,
+                        width: 50.w,
                         child: DecoratedBox(
                             decoration: BoxDecoration(
                                 color: dash.currenttab == 1
-                                    ? CleanerAppcolors.primaryGreencolor
+                                    ? CleanerAppcolors.primarybrowncolor
                                     : null)),
                       ),
-                      Icon(
-                        Icons.check_circle_sharp,
-                        size: 17,
+                      Image.asset(
+                        AppIcons.requesticon,
+                        height: 20.h,
                         color: dash.currenttab == 1
-                            ? CleanerAppcolors.primaryGreencolor
-                            : Colors.black,
+                            ? CleanerAppcolors.primarybrowncolor
+                            : null,
                       ),
                       Text(
-                        'Active Orders',
+                        'Bin Request',
                         style: dash.currenttab == 1
-                            ? dashboardlablefontgreen
+                            ? dashboardlablefontbrown
                             : dashboardlabelfontblack,
                       ),
                       SizedBox(
-                        height: 5,
+                        height: 5.h,
                       )
                     ],
                   ),
@@ -96,33 +98,33 @@ class DashboardView extends StatelessWidget {
                     dash.screenTabs(dash.currenttab = 2);
                   },
                   child: Column(
-                    spacing: 5,
+                    spacing: 5.h,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(
-                        height: 2,
-                        width: 50,
+                        height: 2.h,
+                        width: 50.w,
                         child: DecoratedBox(
                             decoration: BoxDecoration(
                                 color: dash.currenttab == 2
-                                    ? CleanerAppcolors.primaryGreencolor
+                                    ? CleanerAppcolors.primarybrowncolor
                                     : null)),
                       ),
-                      Icon(
-                        Icons.history,
-                        size: 17,
+                      Image.asset(
+                        AppIcons.myordersicon,
+                        height: 20.h,
                         color: dash.currenttab == 2
-                            ? CleanerAppcolors.primaryGreencolor
-                            : Colors.black,
+                            ? CleanerAppcolors.primarybrowncolor
+                            : null,
                       ),
                       Text(
                         'My Orders',
                         style: dash.currenttab == 2
-                            ? dashboardlablefontgreen
+                            ? dashboardlablefontbrown
                             : dashboardlabelfontblack,
                       ),
                       SizedBox(
-                        height: 5,
+                        height: 5.h,
                       )
                     ],
                   ),
@@ -132,33 +134,31 @@ class DashboardView extends StatelessWidget {
                     dash.screenTabs(dash.currenttab = 3);
                   },
                   child: Column(
-                    spacing: 5,
+                    spacing: 5.h,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(
-                        height: 2,
-                        width: 50,
+                        height: 2.h,
+                        width: 50.w,
                         child: DecoratedBox(
                             decoration: BoxDecoration(
                                 color: dash.currenttab == 3
-                                    ? CleanerAppcolors.primaryGreencolor
+                                    ? CleanerAppcolors.primarybrowncolor
                                     : null)),
                       ),
-                      Icon(
-                        Icons.person,
-                        size: 17,
-                        color: dash.currenttab == 3
-                            ? CleanerAppcolors.primaryGreencolor
-                            : Colors.black,
-                      ),
+                      Image.asset(AppIcons.profileicon,
+                          height: 20.h,
+                          color: dash.currenttab == 3
+                              ? CleanerAppcolors.primarybrowncolor
+                              : null),
                       Text(
                         'Profile',
                         style: dash.currenttab == 3
-                            ? dashboardlablefontgreen
+                            ? dashboardlablefontbrown
                             : dashboardlabelfontblack,
                       ),
                       SizedBox(
-                        height: 5,
+                        height: 5.h,
                       )
                     ],
                   ),

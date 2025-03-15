@@ -8,6 +8,7 @@ import 'package:cleanerapp/view/dashboard_screens/home/components/orders_tabs/or
 import 'package:cleanerapp/view/dashboard_screens/home/components/upcoming_orders_list/upcoming_order_list.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/home_provider/home_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -27,27 +28,25 @@ class HomeScreen extends StatelessWidget {
                   },
                   child: Icon(Icons.menu)),
             ),
-            actions: [Icon(Icons.notifications)],
+            actions: [
+              Icon(Icons.notifications),
+              SizedBox(
+                width: 12.w,
+              )
+            ],
             backgroundColor: CleanerAppcolors.primarylightgreycolor,
             automaticallyImplyLeading: false,
           ),
           backgroundColor: CleanerAppcolors.primarylightgreycolor,
           body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            padding:  EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 10,
+                spacing: 10.h,
                 children: [
-                  Row(
-                    spacing: 5,
-                    children: [
-                      Expanded(
-                          child: CleanerTextfield(
-                              suffix: Icon(Icons.search), hintlabel: 'Search')),
-                      Icon(Icons.filter)
-                    ],
-                  ),
+                  CleanerTextfield(
+                      prefix: Icon(Icons.search), hintlabel: 'Search'),
                   GreetingsCard(),
                   Text(
                     'Active Orders',

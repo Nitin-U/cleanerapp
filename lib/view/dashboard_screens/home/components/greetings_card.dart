@@ -1,7 +1,9 @@
 import 'package:cleanerapp/custom_widget/cleaner_chip.dart';
+import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/style.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/home_provider/home_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class GreetingsCard extends StatelessWidget {
@@ -17,9 +19,13 @@ class GreetingsCard extends StatelessWidget {
           width: MediaQuery.sizeOf(context).width,
           child: DecoratedBox(
             decoration: BoxDecoration(
-                color: Colors.green, borderRadius: BorderRadius.circular(10)),
+                gradient: LinearGradient(colors: [
+                  CleanerAppcolors.primarylightbrowncolor,
+                  CleanerAppcolors.primarybrowncolor
+                ]),
+                borderRadius: BorderRadius.circular(10.sp)),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding:  EdgeInsets.symmetric(horizontal: 10.w, vertical: 19.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -28,20 +34,20 @@ class GreetingsCard extends StatelessWidget {
                     style: buttonfond,
                   ),
                   SizedBox(
-                    height: 5,
+                    height: 5.h,
                   ),
                   Text(
-                    'Aakash',
+                    'Aakash Sunar',
                     style: drivernamefont,
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 10.h,
                   ),
                   CleanerChip(
-                    backgroundColor: Colors.red,
+                    backgroundColor: CleanerAppcolors.primarybrowncolor,
                     onPressed: () {},
                     label: 'Active Orders',
-                  )
+                  ),
                 ],
               ),
             ),

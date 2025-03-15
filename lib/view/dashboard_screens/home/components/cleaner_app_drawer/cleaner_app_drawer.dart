@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../utils/style.dart';
 
@@ -12,7 +13,7 @@ class CleanerAppDrawer extends StatelessWidget {
     return Drawer(
       width: 220,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 50),
+        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 50.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

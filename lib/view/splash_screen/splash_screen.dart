@@ -1,11 +1,10 @@
 import 'dart:async';
-
 import 'package:cleanerapp/custom_widget/transaction_route.dart';
 import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/cleanericonspng.dart';
-import 'package:cleanerapp/utils/style.dart';
 import 'package:cleanerapp/view/authentication/login/login_view/login_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -33,19 +32,14 @@ class _SplashScreen extends State<SplashScreen> {
       backgroundColor: CleanerAppcolors.primarylightgreycolor,
       body: Center(
         child: Column(
-          spacing: 5,
+          spacing: 5.h,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(AppIcons.cleanerbinlogo),
-            Text(
-              textAlign: TextAlign.center,
-              'Loading...',
-              style: splashloadingfond,
-            ),
             SizedBox(
-              width: 100,
+              width: 100.w,
               child: LinearProgressIndicator(
-                color: Colors.green,
+                color: CleanerAppcolors.primarybrowncolor,
               ),
             )
           ],
