@@ -4,6 +4,7 @@ import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/style.dart';
 import 'package:cleanerapp/view/authentication/otp/otp_screen_view/otp_screen_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
@@ -16,7 +17,7 @@ class ForgotPasswordScreen extends StatelessWidget {
         backgroundColor: CleanerAppcolors.primarylightgreycolor,
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+        padding: EdgeInsets.symmetric(vertical: 50.h, horizontal: 24.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
