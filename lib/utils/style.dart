@@ -13,7 +13,7 @@ TextStyle get dashboardlablefontbrown {
 TextStyle get dashboardlablefontgrey {
   return GoogleFonts.poppins(
       fontWeight: FontWeight.w500,
-      fontSize: 12.sp,
+      fontSize: 13.sp,
       color: CleanerAppcolors.primarygreycolor);
 }
 
