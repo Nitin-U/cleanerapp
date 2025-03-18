@@ -9,6 +9,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         automaticallyImplyLeading: false,
         backgroundColor: CleanerAppcolors.primarylightgreycolor,
         title: Text(
@@ -17,6 +18,33 @@ class ProfileScreen extends StatelessWidget {
         ),
       ),
       backgroundColor: CleanerAppcolors.primarylightgreycolor,
+      body: Column(
+        children: [
+          SizedBox(
+            child: DecoratedBox(
+              decoration: BoxDecoration(),
+              child: Row(
+                children: [
+                  CircleAvatar(),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Aakash Sunar',
+                        style: listiletitlefont,
+                      ),
+                      Text(
+                        'aakashsharma73235@gmail.com',
+                        style: dashboardlablefontgrey,
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
