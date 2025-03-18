@@ -40,7 +40,7 @@ TextStyle get dashboardlabelfontblack {
   return GoogleFonts.poppins(
     fontWeight: FontWeight.w400,
     color: Colors.black,
-    fontSize: 10.sp,
+    fontSize: 13.sp,
   );
 }
 
@@ -48,7 +48,7 @@ TextStyle get resendfont {
   return GoogleFonts.poppins(
     fontWeight: FontWeight.w500,
     color: Colors.black,
-    fontSize: 10.sp,
+    fontSize: 13.sp,
   );
 }
 
