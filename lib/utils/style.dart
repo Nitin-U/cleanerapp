@@ -17,6 +17,11 @@ TextStyle get dashboardlablefontgrey {
       color: CleanerAppcolors.primarygreycolor);
 }
 
+TextStyle get appbartitlefont {
+  return GoogleFonts.poppins(
+      fontWeight: FontWeight.w500, fontSize: 18.sp, color: Colors.black);
+}
+
 TextStyle get dashboardlablefontminigrey {
   return GoogleFonts.poppins(
       fontWeight: FontWeight.w500,
