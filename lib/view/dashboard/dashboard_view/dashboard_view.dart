@@ -28,12 +28,12 @@ class DashboardView extends StatelessWidget {
                       dash.screenTabs(dash.currenttab = 0);
                     },
                     child: Column(
-                      spacing: 5,
+                      spacing: 5.h,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(
-                          height: 2,
-                          width: 50,
+                          height: 2.h,
+                          width: 50.w,
                           child: DecoratedBox(
                               decoration: BoxDecoration(
                                   color: dash.currenttab == 0
@@ -64,7 +64,7 @@ class DashboardView extends StatelessWidget {
                       dash.screenTabs(dash.currenttab = 1);
                     },
                     child: Column(
-                      spacing: 5,
+                      spacing: 5.h,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(

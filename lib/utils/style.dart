@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 TextStyle get dashboardlablefontbrown {
   return GoogleFonts.poppins(
       fontWeight: FontWeight.w400,
-      fontSize: 10.sp,
+      fontSize: 13.sp,
       color: CleanerAppcolors.primarybrowncolor);
 }
 
