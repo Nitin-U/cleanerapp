@@ -1,7 +1,6 @@
+import 'package:cleanerapp/custom_widget/custom_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../utils/style.dart';
 
 class CleanerAppDrawer extends StatelessWidget {
   const CleanerAppDrawer({
@@ -18,30 +17,13 @@ class CleanerAppDrawer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Aakash'),
-            ListTile(
-              contentPadding: EdgeInsets.all(0),
-              leading: Icon(Icons.history),
-              title: Text(
-                'My Orders',
-                style: dashboardlabelfontblack,
+            CustomListtile(
+              leading: Icon(
+                Icons.notifications_none,
+                size: 18.r,
               ),
-            ),
-            ListTile(
-              contentPadding: EdgeInsets.all(0),
-              leading: Icon(Icons.notifications),
-              title: Text(
-                'Notifications',
-                style: dashboardlabelfontblack,
-              ),
-            ),
-            ListTile(
-              contentPadding: EdgeInsets.all(0),
-              leading: Icon(Icons.logout),
-              title: Text(
-                'Logout',
-                style: dashboardlabelfontblack,
-              ),
-            ),
+              title: 'Notification',
+            )
           ],
         ),
       ),

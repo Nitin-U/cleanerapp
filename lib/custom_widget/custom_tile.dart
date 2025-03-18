@@ -1,16 +1,17 @@
 import 'package:cleanerapp/utils/style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomListtile extends StatelessWidget {
   final String title;
-  final String subtitle;
+  final String? subtitle;
   final Widget? leading;
   final Widget? trailing;
   final VoidCallback? onTap;
   const CustomListtile({
     super.key,
     required this.title,
-    required this.subtitle,
+    this.subtitle,
     this.leading,
     this.trailing,
     this.onTap,
@@ -20,22 +21,22 @@ class CustomListtile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
-      minLeadingWidth: 0,
+      minLeadingWidth: -12.w,
       leading: leading,
       trailing: trailing,
       contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
       dense: true,
-      visualDensity: VisualDensity(
-        vertical: -4,
-      ),
+      visualDensity: VisualDensity(vertical: -4, horizontal: -4),
       title: Text(
         title,
         style: listiletitlefont,
       ),
-      subtitle: Text(
-        subtitle,
-        style: dashboardlablefontgrey,
-      ),
+      subtitle: subtitle == null
+          ? null
+          : Text(
+              subtitle!,
+              style: dashboardlablefontgrey,
+            ),
     );
   }
 }
