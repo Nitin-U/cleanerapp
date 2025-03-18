@@ -1,5 +1,4 @@
 import 'package:cleanerapp/custom_widget/button.dart';
-import 'package:cleanerapp/custom_widget/cleaner_chip.dart';
 import 'package:cleanerapp/custom_widget/cleaner_textfield.dart';
 import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/style.dart';
