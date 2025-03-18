@@ -15,7 +15,7 @@ class OtpScreenView extends StatelessWidget {
         width: MediaQuery.sizeOf(context).width,
         textStyle: dashboardlabelfontblack,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20.51.sp),
+            borderRadius: BorderRadius.circular(20.r),
             border: Border.all(color: CleanerAppcolors.primarygreycolor)));
     return Scaffold(
       backgroundColor: CleanerAppcolors.primarylightgreycolor,
@@ -23,7 +23,7 @@ class OtpScreenView extends StatelessWidget {
         backgroundColor: CleanerAppcolors.primarylightgreycolor,
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 60.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 50.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
