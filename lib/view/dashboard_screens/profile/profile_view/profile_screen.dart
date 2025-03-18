@@ -1,6 +1,9 @@
+import 'package:cleanerapp/custom_widget/custom_tile.dart';
 import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/style.dart';
+import 'package:cleanerapp/view/dashboard_screens/profile/components/profile_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -18,32 +21,19 @@ class ProfileScreen extends StatelessWidget {
         ),
       ),
       backgroundColor: CleanerAppcolors.primarylightgreycolor,
-      body: Column(
-        children: [
-          SizedBox(
-            child: DecoratedBox(
-              decoration: BoxDecoration(),
-              child: Row(
-                children: [
-                  CircleAvatar(),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Aakash Sunar',
-                        style: listiletitlefont,
-                      ),
-                      Text(
-                        'aakashsharma73235@gmail.com',
-                        style: dashboardlablefontgrey,
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-          )
-        ],
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.w),
+        child: Column(
+          children: [
+            ProfileCard(),
+            Divider(),
+            CustomListtile(
+              leading: Icon(Icons.cabin),
+              title: 'Label',
+              subtitle: 'sublabel',
+            )
+          ],
+        ),
       ),
     );
   }
