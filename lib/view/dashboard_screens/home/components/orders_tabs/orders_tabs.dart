@@ -40,9 +40,9 @@ class OrdersTabs extends StatelessWidget {
                             color: home.tabs == 0
                                 ? Colors.transparent
                                 : CleanerAppcolors.primarygreycolor),
-                        borderRadius: BorderRadius.circular(8)),
+                        borderRadius: BorderRadius.circular(20.r)),
                     child: Padding(
-                      padding:  EdgeInsets.all(8.sp),
+                      padding: EdgeInsets.symmetric(vertical: 13.h),
                       child: Center(
                         child: Text(
                           'My Orders',
@@ -78,9 +78,9 @@ class OrdersTabs extends StatelessWidget {
                             color: home.tabs == 1
                                 ? Colors.transparent
                                 : CleanerAppcolors.primarygreycolor),
-                        borderRadius: BorderRadius.circular(8)),
+                        borderRadius: BorderRadius.circular(20.r)),
                     child: Padding(
-                      padding:  EdgeInsets.all(8.sp),
+                      padding: EdgeInsets.symmetric(vertical: 13.sp),
                       child: Center(
                         child: Text(
                           'Bin Requests',

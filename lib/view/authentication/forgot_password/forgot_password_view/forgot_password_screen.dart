@@ -44,7 +44,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             ),
             CleanerButton.navigation(
               width: MediaQuery.sizeOf(context).width,
-              backgroundcolor: CleanerAppcolors.primaryGreencolor,
+              backgroundcolor: CleanerAppcolors.primarybrowncolor,
               label: 'Send code your email',
               destination: OtpScreenView(),
             )

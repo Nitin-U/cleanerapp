@@ -21,40 +21,72 @@ class HomeScreen extends StatelessWidget {
         return Scaffold(
           drawer: CleanerAppDrawer(),
           appBar: AppBar(
-            leading: Builder(
-              builder: (context) => GestureDetector(
-                  onTap: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                  child: Icon(Icons.menu)),
-            ),
             actions: [
-              Icon(Icons.notifications),
+              Builder(
+                builder: (context) => GestureDetector(
+                    onTap: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                    child: CircleAvatar(
+                        backgroundColor: CleanerAppcolors.primarygreycolor,
+                        radius: 20.r,
+                        child: CircleAvatar(
+                          radius: 18.r,
+                          backgroundColor: Colors.white,
+                          child: Icon(
+                            Icons.menu,
+                            size: 22.h,
+                          ),
+                        ))),
+              ),
               SizedBox(
                 width: 12.w,
-              )
+              ),
+              CircleAvatar(
+                  backgroundColor: CleanerAppcolors.primarygreycolor,
+                  radius: 20.r,
+                  child: CircleAvatar(
+                    radius: 18.r,
+                    backgroundColor: Colors.white,
+                    child: Icon(
+                      Icons.notifications_none,
+                      size: 22.h,
+                    ),
+                  )),
+              SizedBox(
+                width: 12.w,
+              ),
             ],
             backgroundColor: CleanerAppcolors.primarylightgreycolor,
             automaticallyImplyLeading: false,
           ),
           backgroundColor: CleanerAppcolors.primarylightgreycolor,
           body: Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
+            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 10.h,
+                spacing: 15.h,
                 children: [
                   CleanerTextfield(
                       prefix: Icon(Icons.search), hintlabel: 'Search'),
                   GreetingsCard(),
-                  Text(
-                    'Active Orders',
-                    style: greetingsStyleblack,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Active Orders',
+                        style: greetingsStyleblack,
+                      ),
+                      Icon(
+                        Icons.keyboard_arrow_right_outlined,
+                        size: 20.sp,
+                      )
+                    ],
                   ),
                   OrdersTabs(),
                   if (home.tabs == 0) MyOrders(),
-                  if (home.tabs == 1) UpComingOrders()
+                  if (home.tabs == 1) UpComingOrders(),
                 ],
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:cleanerapp/utils/style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CleanerChip extends StatelessWidget {
   final double? height;
@@ -18,19 +19,22 @@ class CleanerChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: height,
-      width: width,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          color: backgroundColor,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-          child: Text(
-            label,
-            style: dashboardlablefontwhite,
+    return InkWell(
+      onTap: onPressed,
+      child: SizedBox(
+        height: height,
+        width: width,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            color: backgroundColor,
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
+            child: Text(
+              label,
+              style: dashboardlablefontwhite,
+            ),
           ),
         ),
       ),

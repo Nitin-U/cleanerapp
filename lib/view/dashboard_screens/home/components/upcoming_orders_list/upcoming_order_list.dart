@@ -11,11 +11,15 @@ class UpComingOrders extends StatelessWidget {
     return Column(
       children: [
         ListTile(
+          minLeadingWidth: 1,
           contentPadding: EdgeInsets.all(0),
-          leading: Icon(Icons.history),
+          leading: Text(
+            '01',
+            style: dashboardlabelfontblack,
+          ),
           title: Text(
             'Up Coming orders',
-            style: dashboardlabelfontblack,
+            style: listiletitlefont,
           ),
         ),
       ],

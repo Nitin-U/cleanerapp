@@ -13,7 +13,7 @@ TextStyle get dashboardlablefontbrown {
 TextStyle get dashboardlablefontgrey {
   return GoogleFonts.poppins(
       fontWeight: FontWeight.w500,
-      fontSize: 10.sp,
+      fontSize: 12.sp,
       color: CleanerAppcolors.primarygreycolor);
 }
 
@@ -52,6 +52,22 @@ TextStyle get resendfont {
   );
 }
 
+TextStyle get listiletitlefont {
+  return GoogleFonts.poppins(
+    fontWeight: FontWeight.w500,
+    color: Colors.black,
+    fontSize: 14.sp,
+  );
+}
+
+TextStyle get tabfonts {
+  return GoogleFonts.poppins(
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+    fontSize: 13.sp,
+  );
+}
+
 TextStyle get resendfontminigrey {
   return GoogleFonts.poppins(
     fontWeight: FontWeight.w500,
@@ -72,15 +88,15 @@ TextStyle get loginscreentitlefont {
   return GoogleFonts.poppins(
     fontWeight: FontWeight.w600,
     color: Colors.black,
-    fontSize: 16.sp,
+    fontSize: 24.sp,
   );
 }
 
 TextStyle get splashloadingfond {
   return GoogleFonts.poppins(
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
     color: CleanerAppcolors.primarygreycolor,
-    fontSize: 10.sp,
+    fontSize: 12.sp,
   );
 }
 
@@ -104,7 +120,7 @@ TextStyle get forgotpasswordfont {
   return GoogleFonts.poppins(
     fontWeight: FontWeight.w500,
     color: Colors.black,
-    fontSize: 10.sp,
+    fontSize: 13.sp,
   );
 }
 
