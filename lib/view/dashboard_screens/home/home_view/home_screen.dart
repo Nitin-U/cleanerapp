@@ -5,7 +5,7 @@ import 'package:cleanerapp/view/dashboard_screens/home/components/cleaner_app_dr
 import 'package:cleanerapp/view/dashboard_screens/home/components/greetings_card.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/my_orders_list/my_orders_list.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/orders_tabs/orders_tabs.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/components/upcoming_orders_list/upcoming_order_list.dart';
+import 'package:cleanerapp/view/dashboard_screens/home/components/bin_request_list/bin_request_list.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/home_provider/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
           ),
           backgroundColor: CleanerAppcolors.primarylightgreycolor,
           body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   OrdersTabs(),
                   if (home.tabs == 0) MyOrders(),
-                  if (home.tabs == 1) UpComingOrders(),
+                  if (home.tabs == 1) BinRequests(),
                 ],
               ),
             ),

@@ -1,28 +1,26 @@
 import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/style.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/components/my_orders_list/my_orders_list.dart';
+import 'package:cleanerapp/view/dashboard_screens/home/components/bin_request_list/bin_request_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MyOrdersScreen extends StatelessWidget {
-  const MyOrdersScreen({super.key});
+class BinRequestView extends StatelessWidget {
+  const BinRequestView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            'My Orders',
-            style: appbartitlefont,
-          ),
           backgroundColor: CleanerAppcolors.primarylightgreycolor,
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+          title: Text('Bin Request', style: appbartitlefont),
         ),
         backgroundColor: CleanerAppcolors.primarylightgreycolor,
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
           child: ListView(
-            children: [MyOrders()],
+            children: [BinRequests()],
           ),
         ));
   }

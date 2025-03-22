@@ -24,6 +24,7 @@ class ProfileScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.w),
         child: Column(
+          spacing: 10.h,
           children: [
             ProfileCard(),
             Divider(),
@@ -31,7 +32,17 @@ class ProfileScreen extends StatelessWidget {
               leading: Icon(Icons.cabin),
               title: 'Label',
               subtitle: 'sublabel',
-            )
+            ),
+            CustomListtile(
+              leading: Icon(Icons.cabin),
+              title: 'address',
+              subtitle: 'address',
+            ),
+            CustomListtile(
+              leading: Icon(Icons.cabin),
+              title: 'Contact',
+              subtitle: 'contact number',
+            ),
           ],
         ),
       ),

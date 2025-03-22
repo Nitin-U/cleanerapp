@@ -13,9 +13,7 @@ class MyOrders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        MyOrdersCard()
-      ],
+      children: [MyOrdersCard()],
     );
   }
 }
@@ -32,8 +30,7 @@ class MyOrdersCard extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20.r),
-            border:
-                Border.all(color: CleanerAppcolors.primaryminigreycolor)),
+            border: Border.all(color: CleanerAppcolors.primaryminigreycolor)),
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 10.w),
           child: Column(
