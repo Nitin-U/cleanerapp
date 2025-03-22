@@ -102,6 +102,7 @@ class LoginView extends StatelessWidget {
                     height: 10.h,
                   ),
                   CleanerButton.navigation(
+                    height: 55.h,
                     width: MediaQuery.sizeOf(context).width,
                     backgroundcolor: CleanerAppcolors.primarybrowncolor,
                     label: 'Login',

@@ -1,6 +1,7 @@
 import 'package:cleanerapp/custom_widget/transaction_route.dart';
 import 'package:cleanerapp/utils/style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum CleanerButtonType { elevated, outline, text, navigation }
 
@@ -67,6 +68,8 @@ class CleanerButton extends StatelessWidget {
           width: width,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.r)),
               backgroundColor:
                   backgroundcolor, // Background color for ElevatedButton
             ),
@@ -82,6 +85,8 @@ class CleanerButton extends StatelessWidget {
           width: width,
           child: OutlinedButton(
             style: OutlinedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.r)),
               side: bordercolor != null
                   ? BorderSide(color: bordercolor!)
                   : BorderSide.none, // Border color for OutlinedButton
@@ -114,7 +119,7 @@ class CleanerButton extends StatelessWidget {
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(20.r)),
               backgroundColor:
                   backgroundcolor, // Background color for Navigation Button
             ),

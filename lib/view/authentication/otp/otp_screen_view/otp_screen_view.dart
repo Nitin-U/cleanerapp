@@ -66,6 +66,7 @@ class OtpScreenView extends StatelessWidget {
               height: 15.h,
             ),
             CleanerButton.elevated(
+              height: 55.h,
               width: MediaQuery.sizeOf(context).width,
               backgroundcolor: CleanerAppcolors.primarybrowncolor,
               label: 'Verify',
