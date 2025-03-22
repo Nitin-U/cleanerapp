@@ -77,7 +77,7 @@ TextStyle get resendfontminigrey {
   return GoogleFonts.poppins(
     fontWeight: FontWeight.w500,
     color: CleanerAppcolors.primarygreycolor,
-    fontSize: 10.sp,
+    fontSize: 13.sp,
   );
 }
 
@@ -85,7 +85,23 @@ TextStyle get resendwhitefont {
   return GoogleFonts.poppins(
     fontWeight: FontWeight.w500,
     color: CleanerAppcolors.primaryWhitecolor,
-    fontSize: 10.sp,
+    fontSize: 13.sp,
+  );
+}
+
+TextStyle get tabsfontgrey {
+  return GoogleFonts.poppins(
+    fontWeight: FontWeight.w500,
+    color: CleanerAppcolors.primaryWhitecolor,
+    fontSize: 13.sp,
+  );
+}
+
+TextStyle get tabsfontbrown {
+  return GoogleFonts.poppins(
+    fontWeight: FontWeight.w500,
+    color: CleanerAppcolors.primarybrowncolor,
+    fontSize: 13.sp,
   );
 }
 

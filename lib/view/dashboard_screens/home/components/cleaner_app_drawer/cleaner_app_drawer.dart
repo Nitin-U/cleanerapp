@@ -12,7 +12,7 @@ class CleanerAppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      width: 220,
+      width: 350.w,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 90.h),
         child: Column(

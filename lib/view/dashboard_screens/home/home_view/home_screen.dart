@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
                       Scaffold.of(context).openDrawer();
                     },
                     child: CircleAvatar(
-                        backgroundColor: CleanerAppcolors.primarygreycolor,
+                        backgroundColor: CleanerAppcolors.primarybrowncolor,
                         radius: 20.r,
                         child: CircleAvatar(
                           radius: 18.r,
@@ -36,6 +36,7 @@ class HomeScreen extends StatelessWidget {
                           child: Icon(
                             Icons.menu,
                             size: 22.h,
+                            color: CleanerAppcolors.primarybrowncolor,
                           ),
                         ))),
               ),
@@ -43,7 +44,7 @@ class HomeScreen extends StatelessWidget {
                 width: 12.w,
               ),
               CircleAvatar(
-                  backgroundColor: CleanerAppcolors.primarygreycolor,
+                  backgroundColor: CleanerAppcolors.primarybrowncolor,
                   radius: 20.r,
                   child: CircleAvatar(
                     radius: 18.r,
@@ -51,6 +52,7 @@ class HomeScreen extends StatelessWidget {
                     child: Icon(
                       Icons.notifications_none,
                       size: 22.h,
+                      color: CleanerAppcolors.primarybrowncolor,
                     ),
                   )),
               SizedBox(
