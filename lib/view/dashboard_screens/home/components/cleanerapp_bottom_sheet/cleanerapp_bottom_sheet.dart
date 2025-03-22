@@ -23,53 +23,54 @@ class CleanerAppBottomSheet extends StatelessWidget {
             spacing: 5.h,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SingleChildScrollView(
-                child: Column(
-                  spacing: 5.h,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Order No:',
-                      style: listiletitlefont,
-                    ),
-                    CleanerTextfield(
-                      prefix: Icon(Icons.format_list_numbered),
-                      hintlabel: 'Enter order no',
-                    ),
-                    Text(
-                      'Location',
-                      style: listiletitlefont,
-                    ),
-                    CleanerTextfield(
-                        prefix: Icon(Icons.pin_drop),
-                        hintlabel: 'Enter your location'),
-                    Text(
-                      'Duration',
-                      style: listiletitlefont,
-                    ),
-                    CleanerTextfield(
-                        prefix: Icon(Icons.timer), hintlabel: 'Enter duration'),
-                    Text(
-                      'Estimated place',
-                      style: listiletitlefont,
-                    ),
-                    CleanerTextfield(
-                        prefix: Icon(Icons.location_city),
-                        hintlabel: 'Enter place'),
-                    SizedBox(
-                      height: 8.h,
-                    ),
-                  ],
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    spacing: 5.h,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Order No:',
+                        style: listiletitlefont,
+                      ),
+                      CleanerTextfield(
+                        prefix: Icon(Icons.format_list_numbered),
+                        hintlabel: 'Enter order no',
+                      ),
+                      Text(
+                        'Location',
+                        style: listiletitlefont,
+                      ),
+                      CleanerTextfield(
+                          prefix: Icon(Icons.pin_drop),
+                          hintlabel: 'Enter your location'),
+                      Text(
+                        'Duration',
+                        style: listiletitlefont,
+                      ),
+                      CleanerTextfield(
+                          prefix: Icon(Icons.timer),
+                          hintlabel: 'Enter duration'),
+                      Text(
+                        'Estimated place',
+                        style: listiletitlefont,
+                      ),
+                      CleanerTextfield(
+                          prefix: Icon(Icons.location_city),
+                          hintlabel: 'Enter place'),
+                      SizedBox(
+                        height: 8.h,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              Expanded(
-                child: CleanerButton.elevated(
-                    height: 55.h,
-                    backgroundcolor: CleanerAppcolors.primarybrowncolor,
-                    width: MediaQuery.sizeOf(context).width,
-                    label: 'Confirm Order',
-                    onPressed: () {}),
-              )
+              CleanerButton.elevated(
+                  height: 55.h,
+                  backgroundcolor: CleanerAppcolors.primarybrowncolor,
+                  width: MediaQuery.sizeOf(context).width,
+                  label: 'Confirm Order',
+                  onPressed: () {})
             ],
           ),
         ),
