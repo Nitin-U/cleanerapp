@@ -64,6 +64,7 @@ class CleanerAppBottomSheet extends StatelessWidget {
               ),
               Expanded(
                 child: CleanerButton.elevated(
+                    height: 55.h,
                     backgroundcolor: CleanerAppcolors.primarybrowncolor,
                     width: MediaQuery.sizeOf(context).width,
                     label: 'Confirm Order',

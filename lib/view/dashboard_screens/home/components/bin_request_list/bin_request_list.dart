@@ -1,6 +1,4 @@
-import 'package:cleanerapp/custom_widget/cleaner_chip.dart';
-import 'package:cleanerapp/custom_widget/custom_tile.dart';
-import 'package:cleanerapp/utils/appcolors.dart';
+import 'package:cleanerapp/view/dashboard_screens/home/components/my_orders_card.dart';
 import 'package:flutter/material.dart';
 
 class BinRequests extends StatelessWidget {
@@ -11,14 +9,7 @@ class BinRequests extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        CustomListtile(
-            trailing: CleanerChip(
-              label: 'View',
-              backgroundColor: CleanerAppcolors.primarybrowncolor,
-            ),
-            title: 'Bin Requests')
-      ],
+      children: [MyOrdersCard()],
     );
   }
 }

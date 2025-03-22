@@ -14,9 +14,9 @@ class CleanerAppDrawer extends StatelessWidget {
     return Drawer(
       width: 350.w,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 90.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 90.h),
         child: Column(
-          spacing: 10.h,
+          spacing: 15.h,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ProfileCard(),

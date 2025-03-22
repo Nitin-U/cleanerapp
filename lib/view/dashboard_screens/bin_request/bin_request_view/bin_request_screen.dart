@@ -18,7 +18,7 @@ class BinRequestView extends StatelessWidget {
         ),
         backgroundColor: CleanerAppcolors.primarylightgreycolor,
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
           child: ListView(
             children: [BinRequests()],
           ),

@@ -1,5 +1,6 @@
 import 'package:cleanerapp/custom_widget/custom_tile.dart';
 import 'package:cleanerapp/utils/appcolors.dart';
+import 'package:cleanerapp/utils/cleanericonspng.dart';
 import 'package:cleanerapp/utils/style.dart';
 import 'package:cleanerapp/view/dashboard_screens/profile/components/profile_card.dart';
 import 'package:flutter/material.dart';
@@ -29,20 +30,28 @@ class ProfileScreen extends StatelessWidget {
             ProfileCard(),
             Divider(),
             CustomListtile(
-              leading: Icon(Icons.cabin),
-              title: 'Label',
-              subtitle: 'sublabel',
+              leading: Image.asset(
+                AppIcons.myordersicon,
+                height: 30.h,
+              ),
+              title: 'My Orders',
+              subtitle: '20',
             ),
             CustomListtile(
-              leading: Icon(Icons.cabin),
-              title: 'address',
-              subtitle: 'address',
+              leading: Icon(
+                Icons.place_outlined,
+                size: 30.h,
+              ),
+              title: 'Address',
+              subtitle: 'Dhapakhel, Lalitpur',
             ),
             CustomListtile(
-              leading: Icon(Icons.cabin),
-              title: 'Contact',
-              subtitle: 'contact number',
-            ),
+                leading: Icon(
+                  Icons.phone_outlined,
+                  size: 30.h,
+                ),
+                title: 'Contact',
+                subtitle: '983844557'),
           ],
         ),
       ),
