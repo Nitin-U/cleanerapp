@@ -1,7 +1,6 @@
 import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/style.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/my_orders_card.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/home_provider/home_provider.dart';
 import 'package:cleanerapp/view/dashboard_screens/my_orders/my_orders_provider/myorders_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,7 +12,7 @@ class MyOrdersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<MyordersProviders>(
-      builder: (context, value, child) {
+      builder: (context, orders, child) {
         return Scaffold(
             appBar: AppBar(
               centerTitle: true,
@@ -30,7 +29,7 @@ class MyOrdersScreen extends StatelessWidget {
                   child: Column(
                     spacing: 15.h,
                     children: List.generate(
-                      value.ordersData.length,
+                      orders.ordersData.length,
                       (index) => MyOrdersCard(),
                     ),
                   ),
