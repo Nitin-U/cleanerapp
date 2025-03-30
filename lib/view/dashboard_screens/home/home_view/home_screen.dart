@@ -87,8 +87,11 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   OrdersTabs(),
-                  if (home.tabs == 0) MyOrders(),
-                  if (home.tabs == 1) BinRequests(),
+                  if (home.tabs == 0)
+                    MyOrders(
+                      orders: home.ordersData,
+                    ),
+                  if (home.tabs == 1) BinRequests(orders: home.binRequestData,),
                 ],
               ),
             ),

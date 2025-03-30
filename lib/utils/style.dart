@@ -121,6 +121,14 @@ TextStyle get splashloadingfond {
   );
 }
 
+TextStyle get seeallfont {
+  return GoogleFonts.poppins(
+    fontWeight: FontWeight.w600,
+    color: CleanerAppcolors.primarybrowncolor,
+    fontSize: 17.sp,
+  );
+}
+
 TextStyle get buttonfond {
   return GoogleFonts.poppins(
     fontWeight: FontWeight.w500,
@@ -149,6 +157,6 @@ TextStyle get errorstyle {
   return GoogleFonts.poppins(
     fontWeight: FontWeight.w400,
     color: CleanerAppcolors.primaryRedcolor,
-    fontSize: 10.sp,
+    fontSize: 13.sp,
   );
 }
