@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginProvider extends ChangeNotifier {
-  
   bool loadinglogin = false;
   bool hidepassword = true;
 
@@ -14,7 +13,8 @@ class LoginProvider extends ChangeNotifier {
     hidepassword = !hidepassword;
     notifyListeners();
   }
-    Future<void> getLogin(context) async {
+
+  Future<void> getLogin(context) async {
     try {
       loadinglogin = true;
       notifyListeners();
@@ -25,7 +25,6 @@ class LoginProvider extends ChangeNotifier {
       );
 
       if (userMap['statusCode'] == 200) {
-       
         Fluttertoast.showToast(msg: userMap['message']);
         // Navigator.pushAndRemoveUntil(
         //   context,
@@ -46,5 +45,4 @@ class LoginProvider extends ChangeNotifier {
       throw {"error": e};
     }
   }
-
 }
