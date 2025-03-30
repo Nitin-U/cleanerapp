@@ -10,10 +10,16 @@ class HomeProvider extends ChangeNotifier {
     'Summers',
     'Summers',
     'Summers',
-
+    'Summers',
+    'Summers',
+    'Summers',
+    'Summers',
+    'Summers',
+    'Summers',
+    'Summers',
   ];
 
-   List<String> binRequestData = [
+  List<String> binRequestData = [
     'Summers',
     'Summers',
     'Summers',
@@ -21,9 +27,15 @@ class HomeProvider extends ChangeNotifier {
     'Summers',
     'Summers',
     'Summers',
-
+    'Summers',
+    'Summers',
+    'Summers',
+    'Summers',
+    'Summers',
+    'Summers',
+    'Summers',
   ];
-  void getTab(int index) {
+  void toggleTab(int index) {
     tabs = index;
     notifyListeners();
   }

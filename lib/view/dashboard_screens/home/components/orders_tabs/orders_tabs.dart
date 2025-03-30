@@ -21,7 +21,7 @@ class OrdersTabs extends StatelessWidget {
             Expanded(
               child: GestureDetector(
                 onTap: () {
-                  home.getTab(home.tabs = 0);
+                  home.toggleTab(home.tabs = 0);
                 },
                 child: SizedBox(
                   width: MediaQuery.sizeOf(context).width,
@@ -59,7 +59,7 @@ class OrdersTabs extends StatelessWidget {
             Expanded(
               child: GestureDetector(
                 onTap: () {
-                  home.getTab(home.tabs = 1);
+                  home.toggleTab(home.tabs = 1);
                 },
                 child: SizedBox(
                   width: MediaQuery.sizeOf(context).width,
