@@ -110,17 +110,21 @@ class LoginView extends StatelessWidget {
                     SizedBox(
                       height: 10.h,
                     ),
-                    CleanerButton.elevated(
-                      height: 55.h,
-                      width: MediaQuery.sizeOf(context).width,
-                      backgroundcolor: CleanerAppcolors.primarybrowncolor,
-                      label: 'Login',
-                      onPressed: () {
-                        if (loginkey.currentState!.validate()) {
-                          login.getLogin(context);
-                        }
-                      },
-                    ),
+                    login.loadinglogin == true
+                        ? Center(child: CircularProgressIndicator())
+                        : CleanerButton.elevated(
+                            height: 55.h,
+                            width: MediaQuery.sizeOf(context).width,
+                            backgroundcolor: CleanerAppcolors.primarybrowncolor,
+                            label: 'Login',
+                            onPressed: () {
+                              Navigator.push(context,
+                                  CustomPageRoute(child: DashboardView()));
+                              // if (loginkey.currentState!.validate()) {
+                              //   login.getLogin(context);
+                              // }
+                            },
+                          ),
                   ],
                 ),
               ),

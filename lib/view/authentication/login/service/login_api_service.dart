@@ -4,13 +4,13 @@ import 'package:cleanerapp/utils/apiurl.dart';
 import 'package:dio/dio.dart';
 
 Future<Map<String, dynamic>> fetchLogindata(
-    String username, String password) async {
+    String email, String password) async {
   var headers = {
     'Content-Type': 'application/json',
   };
 
   var data = json.encode({
-    "username": username,
+    "email": email,
     "password": password,
   });
 

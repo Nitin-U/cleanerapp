@@ -25,8 +25,9 @@ class LoginProvider extends ChangeNotifier {
         emailcontroller.text,
         passwordcontroller.text,
       );
+      print(userMap);
 
-      if (userMap['statusCode'] == 200) {
+      if (userMap['status'] == 200) {
         Fluttertoast.showToast(msg: userMap['message']);
         Navigator.pushAndRemoveUntil(
           context,
