@@ -25,10 +25,10 @@ class MyOrdersScreen extends StatelessWidget {
             ),
             backgroundColor: CleanerAppcolors.primarylightgreycolor,
             body: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10).r,
                 child: SingleChildScrollView(
                   child: Column(
-                    spacing: 15.h,
+                    spacing: 15.r,
                     children: List.generate(
                       orders.ordersData.length,
                       (index) => MyOrdersCard(),

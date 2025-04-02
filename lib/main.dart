@@ -5,9 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MultiProvider(providers: getProviders(), child: ScreenUtilInit(
-    designSize: Size(430, 923),
-    child: const MyApp())));
+  runApp(MultiProvider(
+      providers: getProviders(),
+      child: ScreenUtilInit(
+          minTextAdapt: true,
+          splitScreenMode: true,
+          designSize: Size(430, 923),
+          child: const MyApp())));
 }
 
 class MyApp extends StatelessWidget {

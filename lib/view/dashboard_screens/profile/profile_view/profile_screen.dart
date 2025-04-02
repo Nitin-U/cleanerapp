@@ -5,6 +5,7 @@ import 'package:cleanerapp/utils/style.dart';
 import 'package:cleanerapp/view/dashboard_screens/profile/components/profile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -23,16 +24,16 @@ class ProfileScreen extends StatelessWidget {
       ),
       backgroundColor: CleanerAppcolors.primarylightgreycolor,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.w),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10).r,
         child: Column(
-          spacing: 10.h,
+          spacing: 10.r,
           children: [
             ProfileCard(),
             Divider(),
             CustomListtile(
               leading: Image.asset(
                 AppIcons.myordersicon,
-                height: 30.h,
+                height: 30.r,
               ),
               title: 'My Orders',
               subtitle: '20',
@@ -40,15 +41,36 @@ class ProfileScreen extends StatelessWidget {
             CustomListtile(
               leading: Icon(
                 Icons.place_outlined,
-                size: 30.h,
+                size: 30.r,
               ),
               title: 'Address',
               subtitle: 'Dhapakhel, Lalitpur',
             ),
             CustomListtile(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          LoadingAnimationWidget.flickr(
+                              leftDotColor: CleanerAppcolors.primarybrowncolor,
+                              rightDotColor:
+                                  CleanerAppcolors.primarylightbrowncolor,
+                              size: 20.r),
+                          Text(
+                            'Loading....',
+                            style: appbartitlefont,
+                          )
+                        ],
+                      ),
+                    ),
+                  );
+                },
                 leading: Icon(
                   Icons.phone_outlined,
-                  size: 30.h,
+                  size: 30.r,
                 ),
                 title: 'Contact',
                 subtitle: '983844557'),

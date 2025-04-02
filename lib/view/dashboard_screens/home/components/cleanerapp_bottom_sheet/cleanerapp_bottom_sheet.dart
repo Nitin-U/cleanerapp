@@ -18,7 +18,7 @@ class CleanerAppBottomSheet extends StatelessWidget {
         decoration:
             BoxDecoration(color: CleanerAppcolors.primarylightgreycolor),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10).r,
           child: Column(
             spacing: 5.h,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,7 +26,7 @@ class CleanerAppBottomSheet extends StatelessWidget {
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
-                    spacing: 5.h,
+                    spacing: 5.r,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -34,7 +34,10 @@ class CleanerAppBottomSheet extends StatelessWidget {
                         style: listiletitlefont,
                       ),
                       CleanerTextfield(
-                        prefix: Icon(Icons.format_list_numbered),
+                        prefix: Icon(
+                          Icons.format_list_numbered,
+                          size: 18.r,
+                        ),
                         hintlabel: 'Enter order no',
                       ),
                       Text(
@@ -42,31 +45,40 @@ class CleanerAppBottomSheet extends StatelessWidget {
                         style: listiletitlefont,
                       ),
                       CleanerTextfield(
-                          prefix: Icon(Icons.pin_drop),
+                          prefix: Icon(
+                            Icons.pin_drop,
+                            size: 18.r,
+                          ),
                           hintlabel: 'Enter your location'),
                       Text(
                         'Duration',
                         style: listiletitlefont,
                       ),
                       CleanerTextfield(
-                          prefix: Icon(Icons.timer),
+                          prefix: Icon(
+                            Icons.timer,
+                            size: 18.r,
+                          ),
                           hintlabel: 'Enter duration'),
                       Text(
                         'Estimated place',
                         style: listiletitlefont,
                       ),
                       CleanerTextfield(
-                          prefix: Icon(Icons.location_city),
+                          prefix: Icon(
+                            Icons.location_city,
+                            size: 18.r,
+                          ),
                           hintlabel: 'Enter place'),
                       SizedBox(
-                        height: 8.h,
+                        height: 8.r,
                       ),
                     ],
                   ),
                 ),
               ),
               CleanerButton.elevated(
-                  height: 55.h,
+                  height: 55.r,
                   backgroundcolor: CleanerAppcolors.primarybrowncolor,
                   width: MediaQuery.sizeOf(context).width,
                   label: 'Confirm Order',

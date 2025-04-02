@@ -37,7 +37,7 @@ class _SplashScreen extends State<SplashScreen> {
           children: [
             Image.asset(AppIcons.cleanerbinlogo),
             SizedBox(
-              width: 100.w,
+              width: 100.r,
               child: LinearProgressIndicator(
                 color: CleanerAppcolors.primarybrowncolor,
               ),

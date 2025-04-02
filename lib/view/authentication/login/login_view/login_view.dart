@@ -24,8 +24,8 @@ class LoginView extends StatelessWidget {
           backgroundColor: CleanerAppcolors.primarylightgreycolor,
           body: Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: 25.w,
-            ),
+              horizontal: 25,
+            ).r,
             child: SingleChildScrollView(
               child: Form(
                 key: loginkey,
@@ -33,43 +33,45 @@ class LoginView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 180.h,
+                      height: 180.r,
                     ),
                     Text('Hello!', style: loginscreentitlefont),
                     SizedBox(
-                      height: 5.h,
+                      height: 5.r,
                     ),
                     Text('Welcome Back', style: loginscreentitlefont),
                     SizedBox(
-                      height: 40.h,
+                      height: 40.r,
                     ),
                     Text(
                       'Email',
                       style: dashboardlablefontgrey,
                     ),
                     SizedBox(
-                      height: 8.h,
+                      height: 8.r,
                     ),
                     CleanerTextfield(
+                      autofills: [AutofillHints.email],
                       validation: validateEmail,
                       controller: login.emailcontroller,
                       prefix: Icon(
                         Icons.email,
-                        size: 16.h,
+                        size: 18.r,
                       ),
                       hintlabel: 'Enter your email',
                     ),
                     SizedBox(
-                      height: 15.h,
+                      height: 15.r,
                     ),
                     Text(
                       'Password',
                       style: dashboardlablefontgrey,
                     ),
                     SizedBox(
-                      height: 5.h,
+                      height: 5.r,
                     ),
                     CleanerTextfield(
+                        autofills: [AutofillHints.password],
                         validation: validatePassword,
                         controller: login.passwordcontroller,
                         obstructtext: login.hidepassword,
@@ -81,7 +83,7 @@ class LoginView extends StatelessWidget {
                             login.hidepassword == true
                                 ? Icons.visibility_off
                                 : Icons.visibility,
-                            size: 13,
+                            size: 18.r,
                             color: login.hidepassword == true
                                 ? CleanerAppcolors.primarygreycolor
                                 : CleanerAppcolors.primarybrowncolor,
@@ -89,11 +91,11 @@ class LoginView extends StatelessWidget {
                         ),
                         prefix: Icon(
                           Icons.lock,
-                          size: 13.h,
+                          size: 18.r,
                         ),
                         hintlabel: 'Enter your password'),
                     SizedBox(
-                      height: 10.h,
+                      height: 10.r,
                     ),
                     Align(
                         alignment: Alignment.bottomRight,
@@ -108,12 +110,12 @@ class LoginView extends StatelessWidget {
                           ),
                         )),
                     SizedBox(
-                      height: 10.h,
+                      height: 10.r,
                     ),
                     login.loadinglogin == true
                         ? Center(child: CircularProgressIndicator())
                         : CleanerButton.elevated(
-                            height: 55.h,
+                            height: 55.r,
                             width: MediaQuery.sizeOf(context).width,
                             backgroundcolor: CleanerAppcolors.primarybrowncolor,
                             label: 'Login',

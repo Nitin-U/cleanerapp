@@ -12,11 +12,11 @@ class CleanerAppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      width: 350.w,
+      width: 350.r,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 90.h),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 90).r,
         child: Column(
-          spacing: 15.h,
+          spacing: 15.r,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ProfileCard(),
@@ -30,7 +30,7 @@ class CleanerAppDrawer extends StatelessWidget {
             CustomListtile(
               leading: Image.asset(
                 AppIcons.myordersicon,
-                height: 20.h,
+                height: 20.r,
               ),
               title: 'My Orders',
             ),

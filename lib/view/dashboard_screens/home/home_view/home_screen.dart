@@ -37,13 +37,13 @@ class HomeScreen extends StatelessWidget {
                           backgroundColor: Colors.white,
                           child: Icon(
                             Icons.menu,
-                            size: 22.h,
+                            size: 22.r,
                             color: CleanerAppcolors.primarygreycolor,
                           ),
                         ))),
               ),
               SizedBox(
-                width: 12.w,
+                width: 12.r,
               ),
               CircleAvatar(
                   backgroundColor: CleanerAppcolors.primarygreycolor,
@@ -53,12 +53,12 @@ class HomeScreen extends StatelessWidget {
                     backgroundColor: Colors.white,
                     child: Icon(
                       Icons.notifications_none,
-                      size: 22.h,
+                      size: 22.r,
                       color: CleanerAppcolors.primarygreycolor,
                     ),
                   )),
               SizedBox(
-                width: 12.w,
+                width: 12.r,
               ),
             ],
             backgroundColor: CleanerAppcolors.primarylightgreycolor,
@@ -66,11 +66,11 @@ class HomeScreen extends StatelessWidget {
           ),
           backgroundColor: CleanerAppcolors.primarylightgreycolor,
           body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10).r,
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 15.h,
+                spacing: 15.r,
                 children: [
                   CleanerTextfield(
                       onTap: () {

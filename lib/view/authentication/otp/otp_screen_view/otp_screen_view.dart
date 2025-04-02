@@ -11,7 +11,7 @@ class OtpScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final defaultpintheme = PinTheme(
-        height: 50.h,
+        height: 50.r,
         width: MediaQuery.sizeOf(context).width,
         textStyle: dashboardlabelfontblack,
         decoration: BoxDecoration(
@@ -23,7 +23,7 @@ class OtpScreenView extends StatelessWidget {
         backgroundColor: CleanerAppcolors.primarylightgreycolor,
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 50.h),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 50).r,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -32,14 +32,14 @@ class OtpScreenView extends StatelessWidget {
               style: loginscreentitlefont,
             ),
             SizedBox(
-              height: 5.h,
+              height: 5.r,
             ),
             Text(
               'OTP on your email',
               style: loginscreentitlefont,
             ),
             SizedBox(
-              height: 15.h,
+              height: 15.r,
             ),
             Pinput(
               focusedPinTheme: defaultpintheme,
@@ -47,10 +47,10 @@ class OtpScreenView extends StatelessWidget {
               length: 5,
             ),
             SizedBox(
-              height: 10.h,
+              height: 10.r,
             ),
             Row(
-              spacing: 5.w,
+              spacing: 5.r,
               children: [
                 Text(
                   "Didn't get otp?",
@@ -63,10 +63,10 @@ class OtpScreenView extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 15.h,
+              height: 15.r,
             ),
             CleanerButton.elevated(
-              height: 55.h,
+              height: 55.r,
               width: MediaQuery.sizeOf(context).width,
               backgroundcolor: CleanerAppcolors.primarybrowncolor,
               label: 'Verify',

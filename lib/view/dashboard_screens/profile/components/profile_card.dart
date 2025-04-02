@@ -13,7 +13,7 @@ class ProfileCard extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(),
         child: Row(
-          spacing: 12.w,
+          spacing: 12.r,
           children: [
             CircleAvatar(
               child: Icon(Icons.person),

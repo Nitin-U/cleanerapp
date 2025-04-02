@@ -18,7 +18,7 @@ class BinRequests extends StatelessWidget {
     return Consumer<DashboardProvider>(
       builder: (context, dash, child) {
         return Column(
-          spacing: 15.h,
+          spacing: 15.r,
           children: [
             ...List.generate(
               orders.length > 6 ? 6 : orders.length,

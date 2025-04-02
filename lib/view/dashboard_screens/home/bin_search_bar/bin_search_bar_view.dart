@@ -53,14 +53,14 @@ class _BinSearchBarViewState extends State<BinSearchBarView> {
             style: appbartitlefont,
           )),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10).r,
         child: Column(
           children: [
             CleanerTextfield(
                 onChanged: filterSearch,
                 prefix: Icon(Icons.search_rounded),
                 hintlabel: 'Search'),
-            SizedBox(height: 10.h),
+            SizedBox(height: 10.r),
             Expanded(
                 child: SingleChildScrollView(
               child: Column(

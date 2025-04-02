@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CleanerTextfield extends StatelessWidget {
+  final Iterable<String>? autofills;
   final ValueChanged<String>? onChanged;
   final VoidCallback? onTap;
   final String hintlabel;
@@ -15,6 +16,7 @@ class CleanerTextfield extends StatelessWidget {
   const CleanerTextfield(
       {super.key,
       required this.hintlabel,
+      this.autofills,
       this.suffix,
       this.onTap,
       this.onChanged,
@@ -26,6 +28,7 @@ class CleanerTextfield extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autofillHints: autofills,
       onChanged: onChanged,
       onTap: onTap,
       obscureText: obstructtext ?? false,
@@ -33,8 +36,8 @@ class CleanerTextfield extends StatelessWidget {
       controller: controller,
       style: dashboardlabelfontblack,
       decoration: InputDecoration(
-          prefixIconConstraints: BoxConstraints(minWidth: 45.w),
-          suffixIconConstraints: BoxConstraints(minWidth: 45.w),
+          prefixIconConstraints: BoxConstraints(minWidth: 45.r),
+          suffixIconConstraints: BoxConstraints(minWidth: 45.r),
           prefixIconColor: CleanerAppcolors.primarygreycolor,
           errorStyle: errorstyle,
           isDense: true,
@@ -42,7 +45,7 @@ class CleanerTextfield extends StatelessWidget {
               borderSide: BorderSide(color: CleanerAppcolors.primarybrowncolor),
               borderRadius: BorderRadius.circular(20.r)),
           border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 20.h),
+          contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 20).r,
           hintStyle: dashboardlablefontgrey,
           disabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey),

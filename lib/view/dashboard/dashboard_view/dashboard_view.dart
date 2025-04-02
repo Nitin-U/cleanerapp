@@ -18,7 +18,7 @@ class DashboardView extends StatelessWidget {
           bottomNavigationBar: DecoratedBox(
             decoration: BoxDecoration(),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.w),
+              padding: EdgeInsets.symmetric(horizontal: 15).r,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -28,12 +28,12 @@ class DashboardView extends StatelessWidget {
                       dash.screenTabs(dash.currenttab = 0);
                     },
                     child: Column(
-                      spacing: 5.h,
+                      spacing: 5.r,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(
-                          height: 2.h,
-                          width: 50.w,
+                          height: 2.r,
+                          width: 50.r,
                           child: DecoratedBox(
                               decoration: BoxDecoration(
                                   color: dash.currenttab == 0
@@ -42,7 +42,7 @@ class DashboardView extends StatelessWidget {
                         ),
                         Image.asset(
                           AppIcons.homeicon,
-                          height: 20.h,
+                          height: 20.r,
                           color: dash.currenttab == 0
                               ? CleanerAppcolors.primarybrowncolor
                               : null,
@@ -54,7 +54,7 @@ class DashboardView extends StatelessWidget {
                               : dashboardlabelfontblack,
                         ),
                         SizedBox(
-                          height: 5.h,
+                          height: 5.r,
                         )
                       ],
                     ),
@@ -64,12 +64,12 @@ class DashboardView extends StatelessWidget {
                       dash.screenTabs(dash.currenttab = 1);
                     },
                     child: Column(
-                      spacing: 5.h,
+                      spacing: 5.r,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(
-                          height: 2.h,
-                          width: 50.w,
+                          height: 2.r,
+                          width: 50.r,
                           child: DecoratedBox(
                               decoration: BoxDecoration(
                                   color: dash.currenttab == 1
@@ -78,7 +78,7 @@ class DashboardView extends StatelessWidget {
                         ),
                         Image.asset(
                           AppIcons.requesticon,
-                          height: 20.h,
+                          height: 20.r,
                           color: dash.currenttab == 1
                               ? CleanerAppcolors.primarybrowncolor
                               : null,
@@ -90,7 +90,7 @@ class DashboardView extends StatelessWidget {
                               : dashboardlabelfontblack,
                         ),
                         SizedBox(
-                          height: 5.h,
+                          height: 5.r,
                         )
                       ],
                     ),
@@ -100,12 +100,12 @@ class DashboardView extends StatelessWidget {
                       dash.screenTabs(dash.currenttab = 2);
                     },
                     child: Column(
-                      spacing: 5.h,
+                      spacing: 5.r,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(
-                          height: 2.h,
-                          width: 50.w,
+                          height: 2.r,
+                          width: 50.r,
                           child: DecoratedBox(
                               decoration: BoxDecoration(
                                   color: dash.currenttab == 2
@@ -114,7 +114,7 @@ class DashboardView extends StatelessWidget {
                         ),
                         Image.asset(
                           AppIcons.myordersicon,
-                          height: 20.h,
+                          height: 20.r,
                           color: dash.currenttab == 2
                               ? CleanerAppcolors.primarybrowncolor
                               : null,
@@ -126,7 +126,7 @@ class DashboardView extends StatelessWidget {
                               : dashboardlabelfontblack,
                         ),
                         SizedBox(
-                          height: 5.h,
+                          height: 5.r,
                         )
                       ],
                     ),
@@ -136,12 +136,12 @@ class DashboardView extends StatelessWidget {
                       dash.screenTabs(dash.currenttab = 3);
                     },
                     child: Column(
-                      spacing: 5.h,
+                      spacing: 5.r,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(
-                          height: 2.h,
-                          width: 50.w,
+                          height: 2.r,
+                          width: 50.r,
                           child: DecoratedBox(
                               decoration: BoxDecoration(
                                   color: dash.currenttab == 3
@@ -149,7 +149,7 @@ class DashboardView extends StatelessWidget {
                                       : null)),
                         ),
                         Image.asset(AppIcons.profileicon,
-                            height: 20.h,
+                            height: 20.r,
                             color: dash.currenttab == 3
                                 ? CleanerAppcolors.primarybrowncolor
                                 : null),
@@ -160,7 +160,7 @@ class DashboardView extends StatelessWidget {
                               : dashboardlabelfontblack,
                         ),
                         SizedBox(
-                          height: 5.h,
+                          height: 5.r,
                         )
                       ],
                     ),

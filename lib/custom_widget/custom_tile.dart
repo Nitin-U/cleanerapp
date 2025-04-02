@@ -24,7 +24,7 @@ class CustomListtile extends StatelessWidget {
       minLeadingWidth: -12.w,
       leading: leading,
       trailing: trailing,
-      contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+      contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 0).r,
       dense: true,
       visualDensity: VisualDensity(vertical: -4, horizontal: -4),
       title: Text(

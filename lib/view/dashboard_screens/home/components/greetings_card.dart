@@ -23,9 +23,9 @@ class GreetingsCard extends StatelessWidget {
                   CleanerAppcolors.primarylightbrowncolor,
                   CleanerAppcolors.primarybrowncolor
                 ]),
-                borderRadius: BorderRadius.circular(20.sp)),
+                borderRadius: BorderRadius.circular(20.r)),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 22.h),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 22).r,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -34,14 +34,14 @@ class GreetingsCard extends StatelessWidget {
                     style: buttonfond,
                   ),
                   SizedBox(
-                    height: 5.h,
+                    height: 5.r,
                   ),
                   Text(
                     'Aakash Sunar',
                     style: drivernamefont,
                   ),
                   SizedBox(
-                    height: 15.h,
+                    height: 15.r,
                   ),
                   CleanerChip(
                     backgroundColor: CleanerAppcolors.primarybrowncolor,

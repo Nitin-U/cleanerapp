@@ -26,11 +26,11 @@ class CleanerChip extends StatelessWidget {
         width: width,
         child: DecoratedBox(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(8.r),
             color: backgroundColor,
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 6).r,
             child: Text(
               label,
               style: dashboardlablefontwhite,
