@@ -41,7 +41,9 @@ class ForgotPasswordScreen extends StatelessWidget {
               height: 5.r,
             ),
             CleanerTextfield(
-                prefix: Icon(Icons.email), hintlabel: 'Enter Your Email'),
+                autofills: [AutofillHints.email],
+                prefix: Icon(Icons.email),
+                hintlabel: 'Enter Your Email'),
             SizedBox(
               height: 25.r,
             ),
