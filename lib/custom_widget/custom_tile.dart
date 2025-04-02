@@ -21,7 +21,7 @@ class CustomListtile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
-      minLeadingWidth: -12.w,
+      minLeadingWidth: -12.r,
       leading: leading,
       trailing: trailing,
       contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 0).r,
