@@ -89,7 +89,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       Icon(
                         Icons.keyboard_arrow_right_outlined,
-                        size: 20.sp,
+                        size: 20.r,
                       )
                     ],
                   ),

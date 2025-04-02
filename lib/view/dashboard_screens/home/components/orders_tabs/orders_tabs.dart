@@ -16,7 +16,7 @@ class OrdersTabs extends StatelessWidget {
     return Consumer<HomeProvider>(
       builder: (context, home, child) {
         return Row(
-          spacing: 5.w,
+          spacing: 5.r,
           children: [
             Expanded(
               child: GestureDetector(
@@ -42,7 +42,7 @@ class OrdersTabs extends StatelessWidget {
                                 : CleanerAppcolors.primarygreycolor),
                         borderRadius: BorderRadius.circular(20.r)),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 13.h),
+                      padding: EdgeInsets.symmetric(vertical: 13).r,
                       child: Center(
                         child: Text(
                           'My Orders',
@@ -80,7 +80,7 @@ class OrdersTabs extends StatelessWidget {
                                 : CleanerAppcolors.primarygreycolor),
                         borderRadius: BorderRadius.circular(20.r)),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 13.sp),
+                      padding: EdgeInsets.symmetric(vertical: 13).r,
                       child: Center(
                         child: Text(
                           'Bin Requests',
