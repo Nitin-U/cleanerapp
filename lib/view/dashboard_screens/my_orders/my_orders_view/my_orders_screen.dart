@@ -15,6 +15,7 @@ class MyOrdersScreen extends StatelessWidget {
       builder: (context, orders, child) {
         return Scaffold(
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               centerTitle: true,
               title: Text(
                 'My Orders',

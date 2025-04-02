@@ -1,6 +1,8 @@
 import 'package:cleanerapp/custom_widget/cleaner_textfield.dart';
+import 'package:cleanerapp/custom_widget/transaction_route.dart';
 import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/style.dart';
+import 'package:cleanerapp/view/dashboard_screens/home/bin_search_bar/bin_search_bar_view.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/cleaner_app_drawer/cleaner_app_drawer.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/greetings_card.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/my_orders_list/my_orders_list.dart';
@@ -71,7 +73,12 @@ class HomeScreen extends StatelessWidget {
                 spacing: 15.h,
                 children: [
                   CleanerTextfield(
-                      prefix: Icon(Icons.search), hintlabel: 'Search'),
+                      onTap: () {
+                        Navigator.push(context,
+                            CustomPageRoute(child: BinSearchBarView()));
+                      },
+                      prefix: Icon(Icons.search),
+                      hintlabel: 'Search'),
                   GreetingsCard(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,7 +98,10 @@ class HomeScreen extends StatelessWidget {
                     MyOrders(
                       orders: home.ordersData,
                     ),
-                  if (home.tabs == 1) BinRequests(orders: home.binRequestData,),
+                  if (home.tabs == 1)
+                    BinRequests(
+                      orders: home.binRequestData,
+                    ),
                 ],
               ),
             ),

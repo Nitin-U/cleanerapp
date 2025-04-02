@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CleanerTextfield extends StatelessWidget {
+  final ValueChanged<String>? onChanged;
+  final VoidCallback? onTap;
   final String hintlabel;
   final Widget? suffix;
   final bool? obstructtext;
@@ -14,6 +16,8 @@ class CleanerTextfield extends StatelessWidget {
       {super.key,
       required this.hintlabel,
       this.suffix,
+      this.onTap,
+      this.onChanged,
       this.controller,
       this.prefix,
       this.validation,
@@ -22,6 +26,8 @@ class CleanerTextfield extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
+      onTap: onTap,
       obscureText: obstructtext ?? false,
       validator: validation,
       controller: controller,
