@@ -1,6 +1,8 @@
 import 'package:cleanerapp/custom_widget/cleaner_textfield.dart';
+import 'package:cleanerapp/custom_widget/custom_tile.dart';
 import 'package:cleanerapp/utils/style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BinSearchBarView extends StatefulWidget {
   const BinSearchBarView({super.key});
@@ -44,29 +46,30 @@ class _BinSearchBarViewState extends State<BinSearchBarView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Search")),
+      appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            "Search",
+            style: appbartitlefont,
+          )),
       body: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
         child: Column(
           children: [
             CleanerTextfield(
                 onChanged: filterSearch,
                 prefix: Icon(Icons.search_rounded),
                 hintlabel: 'Search'),
-            SizedBox(height: 10),
+            SizedBox(height: 10.h),
             Expanded(
-              child: ListView.builder(
-                itemCount: filteredItems.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(
-                      filteredItems[index],
-                      style: listiletitlefont,
-                    ),
-                  );
-                },
+                child: SingleChildScrollView(
+              child: Column(
+                children: List.generate(
+                  filteredItems.length,
+                  (index) => CustomListtile(title: filteredItems[index]),
+                ),
               ),
-            ),
+            )),
           ],
         ),
       ),
