@@ -15,7 +15,7 @@ class BinRequestTabs extends StatelessWidget {
     return Consumer<BinRequestProvider>(
       builder: (context, home, child) {
         return Row(
-          spacing: 5.w,
+          spacing: 5.r,
           children: [
             Expanded(
               child: GestureDetector(
@@ -41,7 +41,7 @@ class BinRequestTabs extends StatelessWidget {
                                 : CleanerAppcolors.primarygreycolor),
                         borderRadius: BorderRadius.circular(20.r)),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 13.h),
+                      padding: EdgeInsets.symmetric(vertical: 13).r,
                       child: Center(
                         child: Text(
                           'On Site Delivery',
@@ -79,7 +79,7 @@ class BinRequestTabs extends StatelessWidget {
                                 : CleanerAppcolors.primarygreycolor),
                         borderRadius: BorderRadius.circular(20.r)),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 13.sp),
+                      padding: EdgeInsets.symmetric(vertical: 13).r,
                       child: Center(
                         child: Text(
                           'Warehouse Delivery',

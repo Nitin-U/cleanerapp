@@ -23,7 +23,7 @@ class CleanerAppDrawer extends StatelessWidget {
             CustomListtile(
               leading: Icon(
                 Icons.notifications_none,
-                size: 18.r,
+                size: 20.r,
               ),
               title: 'Notification',
             ),
@@ -37,7 +37,7 @@ class CleanerAppDrawer extends StatelessWidget {
             CustomListtile(
               leading: Icon(
                 Icons.logout,
-                size: 18.r,
+                size: 20.r,
               ),
               title: 'Logout',
             ),

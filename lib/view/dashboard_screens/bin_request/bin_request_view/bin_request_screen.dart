@@ -19,19 +19,21 @@ class BinRequestView extends StatelessWidget {
         ),
         backgroundColor: CleanerAppcolors.primarylightgreycolor,
         body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-            child: Column(
-              spacing: 15.h,
-              children: [
-                BinRequestTabs(),
-                Column(
-                  spacing: 15.h,
-                  children: List.generate(
-                    6,
-                    (index) => MyOrdersCard(),
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10).r,
+            child: SingleChildScrollView(
+              child: Column(
+                spacing: 15.r,
+                children: [
+                  BinRequestTabs(),
+                  Column(
+                    spacing: 15.r,
+                    children: List.generate(
+                      6,
+                      (index) => MyOrdersCard(),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             )));
   }
 }

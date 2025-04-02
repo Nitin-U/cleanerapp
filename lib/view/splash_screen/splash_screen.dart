@@ -5,6 +5,7 @@ import 'package:cleanerapp/utils/cleanericonspng.dart';
 import 'package:cleanerapp/view/authentication/login/login_view/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -32,16 +33,12 @@ class _SplashScreen extends State<SplashScreen> {
       backgroundColor: CleanerAppcolors.primarylightgreycolor,
       body: Center(
         child: Column(
-          spacing: 5.h,
+          spacing: 5.r,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(AppIcons.cleanerbinlogo),
-            SizedBox(
-              width: 100.r,
-              child: LinearProgressIndicator(
-                color: CleanerAppcolors.primarybrowncolor,
-              ),
-            )
+            LoadingAnimationWidget.dotsTriangle(
+                color: CleanerAppcolors.primarybrowncolor, size: 25.r)
           ],
         ),
       ),

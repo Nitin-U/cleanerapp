@@ -19,7 +19,7 @@ class MyOrdersCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.r),
             border: Border.all(color: CleanerAppcolors.primaryminigreycolor)),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 10.w),
+          padding: EdgeInsets.symmetric(vertical: 22, horizontal: 10).r,
           child: Column(
             children: [
               Row(
@@ -33,7 +33,7 @@ class MyOrdersCard extends StatelessWidget {
                         style: listiletitlefont,
                       ),
                       SizedBox(
-                        height: 5.h,
+                        height: 5.r,
                       ),
                       Text(
                         'lautinazo@gmail.com',
