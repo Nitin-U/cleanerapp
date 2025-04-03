@@ -25,9 +25,12 @@ class ProfileCard extends StatelessWidget {
                   'Aakash Sunar',
                   style: listiletitlefont,
                 ),
-                Text(
-                  'aakashsharma73235@gmail.com',
-                  style: dashboardlablefontgrey,
+                SizedBox(
+                  width: 180.r,
+                  child: Text(
+                    'aakashsharma73235@gmail.com',
+                    style: dashboardlablefontgrey,
+                  ),
                 )
               ],
             )
