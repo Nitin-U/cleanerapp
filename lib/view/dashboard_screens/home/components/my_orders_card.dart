@@ -6,8 +6,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyOrdersCard extends StatelessWidget {
+  final String name;
+  final String address;
+  final String quantity;
+  final String email;
+  final String startdate;
+  final String enddate;
+  final String contact;
   const MyOrdersCard({
     super.key,
+    required this.name,
+    required this.address,
+    required this.quantity,
+    required this.startdate,
+    required this.enddate,
+    required this.contact, required this.email,
   });
 
   @override
@@ -19,27 +32,17 @@ class MyOrdersCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.r),
             border: Border.all(color: CleanerAppcolors.primaryminigreycolor)),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 22, horizontal: 10).r,
+          padding: EdgeInsets.symmetric(vertical: 22, horizontal: 15).r,
           child: Column(
+            spacing: 10.r,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Lautinez Martinez',
-                        style: listiletitlefont,
-                      ),
-                      SizedBox(
-                        height: 5.r,
-                      ),
-                      Text(
-                        'lautinazo@gmail.com',
-                        style: splashloadingfond,
-                      ),
-                    ],
+                  Text(
+                    name,
+                    style: listiletitlefont,
                   ),
                   CleanerChip(
                     onPressed: () {
@@ -55,7 +58,38 @@ class MyOrdersCard extends StatelessWidget {
                     backgroundColor: CleanerAppcolors.primarybrowncolor,
                   ),
                 ],
-              )
+              ),
+              Text(
+                email,
+                style: splashloadingfond,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    startdate,
+                    style: splashloadingfond,
+                  ),
+                  Text(
+                    enddate,
+                    style: splashloadingfond,
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    quantity,
+                    style: splashloadingfond,
+                  ),
+                  Text(
+                    contact,
+                    style: splashloadingfond,
+                  ),
+                ],
+              ),
+              Text(address,style: splashloadingfond,)
             ],
           ),
         ),

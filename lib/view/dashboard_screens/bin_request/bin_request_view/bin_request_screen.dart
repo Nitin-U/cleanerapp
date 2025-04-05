@@ -29,7 +29,7 @@ class BinRequestView extends StatelessWidget {
                     spacing: 15.r,
                     children: List.generate(
                       6,
-                      (index) => MyOrdersCard(),
+                      (index) => MyOrdersCard(name: '', address: '', quantity: '', startdate: '', enddate: '', contact: '', email: '',),
                     ),
                   ),
                 ],
