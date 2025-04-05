@@ -2,6 +2,7 @@ import 'package:cleanerapp/custom_widget/cleaner_textfield.dart';
 import 'package:cleanerapp/custom_widget/transaction_route.dart';
 import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/style.dart';
+import 'package:cleanerapp/view/authentication/login/login_provider/login_provider.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/bin_search_bar/bin_search_bar_view.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/cleaner_app_drawer/cleaner_app_drawer.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/greetings_card.dart';
@@ -13,9 +14,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+  
+    });
+  }
+  void getHomedata(){
+       final logindata = Provider.of<LoginProvider>(context, listen: false);
+      final state = Provider.of<HomeProvider>(context, listen: false);
+  }
   @override
   Widget build(BuildContext context) {
     return Consumer<HomeProvider>(

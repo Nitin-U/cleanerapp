@@ -1,6 +1,5 @@
 import 'package:cleanerapp/custom_widget/button.dart';
 import 'package:cleanerapp/custom_widget/cleaner_textfield.dart';
-import 'package:cleanerapp/custom_widget/dialog_loader.dart';
 import 'package:cleanerapp/custom_widget/transaction_route.dart';
 import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/form_validation.dart';
@@ -116,7 +115,7 @@ class LoginView extends StatelessWidget {
                     login.loadinglogin == true
                         ? LoadingAnimationWidget.hexagonDots(
                             color: CleanerAppcolors.primarybrowncolor,
-                            size: 20.r)
+                            size: 55.r)
                         : CleanerButton.elevated(
                             height: 55.r,
                             width: MediaQuery.sizeOf(context).width,

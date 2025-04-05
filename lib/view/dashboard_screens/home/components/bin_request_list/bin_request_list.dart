@@ -1,6 +1,7 @@
 import 'package:cleanerapp/utils/style.dart';
 import 'package:cleanerapp/view/dashboard/dashboard_provider/dashboard_provider.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/my_orders_card.dart';
+import 'package:cleanerapp/view/dashboard_screens/home/home_provider/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,7 @@ class BinRequests extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<DashboardProvider>(
       builder: (context, dash, child) {
+           final state = Provider.of<HomeProvider>(context, listen: false);
         return Column(
           spacing: 15.r,
           children: [

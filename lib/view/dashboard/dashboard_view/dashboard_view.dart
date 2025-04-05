@@ -1,13 +1,30 @@
 import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/cleanericonspng.dart';
 import 'package:cleanerapp/utils/style.dart';
+import 'package:cleanerapp/view/authentication/login/login_provider/login_provider.dart';
 import 'package:cleanerapp/view/dashboard/dashboard_provider/dashboard_provider.dart';
+import 'package:cleanerapp/view/dashboard_screens/home/home_provider/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-class DashboardView extends StatelessWidget {
+class DashboardView extends StatefulWidget {
   const DashboardView({super.key});
+
+  @override
+  State<DashboardView> createState() => _DashboardViewState();
+}
+
+class _DashboardViewState extends State<DashboardView> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void getHomedata() {
+    final logindata = Provider.of<LoginProvider>(context, listen: false);
+    final state = Provider.of<HomeProvider>(context, listen: false);
+  }
 
   @override
   Widget build(BuildContext context) {

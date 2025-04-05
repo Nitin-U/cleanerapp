@@ -1,9 +1,7 @@
-import 'package:cleanerapp/view/authentication/login/model/user_model.dart';
 import 'package:flutter/material.dart';
 
 class HomeProvider extends ChangeNotifier {
-  UserModel? _userModel;
-  UserModel? get user => _userModel;
+ 
   int tabs = 0;
   List<String> ordersData = [
     'Summers',

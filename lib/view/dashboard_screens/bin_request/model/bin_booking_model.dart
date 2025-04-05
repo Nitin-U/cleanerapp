@@ -1,9 +1,9 @@
-class BookingsModel {
+class BinBookingModel {
   List<BinBookings>? binBookings;
 
-  BookingsModel({this.binBookings});
+  BinBookingModel({this.binBookings});
 
-  BookingsModel.fromJson(Map<String, dynamic> json) {
+  BinBookingModel.fromJson(Map<String, dynamic> json) {
     if (json['bin_bookings'] != null) {
       binBookings = <BinBookings>[];
       json['bin_bookings'].forEach((v) {
