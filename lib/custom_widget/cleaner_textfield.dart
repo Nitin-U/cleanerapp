@@ -48,13 +48,13 @@ class CleanerTextfield extends StatelessWidget {
           contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 20).r,
           hintStyle: dashboardlablefontgrey,
           disabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey),
+              borderSide: BorderSide(color: CleanerAppcolors.primarygreycolor),
               borderRadius: BorderRadius.circular(20.r)),
           errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey),
+              borderSide: BorderSide(color: CleanerAppcolors.primarygreycolor),
               borderRadius: BorderRadius.circular(20.r)),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey),
+              borderSide: BorderSide(color: CleanerAppcolors.primarygreycolor),
               borderRadius: BorderRadius.circular(20.r)),
           prefixIcon: prefix,
           suffixIcon: suffix,

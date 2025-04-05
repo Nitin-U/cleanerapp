@@ -1,14 +1,15 @@
 import 'package:cleanerapp/custom_widget/button.dart';
 import 'package:cleanerapp/custom_widget/cleaner_textfield.dart';
+import 'package:cleanerapp/custom_widget/dialog_loader.dart';
 import 'package:cleanerapp/custom_widget/transaction_route.dart';
 import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/form_validation.dart';
 import 'package:cleanerapp/utils/style.dart';
 import 'package:cleanerapp/view/authentication/forgot_password/forgot_password_view/forgot_password_screen.dart';
 import 'package:cleanerapp/view/authentication/login/login_provider/login_provider.dart';
-import 'package:cleanerapp/view/dashboard/dashboard_view/dashboard_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 
 class LoginView extends StatelessWidget {
@@ -113,18 +114,18 @@ class LoginView extends StatelessWidget {
                       height: 10.r,
                     ),
                     login.loadinglogin == true
-                        ? Center(child: CircularProgressIndicator())
+                        ? LoadingAnimationWidget.hexagonDots(
+                            color: CleanerAppcolors.primarybrowncolor,
+                            size: 20.r)
                         : CleanerButton.elevated(
                             height: 55.r,
                             width: MediaQuery.sizeOf(context).width,
                             backgroundcolor: CleanerAppcolors.primarybrowncolor,
                             label: 'Login',
                             onPressed: () {
-                              Navigator.push(context,
-                                  CustomPageRoute(child: DashboardView()));
-                              // if (loginkey.currentState!.validate()) {
-                              //   login.getLogin(context);
-                              // }
+                              if (loginkey.currentState!.validate()) {
+                                login.getLogin(context);
+                              }
                             },
                           ),
                   ],

@@ -4,7 +4,9 @@ import 'package:cleanerapp/utils/apiurl.dart';
 import 'package:dio/dio.dart';
 
 Future<Map<String, dynamic>> fetchLogindata(
-    String email, String password) async {
+  String email,
+  String password,
+) async {
   var headers = {
     'Content-Type': 'application/json',
   };
@@ -22,26 +24,22 @@ Future<Map<String, dynamic>> fetchLogindata(
       options: Options(
         method: 'POST',
         headers: headers,
+        validateStatus: (status) =>
+            status != null && status < 500, // Accept 200–499
       ),
       data: data,
     );
 
-    if (response.statusCode == 200) {
-      // Log response data for debugging
-      print('Response Data: ${json.encode(response.data)}');
+    print('Response Data: ${json.encode(response.data)}');
 
-      if (response.data is Map<String, dynamic>) {
-        return response.data;
-      } else {
-        // Decode response if not already a Map
-        return jsonDecode(response.data.toString());
-      }
+    // Always return the response data (success or failure)
+    if (response.data is Map<String, dynamic>) {
+      return response.data;
     } else {
-      throw Exception(
-          'Failed to login: ${response.statusCode} - ${response.statusMessage}');
+      return jsonDecode(response.data.toString());
     }
   } catch (e) {
-    print('Error during login: $e'); // Log the error
-    rethrow; // Pass the exception up
+    print('Error during login: $e');
+    return {"status": "error", "message": "Something went wrong"};
   }
 }

@@ -1,4 +1,5 @@
 import 'package:cleanerapp/custom_widget/custom_tile.dart';
+import 'package:cleanerapp/custom_widget/dialog_loader.dart';
 import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/cleanericonspng.dart';
 import 'package:cleanerapp/utils/style.dart';
@@ -50,22 +51,7 @@ class ProfileScreen extends StatelessWidget {
                 onTap: () {
                   showDialog(
                     context: context,
-                    builder: (context) => AlertDialog(
-                      title: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          LoadingAnimationWidget.flickr(
-                              leftDotColor: CleanerAppcolors.primarybrowncolor,
-                              rightDotColor:
-                                  CleanerAppcolors.primarylightbrowncolor,
-                              size: 20.r),
-                          Text(
-                            'Loading....',
-                            style: appbartitlefont,
-                          )
-                        ],
-                      ),
-                    ),
+                    builder: (context) => Dialogloader(),
                   );
                 },
                 leading: Icon(
