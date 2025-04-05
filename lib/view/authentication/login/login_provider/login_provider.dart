@@ -1,4 +1,5 @@
 import 'package:cleanerapp/custom_widget/transaction_route.dart';
+import 'package:cleanerapp/utils/style.dart';
 import 'package:cleanerapp/view/authentication/login/model/user_model.dart';
 import 'package:cleanerapp/view/authentication/login/service/login_api_service.dart';
 import 'package:cleanerapp/view/dashboard/dashboard_view/dashboard_view.dart';
@@ -31,8 +32,11 @@ class LoginProvider extends ChangeNotifier {
       _userModel = UserModel.fromJson(userMap);
       print(userMap);
       if (userMap['status'] == 'success') {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text(userMap['message'])));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(
+          userMap['message'],
+          style: dashboardlablefontwhite,
+        )));
         Navigator.pushAndRemoveUntil(
           context,
           CustomPageRoute(child: const DashboardView()),
@@ -40,8 +44,11 @@ class LoginProvider extends ChangeNotifier {
         );
       } else {
         print('Login failed: $userMap');
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text(userMap['message'])));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(
+          userMap['message'],
+          style: dashboardlablefontwhite,
+        )));
       }
 
       loadinglogin = false;
@@ -49,6 +56,7 @@ class LoginProvider extends ChangeNotifier {
     } catch (e) {
       loadinglogin = false;
       notifyListeners();
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$e')));
       print('Error: $e'); // Log the error for debugging
       throw {"error": e};
     }

@@ -3,7 +3,7 @@ import 'package:cleanerapp/utils/cleanericonspng.dart';
 import 'package:cleanerapp/utils/style.dart';
 import 'package:cleanerapp/view/authentication/login/login_provider/login_provider.dart';
 import 'package:cleanerapp/view/dashboard/dashboard_provider/dashboard_provider.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/home_provider/home_provider.dart';
+import 'package:cleanerapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -19,11 +19,16 @@ class _DashboardViewState extends State<DashboardView> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getData();
+    });
   }
 
-  void getHomedata() {
+  void getData() async {
     final logindata = Provider.of<LoginProvider>(context, listen: false);
-    final state = Provider.of<HomeProvider>(context, listen: false);
+    final binrequestdata =
+        Provider.of<BinRequestProvider>(context, listen: false);
+    await binrequestdata.getBinRequestData(logindata.user?.data?.token ?? '');
   }
 
   @override

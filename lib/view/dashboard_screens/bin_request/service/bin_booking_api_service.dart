@@ -5,47 +5,41 @@ import 'package:dio/dio.dart';
 
 Future<Map<String, dynamic>> fetchBinbooking(String token) async {
   try {
-    // Validate token
+    var headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token', // ✅ Include the token!
+    };
 
-    // Prepare headers and data
-    var headers = {'Content-Type': 'application/json'};
-
-    // Instantiate Dio
     var dio = Dio();
 
-    // Debugging: Log the URL and data being sent
-
-    // Make API request
     var response = await dio.request(
-      AppUrl.binbooking, // Ensure this URL is correct
+      AppUrl.binbooking,
       options: Options(
         method: 'GET',
         headers: headers,
+        validateStatus: (status) => status != null && status < 500,
       ),
     );
 
-    // Check status code
-    if (response.statusCode == 200) {
-      print('Raw Response Data: ${response.data}');
+    print('Raw Response Data: ${response.data}');
 
-      // Process response data
-      if (response.data is String) {
-        return json.decode(response.data) as Map<String, dynamic>;
-      } else if (response.data is Map<String, dynamic>) {
-        return response.data as Map<String, dynamic>;
-      } else {
+    if (response.data is Map<String, dynamic>) {
+      return response.data;
+    } else if (response.data is String) {
+      // If the response is not valid JSON (e.g. HTML), log and throw
+      if (response.data.startsWith('<!DOCTYPE html>')) {
         throw Exception(
-            'Unexpected response format: ${response.data.runtimeType}');
+            "Received HTML page instead of JSON. Possible auth error.");
       }
+      return json.decode(response.data) as Map<String, dynamic>;
     } else {
-      print('Error Status Code: ${response.statusCode}');
-      print('Error Message: ${response.statusMessage}');
-      throw Exception('Failed to fetch wallet: ${response.statusMessage}');
+      throw Exception(
+          'Unexpected response format: ${response.data.runtimeType}');
     }
   } catch (error, stackTrace) {
-    // Print detailed error and stack trace for debugging
-    print('Error in fetchWallet: $error');
+    print('Error in fetchBinbooking: $error');
     print('Stack Trace: $stackTrace');
-    throw Exception('An error occurred while fetching the wallet: $error');
+    throw Exception(
+        'An error occurred while fetching bin booking data: $error');
   }
 }
