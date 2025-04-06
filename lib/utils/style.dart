@@ -36,6 +36,20 @@ TextStyle get dashboardlablefontwhite {
       color: CleanerAppcolors.primaryWhitecolor);
 }
 
+TextStyle get dashboardlablefontdarkgreenfont {
+  return GoogleFonts.roboto(
+      fontWeight: FontWeight.w500,
+      fontSize: 14.r,
+      color: CleanerAppcolors.primarydarkGreencolor);
+}
+
+TextStyle get dashboardlabelfontdarkgrey {
+  return GoogleFonts.roboto(
+      fontWeight: FontWeight.w500,
+      fontSize: 13.r,
+      color: CleanerAppcolors.primarygreycolor);
+}
+
 TextStyle get greetingsStyleblack {
   return GoogleFonts.roboto(
       fontWeight: FontWeight.w500, fontSize: 15.r, color: Colors.black);

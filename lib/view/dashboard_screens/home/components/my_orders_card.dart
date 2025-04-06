@@ -1,7 +1,6 @@
 import 'package:cleanerapp/custom_widget/cleaner_chip.dart';
 import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/style.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/components/cleanerapp_bottom_sheet/cleanerapp_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,6 +12,8 @@ class MyOrdersCard extends StatelessWidget {
   final String startdate;
   final String enddate;
   final String contact;
+  final VoidCallback? onTap;
+  final VoidCallback? onPressed;
   const MyOrdersCard({
     super.key,
     required this.name,
@@ -20,80 +21,148 @@ class MyOrdersCard extends StatelessWidget {
     required this.quantity,
     required this.startdate,
     required this.enddate,
-    required this.contact, required this.email,
+    this.onPressed,
+    this.onTap,
+    required this.contact,
+    required this.email,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.sizeOf(context).width,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20.r),
-            border: Border.all(color: CleanerAppcolors.primaryminigreycolor)),
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 22, horizontal: 15).r,
-          child: Column(
-            spacing: 10.r,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+        elevation: 3.r,
+        child: SizedBox(
+          width: MediaQuery.sizeOf(context).width,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20.r),
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 22, horizontal: 15).r,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    name,
-                    style: listiletitlefont,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.pin_drop_outlined,
+                            size: 20.r,
+                            color: CleanerAppcolors.primarylightbrowncolor,
+                          ),
+                          Text(
+                            name,
+                            style: listiletitlefont,
+                          ),
+                        ],
+                      ),
+                      CleanerChip(
+                        onPressed: onPressed,
+                        label: 'View',
+                        backgroundColor:
+                            CleanerAppcolors.primarylightgreencolor,
+                      ),
+                    ],
                   ),
-                  CleanerChip(
-                    onPressed: () {
-                      showModalBottomSheet(
-                        showDragHandle: true,
-                        context: context,
-                        builder: (context) {
-                          return CleanerAppBottomSheet();
-                        },
-                      );
-                    },
-                    label: 'View',
-                    backgroundColor: CleanerAppcolors.primarybrowncolor,
+                  Row(
+                    children: [
+                      Text(
+                        address,
+                        style: listiletitlefont,
+                      )
+                    ],
                   ),
+                  SizedBox(
+                    height: 5.r,
+                  ),
+                  Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.r)),
+                    color: CleanerAppcolors.primaryminigreycolor,
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 15, vertical: 10).r,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Start Date',
+                                style: greetingsStyleblack,
+                              ),
+                              Text(
+                                startdate,
+                                style: dashboardlabelfontdarkgrey,
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                'Quantity',
+                                style: greetingsStyleblack,
+                              ),
+                              Text(
+                                quantity,
+                                style: dashboardlabelfontdarkgrey,
+                              )
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'End date',
+                                style: greetingsStyleblack,
+                              ),
+                              Text(
+                                enddate,
+                                style: dashboardlabelfontdarkgrey,
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
                 ],
               ),
-              Text(
-                email,
-                style: splashloadingfond,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    startdate,
-                    style: splashloadingfond,
-                  ),
-                  Text(
-                    enddate,
-                    style: splashloadingfond,
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    quantity,
-                    style: splashloadingfond,
-                  ),
-                  Text(
-                    contact,
-                    style: splashloadingfond,
-                  ),
-                ],
-              ),
-              Text(address,style: splashloadingfond,)
-            ],
+            ),
           ),
         ),
       ),
     );
   }
 }
+//  Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                 children: [
+//                   Text(
+//                     startdate,
+//                     style: splashloadingfond,
+//                   ),
+//                   Text(
+//                     enddate,
+//                     style: splashloadingfond,
+//                   ),
+//                 ],
+//               ),
+//               Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                 children: [
+//                   Text(
+//                     quantity,
+//                     style: splashloadingfond,
+//                   ),
+//                   Text(
+//                     contact,
+//                     style: splashloadingfond,
+//                   ),
+//                 ],
+//               ),
