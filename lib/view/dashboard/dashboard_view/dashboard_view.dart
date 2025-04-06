@@ -49,142 +49,154 @@ class _DashboardViewState extends State<DashboardView> {
                     onTap: () {
                       dash.screenTabs(dash.currenttab = 0);
                     },
-                    child: Column(
-                      spacing: 5.r,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          height: 2.r,
-                          width: 50.r,
-                          child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                  color: dash.currenttab == 0
-                                      ? CleanerAppcolors.primarybrowncolor
-                                      : null)),
-                        ),
-                        Image.asset(
-                          AppIcons.homeicon,
-                          height: 20.r,
-                          color: dash.currenttab == 0
-                              ? CleanerAppcolors.primarybrowncolor
-                              : null,
-                        ),
-                        Text(
-                          'Home',
-                          style: dash.currenttab == 0
-                              ? dashboardlablefontbrown
-                              : dashboardlabelfontblack,
-                        ),
-                        SizedBox(
-                          height: 5.r,
-                        )
-                      ],
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(),
+                      child: Column(
+                        spacing: 5.r,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                            height: 2.r,
+                            width: 50.r,
+                            child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                    color: dash.currenttab == 0
+                                        ? CleanerAppcolors.primarybrowncolor
+                                        : null)),
+                          ),
+                          Image.asset(
+                            AppIcons.homeicon,
+                            height: 20.r,
+                            color: dash.currenttab == 0
+                                ? CleanerAppcolors.primarybrowncolor
+                                : null,
+                          ),
+                          Text(
+                            'Home',
+                            style: dash.currenttab == 0
+                                ? dashboardlablefontbrown
+                                : dashboardlabelfontblack,
+                          ),
+                          SizedBox(
+                            height: 5.r,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   GestureDetector(
                     onTap: () {
                       dash.screenTabs(dash.currenttab = 1);
                     },
-                    child: Column(
-                      spacing: 5.r,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          height: 2.r,
-                          width: 50.r,
-                          child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                  color: dash.currenttab == 1
-                                      ? CleanerAppcolors.primarybrowncolor
-                                      : null)),
-                        ),
-                        Image.asset(
-                          AppIcons.requesticon,
-                          height: 20.r,
-                          color: dash.currenttab == 1
-                              ? CleanerAppcolors.primarybrowncolor
-                              : null,
-                        ),
-                        Text(
-                          'Bin Request',
-                          style: dash.currenttab == 1
-                              ? dashboardlablefontbrown
-                              : dashboardlabelfontblack,
-                        ),
-                        SizedBox(
-                          height: 5.r,
-                        )
-                      ],
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(),
+                      child: Column(
+                        spacing: 5.r,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                            height: 2.r,
+                            width: 50.r,
+                            child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                    color: dash.currenttab == 1
+                                        ? CleanerAppcolors.primarybrowncolor
+                                        : null)),
+                          ),
+                          Image.asset(
+                            AppIcons.requesticon,
+                            height: 20.r,
+                            color: dash.currenttab == 1
+                                ? CleanerAppcolors.primarybrowncolor
+                                : null,
+                          ),
+                          Text(
+                            'Bin Request',
+                            style: dash.currenttab == 1
+                                ? dashboardlablefontbrown
+                                : dashboardlabelfontblack,
+                          ),
+                          SizedBox(
+                            height: 5.r,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   GestureDetector(
                     onTap: () {
                       dash.screenTabs(dash.currenttab = 2);
                     },
-                    child: Column(
-                      spacing: 5.r,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          height: 2.r,
-                          width: 50.r,
-                          child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                  color: dash.currenttab == 2
-                                      ? CleanerAppcolors.primarybrowncolor
-                                      : null)),
-                        ),
-                        Image.asset(
-                          AppIcons.myordersicon,
-                          height: 20.r,
-                          color: dash.currenttab == 2
-                              ? CleanerAppcolors.primarybrowncolor
-                              : null,
-                        ),
-                        Text(
-                          'My Orders',
-                          style: dash.currenttab == 2
-                              ? dashboardlablefontbrown
-                              : dashboardlabelfontblack,
-                        ),
-                        SizedBox(
-                          height: 5.r,
-                        )
-                      ],
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(),
+                      child: Column(
+                        spacing: 5.r,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                            height: 2.r,
+                            width: 50.r,
+                            child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                    color: dash.currenttab == 2
+                                        ? CleanerAppcolors.primarybrowncolor
+                                        : null)),
+                          ),
+                          Image.asset(
+                            AppIcons.myordersicon,
+                            height: 20.r,
+                            color: dash.currenttab == 2
+                                ? CleanerAppcolors.primarybrowncolor
+                                : null,
+                          ),
+                          Text(
+                            'My Orders',
+                            style: dash.currenttab == 2
+                                ? dashboardlablefontbrown
+                                : dashboardlabelfontblack,
+                          ),
+                          SizedBox(
+                            height: 5.r,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   GestureDetector(
                     onTap: () {
                       dash.screenTabs(dash.currenttab = 3);
                     },
-                    child: Column(
-                      spacing: 5.r,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          height: 2.r,
-                          width: 50.r,
-                          child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                  color: dash.currenttab == 3
-                                      ? CleanerAppcolors.primarybrowncolor
-                                      : null)),
-                        ),
-                        Image.asset(AppIcons.profileicon,
-                            height: 20.r,
-                            color: dash.currenttab == 3
-                                ? CleanerAppcolors.primarybrowncolor
-                                : null),
-                        Text(
-                          'Profile',
-                          style: dash.currenttab == 3
-                              ? dashboardlablefontbrown
-                              : dashboardlabelfontblack,
-                        ),
-                        SizedBox(
-                          height: 5.r,
-                        )
-                      ],
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(),
+                      child: Column(
+                        spacing: 5.r,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                            height: 2.r,
+                            width: 50.r,
+                            child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                    color: dash.currenttab == 3
+                                        ? CleanerAppcolors.primarybrowncolor
+                                        : null)),
+                          ),
+                          Image.asset(AppIcons.profileicon,
+                              height: 20.r,
+                              color: dash.currenttab == 3
+                                  ? CleanerAppcolors.primarybrowncolor
+                                  : null),
+                          Text(
+                            'Profile',
+                            style: dash.currenttab == 3
+                                ? dashboardlablefontbrown
+                                : dashboardlabelfontblack,
+                          ),
+                          SizedBox(
+                            height: 5.r,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],
