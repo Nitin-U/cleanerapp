@@ -60,8 +60,8 @@ class ProfileScreen extends StatelessWidget {
                 CustomListtile(
                     leading: Icon(
                       userdata?.gender == 'male'
-                          ? Icons.person
-                          : Icons.person_2,
+                          ? Icons.person_outline
+                          : Icons.person_2_outlined,
                       size: 30.r,
                     ),
                     title: 'Contact',
