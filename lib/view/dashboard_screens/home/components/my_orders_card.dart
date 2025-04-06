@@ -28,7 +28,7 @@ class MyOrdersCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Card(
-        elevation: 3.r,
+        elevation: 2.r,
         child: SizedBox(
           width: MediaQuery.sizeOf(context).width,
           child: DecoratedBox(

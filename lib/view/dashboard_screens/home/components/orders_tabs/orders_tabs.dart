@@ -45,7 +45,7 @@ class OrdersTabs extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 13).r,
                       child: Center(
                         child: Text(
-                          'My Orders',
+                          'Pick Up',
                           style: home.tabs == 0
                               ? resendwhitefont
                               : resendfontminigrey,
@@ -83,7 +83,7 @@ class OrdersTabs extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 13).r,
                       child: Center(
                         child: Text(
-                          'Bin Requests',
+                          'Drop Off',
                           style: home.tabs == 1
                               ? resendwhitefont
                               : resendfontminigrey,

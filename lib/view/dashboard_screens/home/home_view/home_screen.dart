@@ -5,9 +5,9 @@ import 'package:cleanerapp/utils/style.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/bin_search_bar/bin_search_bar_view.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/cleaner_app_drawer/cleaner_app_drawer.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/greetings_card.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/components/my_orders_list/my_orders_list.dart';
+import 'package:cleanerapp/view/dashboard_screens/home/components/drop_off/drop_off_list.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/orders_tabs/orders_tabs.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/components/bin_request_list/bin_request_list.dart';
+import 'package:cleanerapp/view/dashboard_screens/home/components/pick_up/pick_up_list.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/home_provider/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -76,10 +76,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: 12.r,
               ),
             ],
-            backgroundColor: CleanerAppcolors.primarylightgreycolor,
+            backgroundColor: CleanerAppcolors.primaryminigreycolor,
             automaticallyImplyLeading: false,
           ),
-          backgroundColor: CleanerAppcolors.primarylightgreycolor,
+          backgroundColor: CleanerAppcolors.primaryminigreycolor,
           body: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10).r,
             child: SingleChildScrollView(
@@ -109,11 +109,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   OrdersTabs(),
-                  if (home.tabs == 0)
-                    MyOrders(
-                      orders: home.ordersData,
-                    ),
-                  if (home.tabs == 1) BinRequests(),
+                  if (home.tabs == 0) PickUp(),
+                  if (home.tabs == 1) DropOff(),
                 ],
               ),
             ),
