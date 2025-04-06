@@ -8,7 +8,7 @@ import 'package:cleanerapp/view/dashboard_screens/home/bin_search_bar/bin_search
 import 'package:cleanerapp/view/dashboard_screens/home/components/cleaner_app_drawer/cleaner_app_drawer.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/greetings_card.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/drop_off/drop_off_list.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/components/orders_tabs/orders_tabs.dart';
+import 'package:cleanerapp/view/dashboard_screens/home/components/home_tabs/home_tabs.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/pick_up/pick_up_list.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/home_provider/home_provider.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    
   }
-
- 
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       )
                     ],
                   ),
-                  OrdersTabs(),
+                  HomeTabs(),
                   if (home.tabs == 0) PickUp(),
                   if (home.tabs == 1) DropOff(),
                 ],

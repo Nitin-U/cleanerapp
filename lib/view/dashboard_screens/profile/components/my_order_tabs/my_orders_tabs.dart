@@ -1,33 +1,33 @@
 import 'package:cleanerapp/utils/style.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/home_provider/home_provider.dart';
+import 'package:cleanerapp/view/dashboard_screens/profile/profile_provider/my_order_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../utils/appcolors.dart';
 
-class OrdersTabs extends StatelessWidget {
-  const OrdersTabs({
+class MyOrdersTabs extends StatelessWidget {
+  const MyOrdersTabs({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HomeProvider>(
-      builder: (context, home, child) {
+    return Consumer<MyOrderProvider>(
+      builder: (context, myorder, child) {
         return Row(
           spacing: 5.r,
           children: [
             Expanded(
               child: GestureDetector(
                 onTap: () {
-                  home.toggleTab(home.tabs = 0);
+                  myorder.toggleTab(myorder.tabs = 0);
                 },
                 child: SizedBox(
                   width: MediaQuery.sizeOf(context).width,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                        gradient: home.tabs == 0
+                        gradient: myorder.tabs == 0
                             ? LinearGradient(colors: [
                                 CleanerAppcolors.primarylightbrowncolor,
                                 CleanerAppcolors.primarybrowncolor
@@ -37,7 +37,7 @@ class OrdersTabs extends StatelessWidget {
                                 CleanerAppcolors.primarylightgreycolor
                               ]),
                         border: Border.all(
-                            color: home.tabs == 0
+                            color: myorder.tabs == 0
                                 ? Colors.transparent
                                 : CleanerAppcolors.primaryminidarkgreycolor),
                         borderRadius: BorderRadius.circular(20.r)),
@@ -46,7 +46,7 @@ class OrdersTabs extends StatelessWidget {
                       child: Center(
                         child: Text(
                           'Pick Up',
-                          style: home.tabs == 0
+                          style: myorder.tabs == 0
                               ? resendwhitefont
                               : resendfontminigrey,
                         ),
@@ -59,13 +59,13 @@ class OrdersTabs extends StatelessWidget {
             Expanded(
               child: GestureDetector(
                 onTap: () {
-                  home.toggleTab(home.tabs = 1);
+                  myorder.toggleTab(myorder.tabs = 1);
                 },
                 child: SizedBox(
                   width: MediaQuery.sizeOf(context).width,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                        gradient: home.tabs == 1
+                        gradient: myorder.tabs == 1
                             ? LinearGradient(colors: [
                                 CleanerAppcolors.primarylightbrowncolor,
                                 CleanerAppcolors.primarybrowncolor
@@ -75,7 +75,7 @@ class OrdersTabs extends StatelessWidget {
                                 CleanerAppcolors.primarylightgreycolor
                               ]),
                         border: Border.all(
-                            color: home.tabs == 1
+                            color: myorder.tabs == 1
                                 ? Colors.transparent
                                 : CleanerAppcolors.primaryminidarkgreycolor),
                         borderRadius: BorderRadius.circular(20.r)),
@@ -84,7 +84,7 @@ class OrdersTabs extends StatelessWidget {
                       child: Center(
                         child: Text(
                           'Drop Off',
-                          style: home.tabs == 1
+                          style: myorder.tabs == 1
                               ? resendwhitefont
                               : resendfontminigrey,
                         ),

@@ -28,5 +28,9 @@ List<SingleChildWidget> getProviders() {
       lazy: false,
       create: (context) => BinRequestProvider(),
     ),
+     ChangeNotifierProvider(
+      lazy: false,
+      create: (context) => MyordersProviders(),
+    ),
   ];
 }
