@@ -46,11 +46,10 @@ class GreetingsCard extends StatelessWidget {
                       SizedBox(
                         height: 15.r,
                       ),
-                      CleanerChip(
+                      CleanerWhiteFontChip(
+                        label: 'My Orders',
                         backgroundColor: CleanerAppcolors.primarybrowncolor,
-                        onPressed: () {},
-                        label: 'Active Orders',
-                      ),
+                      )
                     ],
                   ),
                 ),

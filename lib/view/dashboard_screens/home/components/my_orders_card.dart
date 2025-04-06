@@ -68,13 +68,12 @@ class MyOrdersCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        address,
-                        style: listiletitlefont,
-                      )
-                    ],
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16).r,
+                    child: Text(
+                      address,
+                      style: listiletitlefont,
+                    ),
                   ),
                   SizedBox(
                     height: 5.r,
@@ -85,7 +84,7 @@ class MyOrdersCard extends StatelessWidget {
                     color: CleanerAppcolors.primaryminigreycolor,
                     child: Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 10).r,
+                          EdgeInsets.symmetric(horizontal: 15, vertical: 15).r,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
