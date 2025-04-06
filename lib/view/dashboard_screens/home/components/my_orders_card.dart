@@ -69,7 +69,7 @@ class MyOrdersCard extends StatelessWidget {
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16).r,
+                    padding: EdgeInsets.symmetric(horizontal: 19).r,
                     child: Text(
                       address,
                       style: listiletitlefont,
