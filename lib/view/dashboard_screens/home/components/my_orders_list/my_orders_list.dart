@@ -22,7 +22,7 @@ class MyOrders extends StatelessWidget {
           children: [
             ...List.generate(
               orders.length > 6 ? 6 : orders.length,
-              (index) => MyOrdersCard(name: '', quantity: '', address: '', startdate: '', enddate: '', contact: '', email: '',),
+              (index) => MyOrdersCard(name: '', quantity: '', address: '', startdate: '', enddate: '',  ),
             ),
             if (orders.length > 6)
               GestureDetector(

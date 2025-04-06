@@ -8,10 +8,8 @@ class MyOrdersCard extends StatelessWidget {
   final String name;
   final String address;
   final String quantity;
-  final String email;
   final String startdate;
   final String enddate;
-  final String contact;
   final VoidCallback? onTap;
   final VoidCallback? onPressed;
   const MyOrdersCard({
@@ -23,8 +21,6 @@ class MyOrdersCard extends StatelessWidget {
     required this.enddate,
     this.onPressed,
     this.onTap,
-    required this.contact,
-    required this.email,
   });
 
   @override

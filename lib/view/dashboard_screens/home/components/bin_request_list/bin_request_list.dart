@@ -48,8 +48,6 @@ class BinRequests extends StatelessWidget {
                         quantity: data?.quantity.toString() ?? 'N/A',
                         startdate: data?.startDate ?? 'N/A',
                         enddate: data?.endDate ?? 'N/A',
-                        contact: data?.customerContact ?? 'N/A',
-                        email: data?.customerEmail ?? 'N/A',
                       );
                     },
                   ),

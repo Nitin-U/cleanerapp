@@ -38,7 +38,7 @@ class BinRequestTabs extends StatelessWidget {
                         border: Border.all(
                             color: home.currenttab == 0
                                 ? Colors.transparent
-                                : CleanerAppcolors.primarygreycolor),
+                                : CleanerAppcolors.primaryminidarkgreycolor),
                         borderRadius: BorderRadius.circular(20.r)),
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 13).r,
@@ -76,7 +76,7 @@ class BinRequestTabs extends StatelessWidget {
                         border: Border.all(
                             color: home.currenttab == 1
                                 ? Colors.transparent
-                                : CleanerAppcolors.primarygreycolor),
+                                : CleanerAppcolors.primaryminidarkgreycolor),
                         borderRadius: BorderRadius.circular(20.r)),
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 13).r,

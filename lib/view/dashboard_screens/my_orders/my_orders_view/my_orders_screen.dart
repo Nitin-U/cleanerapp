@@ -31,7 +31,13 @@ class MyOrdersScreen extends StatelessWidget {
                     spacing: 15.r,
                     children: List.generate(
                       orders.ordersData.length,
-                      (index) => MyOrdersCard(name: '', address: '', quantity: '', startdate: '', contact: '', enddate: '', email: '',),
+                      (index) => MyOrdersCard(
+                        name: '',
+                        address: '',
+                        quantity: '',
+                        startdate: '',
+                        enddate: '',
+                      ),
                     ),
                   ),
                 )));
