@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CleanerTextfield extends StatelessWidget {
   final Iterable<String>? autofills;
   final ValueChanged<String>? onChanged;
+  final Color? fillColor;
   final VoidCallback? onTap;
   final String hintlabel;
   final Widget? suffix;
@@ -16,6 +17,7 @@ class CleanerTextfield extends StatelessWidget {
   const CleanerTextfield(
       {super.key,
       required this.hintlabel,
+      this.fillColor,
       this.autofills,
       this.suffix,
       this.onTap,
@@ -36,6 +38,8 @@ class CleanerTextfield extends StatelessWidget {
       controller: controller,
       style: dashboardlabelfontblack,
       decoration: InputDecoration(
+          fillColor: fillColor,
+          filled: true,
           prefixIconConstraints: BoxConstraints(minWidth: 45.r),
           suffixIconConstraints: BoxConstraints(minWidth: 45.r),
           prefixIconColor: CleanerAppcolors.primarygreycolor,

@@ -1,6 +1,6 @@
 import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/style.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/components/my_orders_card.dart';
+import 'package:cleanerapp/view/dashboard_screens/my_orders/components/my_orders_card.dart';
 import 'package:cleanerapp/view/dashboard_screens/my_orders/my_orders_provider/myorders_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,15 +15,16 @@ class MyOrdersScreen extends StatelessWidget {
       builder: (context, orders, child) {
         return Scaffold(
             appBar: AppBar(
+              scrolledUnderElevation: 0,
               automaticallyImplyLeading: false,
               centerTitle: true,
               title: Text(
                 'My Orders',
                 style: appbartitlefont,
               ),
-              backgroundColor: CleanerAppcolors.primarylightgreycolor,
+              backgroundColor: CleanerAppcolors.primaryminigreycolor,
             ),
-            backgroundColor: CleanerAppcolors.primarylightgreycolor,
+            backgroundColor: CleanerAppcolors.primaryminigreycolor,
             body: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10).r,
                 child: SingleChildScrollView(
@@ -32,11 +33,11 @@ class MyOrdersScreen extends StatelessWidget {
                     children: List.generate(
                       orders.ordersData.length,
                       (index) => MyOrdersCard(
-                        name: '',
                         address: '',
                         quantity: '',
                         startdate: '',
-                        enddate: '',
+                        endDate: '',
+                        binsizename: '',
                       ),
                     ),
                   ),

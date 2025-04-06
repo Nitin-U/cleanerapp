@@ -28,7 +28,7 @@ class GreetingsCard extends StatelessWidget {
                     ]),
                     borderRadius: BorderRadius.circular(20.r)),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 22).r,
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 25).r,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -37,14 +37,14 @@ class GreetingsCard extends StatelessWidget {
                         style: buttonfond,
                       ),
                       SizedBox(
-                        height: 5.r,
+                        height: 10.r,
                       ),
                       Text(
                         log.user?.data?.user?.name ?? '',
                         style: drivernamefont,
                       ),
                       SizedBox(
-                        height: 15.r,
+                        height: 20.r,
                       ),
                       CleanerWhiteFontChip(
                         label: 'My Orders',

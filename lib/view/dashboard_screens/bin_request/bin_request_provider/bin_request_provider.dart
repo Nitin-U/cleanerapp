@@ -12,14 +12,6 @@ class BinRequestProvider extends ChangeNotifier {
     try {
       loadingbinbooking = true;
       notifyListeners();
-
-      // Await the token retrieval
-      // final token = await Utils.getToken();
-      // if (token == null || token.isEmpty) {
-      //   throw Exception("Token is not available.");
-      // }
-
-      // Fetch wallet data
       final binbook = await fetchBinbooking(token);
       _binBookingModel = BinBookingModel.fromJson(binbook);
       print('binbooking $binbook');

@@ -21,7 +21,7 @@ class LoginView extends StatelessWidget {
         final loginkey = GlobalKey<FormState>();
 
         return Scaffold(
-          backgroundColor: CleanerAppcolors.primarylightgreycolor,
+          backgroundColor: CleanerAppcolors.primaryminigreycolor,
           body: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 25,
@@ -51,6 +51,7 @@ class LoginView extends StatelessWidget {
                       height: 8.r,
                     ),
                     CleanerTextfield(
+                      fillColor: CleanerAppcolors.primaryWhitecolor,
                       autofills: [AutofillHints.email],
                       validation: validateEmail,
                       controller: login.emailcontroller,
@@ -71,6 +72,7 @@ class LoginView extends StatelessWidget {
                       height: 5.r,
                     ),
                     CleanerTextfield(
+                        fillColor: CleanerAppcolors.primaryWhitecolor,
                         autofills: [AutofillHints.password],
                         validation: validatePassword,
                         controller: login.passwordcontroller,

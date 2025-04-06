@@ -5,20 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyOrdersCard extends StatelessWidget {
-  final String name;
   final String address;
+  final String binsizename;
   final String quantity;
   final String startdate;
-  final String enddate;
+  final String endDate;
   final VoidCallback? onTap;
   final VoidCallback? onPressed;
   const MyOrdersCard({
     super.key,
-    required this.name,
     required this.address,
     required this.quantity,
     required this.startdate,
-    required this.enddate,
+    required this.binsizename,
+    required this.endDate,
     this.onPressed,
     this.onTap,
   });
@@ -51,23 +51,22 @@ class MyOrdersCard extends StatelessWidget {
                             color: CleanerAppcolors.primarylightbrowncolor,
                           ),
                           Text(
-                            name,
+                            address,
                             style: listiletitlefont,
                           ),
                         ],
                       ),
                       CleanerChip(
                         onPressed: onPressed,
-                        label: 'View',
-                        backgroundColor:
-                            CleanerAppcolors.primarylightgreencolor,
+                        label: 'Update',
+                        backgroundColor: CleanerAppcolors.primarygreycolor,
                       ),
                     ],
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 19).r,
                     child: Text(
-                      address,
+                      'Bin Size:$binsizename',
                       style: listiletitlefont,
                     ),
                   ),
@@ -110,14 +109,13 @@ class MyOrdersCard extends StatelessWidget {
                             ],
                           ),
                           Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'End date',
+                                'End Date',
                                 style: greetingsStyleblack,
                               ),
                               Text(
-                                enddate,
+                                endDate,
                                 style: dashboardlabelfontdarkgrey,
                               )
                             ],
@@ -135,29 +133,4 @@ class MyOrdersCard extends StatelessWidget {
     );
   }
 }
-//  Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                 children: [
-//                   Text(
-//                     startdate,
-//                     style: splashloadingfond,
-//                   ),
-//                   Text(
-//                     enddate,
-//                     style: splashloadingfond,
-//                   ),
-//                 ],
-//               ),
-//               Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                 children: [
-//                   Text(
-//                     quantity,
-//                     style: splashloadingfond,
-//                   ),
-//                   Text(
-//                     contact,
-//                     style: splashloadingfond,
-//                   ),
-//                 ],
-//               ),
+
