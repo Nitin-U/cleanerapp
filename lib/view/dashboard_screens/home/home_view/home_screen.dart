@@ -26,19 +26,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-  
-    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {});
   }
-  void getHomedata(){
-       final logindata = Provider.of<LoginProvider>(context, listen: false);
-      final state = Provider.of<HomeProvider>(context, listen: false);
-  }
+
+  // void getHomedata(){
+  //      final logindata = Provider.of<LoginProvider>(context, listen: false);
+  //     final state = Provider.of<HomeProvider>(context, listen: false);
+  // }
   @override
   Widget build(BuildContext context) {
     return Consumer<HomeProvider>(
       builder: (context, home, child) {
-         final binr = Provider.of<BinRequestProvider>(context, listen: false);
         return Scaffold(
           drawer: CleanerAppDrawer(),
           appBar: AppBar(
@@ -117,10 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     MyOrders(
                       orders: home.ordersData,
                     ),
-                  if (home.tabs == 1)
-                    BinRequests(
-                     
-                    ),
+                  if (home.tabs == 1) BinRequests(),
                 ],
               ),
             ),
