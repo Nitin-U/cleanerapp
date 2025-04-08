@@ -1,9 +1,11 @@
+import 'package:cleanerapp/custom_widget/button.dart';
+import 'package:cleanerapp/custom_widget/custom_tile.dart';
 import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/style.dart';
 import 'package:cleanerapp/view/dashboard/dashboard_provider/dashboard_provider.dart';
 import 'package:cleanerapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
 import 'package:cleanerapp/view/dashboard_screens/bin_request/components/bin_request_card.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/components/cleanerapp_bottom_sheet/cleanerapp_bottom_sheet.dart';
+import 'package:cleanerapp/view/dashboard_screens/home/components/bin_booking_bottom_sheet/bin_booking_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -38,7 +40,13 @@ class PickUp extends StatelessWidget {
                                 showDragHandle: true,
                                 context: context,
                                 builder: (context) {
-                                  return CleanerAppBottomSheet();
+                                  return BinBookingBottomSheet(
+                                    customername: data?.customerName ?? '',
+                                    location: data?.location ?? '',
+                                    endDate: data?.endDate ?? '',
+                                    type: data?.type ?? '',
+                                    binsizeName: data?.binSizeName ?? '',
+                                  );
                                 },
                               );
                             },

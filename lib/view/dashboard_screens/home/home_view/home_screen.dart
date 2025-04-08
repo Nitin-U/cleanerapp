@@ -2,8 +2,7 @@ import 'package:cleanerapp/custom_widget/cleaner_textfield.dart';
 import 'package:cleanerapp/custom_widget/transaction_route.dart';
 import 'package:cleanerapp/utils/appcolors.dart';
 import 'package:cleanerapp/utils/style.dart';
-import 'package:cleanerapp/view/authentication/login/login_provider/login_provider.dart';
-import 'package:cleanerapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
+
 import 'package:cleanerapp/view/dashboard_screens/home/bin_search_bar/bin_search_bar_view.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/cleaner_app_drawer/cleaner_app_drawer.dart';
 import 'package:cleanerapp/view/dashboard_screens/home/components/greetings_card.dart';
@@ -35,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return Scaffold(
           drawer: CleanerAppDrawer(),
           appBar: AppBar(
-            elevation: 0,
+            scrolledUnderElevation: 0,
             actions: [
               Builder(
                 builder: (context) => GestureDetector(

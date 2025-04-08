@@ -23,8 +23,8 @@ class GreetingsCard extends StatelessWidget {
               child: DecoratedBox(
                 decoration: BoxDecoration(
                     gradient: LinearGradient(colors: [
-                      CleanerAppcolors.primarylightbrowncolor,
-                      CleanerAppcolors.primarybrowncolor
+                      CleanerAppcolors.primarylightpurple,
+                      CleanerAppcolors.primarypurple
                     ]),
                     borderRadius: BorderRadius.circular(20.r)),
                 child: Padding(

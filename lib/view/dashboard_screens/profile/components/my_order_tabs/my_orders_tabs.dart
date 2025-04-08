@@ -1,5 +1,5 @@
 import 'package:cleanerapp/utils/style.dart';
-import 'package:cleanerapp/view/dashboard_screens/profile/profile_provider/my_order_provider.dart';
+import 'package:cleanerapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
