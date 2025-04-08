@@ -30,6 +30,7 @@ class MyOrdersScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10).r,
                 child: SingleChildScrollView(
                   child: Column(
+                    spacing: 15.r,
                     children: [
                       MyOrdersTabs(),
                       Column(
