@@ -3,6 +3,7 @@ import 'package:cleanerapp/utils/style.dart';
 import 'package:cleanerapp/view/dashboard/dashboard_provider/dashboard_provider.dart';
 import 'package:cleanerapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
 import 'package:cleanerapp/view/dashboard_screens/bin_request/components/bin_request_card.dart';
+import 'package:cleanerapp/view/dashboard_screens/home/components/bin_booking_bottom_sheet/bin_booking_bottom_sheet.dart';
 import 'package:cleanerapp/view/dashboard_screens/my_orders/components/my_orders_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,6 +38,20 @@ class DropOff extends StatelessWidget {
                         final waredata =
                             bindata.binbook?.data.warehouseRequests[index];
                         return BinRequestCard(
+                          onPressed: () {
+                            showModalBottomSheet(
+                              showDragHandle: true,
+                              context: context,
+                              builder: (context) {
+                                return BinBookingBottomSheet(
+                                    customername: waredata?.customerName ?? '',
+                                    location: waredata?.location ?? '',
+                                    endDate: waredata?.endDate ?? '',
+                                    type: waredata?.type ?? '',
+                                    binsizeName: waredata?.binSizeName ?? '');
+                              },
+                            );
+                          },
                           quantity: waredata?.quantity.toString() ?? '0',
                           address: waredata?.location ?? 'N/A',
                           startdate: waredata?.startDate ?? 'N/A',

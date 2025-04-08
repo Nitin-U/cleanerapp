@@ -3,7 +3,7 @@ import 'package:cleanerapp/utils/style.dart';
 import 'package:cleanerapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
 import 'package:cleanerapp/view/dashboard_screens/bin_request/bin_request_tab/bin_request_tabs.dart';
 import 'package:cleanerapp/view/dashboard_screens/bin_request/components/bin_request_card.dart';
-import 'package:cleanerapp/view/dashboard_screens/my_orders/components/my_orders_card.dart';
+import 'package:cleanerapp/view/dashboard_screens/home/components/bin_booking_bottom_sheet/bin_booking_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -44,6 +44,22 @@ class BinRequestView extends StatelessWidget {
                                 var bindata =
                                     binr.binbook?.data.siteRequests[index];
                                 return BinRequestCard(
+                                  onPressed: () {
+                                    showModalBottomSheet(
+                                      showDragHandle: true,
+                                      context: context,
+                                      builder: (context) {
+                                        return BinBookingBottomSheet(
+                                            customername:
+                                                bindata?.customerName ?? '',
+                                            location: bindata?.location ?? '',
+                                            endDate: bindata?.endDate ?? '',
+                                            type: bindata?.type ?? '',
+                                            binsizeName:
+                                                bindata?.binSizeName ?? '');
+                                      },
+                                    );
+                                  },
                                   address: bindata?.location ?? 'N/A',
                                   quantity: bindata?.quantity.toString() ?? '0',
                                   startdate: bindata?.startDate ?? '',
@@ -61,6 +77,22 @@ class BinRequestView extends StatelessWidget {
                                 final waredata =
                                     binr.binbook?.data.warehouseRequests[index];
                                 return BinRequestCard(
+                                  onPressed: () {
+                                    showModalBottomSheet(
+                                      showDragHandle: true,
+                                      context: context,
+                                      builder: (context) {
+                                        return BinBookingBottomSheet(
+                                            customername:
+                                                waredata?.customerName ?? '',
+                                            location: waredata?.location ?? '',
+                                            endDate: waredata?.endDate ?? '',
+                                            type: waredata?.type ?? '',
+                                            binsizeName:
+                                                waredata?.binSizeName ?? '');
+                                      },
+                                    );
+                                  },
                                   address: waredata?.location ?? 'N/A',
                                   quantity: waredata?.quantity.toString() ?? '',
                                   startdate: waredata?.startDate ?? '',
