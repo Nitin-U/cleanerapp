@@ -1,9 +1,10 @@
-import 'package:cleanerapp/utils/appcolors.dart';
-import 'package:cleanerapp/utils/style.dart';
-import 'package:cleanerapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
-import 'package:cleanerapp/view/dashboard_screens/bin_request/bin_request_tab/bin_request_tabs.dart';
-import 'package:cleanerapp/view/dashboard_screens/bin_request/components/bin_request_card.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/components/bin_booking_bottom_sheet/bin_booking_bottom_sheet.dart';
+
+import 'package:binbookingapp/utils/appcolors.dart';
+import 'package:binbookingapp/utils/style.dart' show appbartitlefont;
+import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
+import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_tab/bin_request_tabs.dart';
+import 'package:binbookingapp/view/dashboard_screens/bin_request/components/bin_request_card.dart';
+import 'package:binbookingapp/view/dashboard_screens/home/components/bin_booking_bottom_sheet/bin_booking_bottom_sheet.dart' show BinBookingBottomSheet;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';

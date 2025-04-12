@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:cleanerapp/utils/apiurl.dart';
+import 'package:binbookingapp/utils/apiurl.dart';
 import 'package:dio/dio.dart';
 
 Future<Map<String, dynamic>> fetchBinbooking(String token) async {

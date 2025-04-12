@@ -1,5 +1,6 @@
-import 'package:cleanerapp/utils/style.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/home_provider/home_provider.dart';
+
+import 'package:binbookingapp/utils/style.dart';
+import 'package:binbookingapp/view/dashboard_screens/home/home_provider/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

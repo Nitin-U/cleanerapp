@@ -1,8 +1,9 @@
 import 'dart:async';
-import 'package:cleanerapp/custom_widget/transaction_route.dart';
-import 'package:cleanerapp/utils/appcolors.dart';
-import 'package:cleanerapp/utils/cleanericonspng.dart';
-import 'package:cleanerapp/view/authentication/login/login_view/login_view.dart';
+
+import 'package:binbookingapp/custom_widget/transaction_route.dart';
+import 'package:binbookingapp/utils/appcolors.dart';
+import 'package:binbookingapp/utils/cleanericonspng.dart';
+import 'package:binbookingapp/view/authentication/login/login_view/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';

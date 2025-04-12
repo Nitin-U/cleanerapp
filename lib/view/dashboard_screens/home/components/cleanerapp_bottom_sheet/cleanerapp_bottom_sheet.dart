@@ -1,7 +1,8 @@
-import 'package:cleanerapp/custom_widget/button.dart';
-import 'package:cleanerapp/custom_widget/cleaner_textfield.dart';
-import 'package:cleanerapp/utils/appcolors.dart';
-import 'package:cleanerapp/utils/style.dart';
+
+import 'package:binbookingapp/custom_widget/button.dart';
+import 'package:binbookingapp/custom_widget/cleaner_textfield.dart';
+import 'package:binbookingapp/utils/appcolors.dart';
+import 'package:binbookingapp/utils/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

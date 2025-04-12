@@ -1,5 +1,6 @@
-import 'package:cleanerapp/utils/style.dart';
-import 'package:cleanerapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart';
+
+import 'package:binbookingapp/utils/style.dart';
+import 'package:binbookingapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart' show MyOrderProvider;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

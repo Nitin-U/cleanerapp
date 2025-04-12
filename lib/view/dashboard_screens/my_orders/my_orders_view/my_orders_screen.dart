@@ -1,8 +1,9 @@
-import 'package:cleanerapp/utils/appcolors.dart';
-import 'package:cleanerapp/utils/style.dart';
-import 'package:cleanerapp/view/dashboard_screens/my_orders/components/my_orders_card.dart';
-import 'package:cleanerapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart';
-import 'package:cleanerapp/view/dashboard_screens/profile/components/my_order_tabs/my_orders_tabs.dart';
+
+import 'package:binbookingapp/utils/appcolors.dart';
+import 'package:binbookingapp/utils/style.dart';
+import 'package:binbookingapp/view/dashboard_screens/my_orders/components/my_orders_card.dart';
+import 'package:binbookingapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart';
+import 'package:binbookingapp/view/dashboard_screens/profile/components/my_order_tabs/my_orders_tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

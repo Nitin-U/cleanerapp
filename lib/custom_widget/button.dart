@@ -1,5 +1,5 @@
-import 'package:cleanerapp/custom_widget/transaction_route.dart';
-import 'package:cleanerapp/utils/style.dart';
+import 'package:binbookingapp/custom_widget/transaction_route.dart';
+import 'package:binbookingapp/utils/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

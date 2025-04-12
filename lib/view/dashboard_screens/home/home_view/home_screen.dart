@@ -1,15 +1,15 @@
-import 'package:cleanerapp/custom_widget/cleaner_textfield.dart';
-import 'package:cleanerapp/custom_widget/transaction_route.dart';
-import 'package:cleanerapp/utils/appcolors.dart';
-import 'package:cleanerapp/utils/style.dart';
 
-import 'package:cleanerapp/view/dashboard_screens/home/bin_search_bar/bin_search_bar_view.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/components/cleaner_app_drawer/cleaner_app_drawer.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/components/greetings_card.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/components/drop_off/drop_off_list.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/components/home_tabs/home_tabs.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/components/pick_up/pick_up_list.dart';
-import 'package:cleanerapp/view/dashboard_screens/home/home_provider/home_provider.dart';
+import 'package:binbookingapp/custom_widget/cleaner_textfield.dart';
+import 'package:binbookingapp/custom_widget/transaction_route.dart';
+import 'package:binbookingapp/utils/appcolors.dart';
+import 'package:binbookingapp/utils/style.dart';
+import 'package:binbookingapp/view/dashboard_screens/home/bin_search_bar/bin_search_bar_view.dart';
+import 'package:binbookingapp/view/dashboard_screens/home/components/cleaner_app_drawer/cleaner_app_drawer.dart';
+import 'package:binbookingapp/view/dashboard_screens/home/components/drop_off/drop_off_list.dart';
+import 'package:binbookingapp/view/dashboard_screens/home/components/greetings_card.dart';
+import 'package:binbookingapp/view/dashboard_screens/home/components/home_tabs/home_tabs.dart';
+import 'package:binbookingapp/view/dashboard_screens/home/components/pick_up/pick_up_list.dart';
+import 'package:binbookingapp/view/dashboard_screens/home/home_provider/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

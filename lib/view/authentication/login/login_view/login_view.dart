@@ -1,11 +1,12 @@
-import 'package:cleanerapp/custom_widget/button.dart';
-import 'package:cleanerapp/custom_widget/cleaner_textfield.dart';
-import 'package:cleanerapp/custom_widget/transaction_route.dart';
-import 'package:cleanerapp/utils/appcolors.dart';
-import 'package:cleanerapp/utils/form_validation.dart';
-import 'package:cleanerapp/utils/style.dart';
-import 'package:cleanerapp/view/authentication/forgot_password/forgot_password_view/forgot_password_screen.dart';
-import 'package:cleanerapp/view/authentication/login/login_provider/login_provider.dart';
+
+import 'package:binbookingapp/custom_widget/button.dart';
+import 'package:binbookingapp/custom_widget/cleaner_textfield.dart';
+import 'package:binbookingapp/custom_widget/transaction_route.dart';
+import 'package:binbookingapp/utils/appcolors.dart';
+import 'package:binbookingapp/utils/form_validation.dart';
+import 'package:binbookingapp/utils/style.dart';
+import 'package:binbookingapp/view/authentication/forgot_password/forgot_password_view/forgot_password_screen.dart';
+import 'package:binbookingapp/view/authentication/login/login_provider/login_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';

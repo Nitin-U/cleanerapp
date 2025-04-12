@@ -1,6 +1,7 @@
-import 'package:cleanerapp/custom_widget/custom_tile.dart';
-import 'package:cleanerapp/utils/cleanericonspng.dart';
-import 'package:cleanerapp/view/dashboard_screens/profile/components/profile_card.dart';
+
+import 'package:binbookingapp/custom_widget/custom_tile.dart';
+import 'package:binbookingapp/utils/cleanericonspng.dart';
+import 'package:binbookingapp/view/dashboard_screens/profile/components/profile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
