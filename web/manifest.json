@@ -1,6 +1,6 @@
 {
-    "name": "cleanerapp",
-    "short_name": "cleanerapp",
+    "name": "binbookingapp",
+    "short_name": "binbookingapp",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

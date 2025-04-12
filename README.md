@@ -1,4 +1,4 @@
-# cleanerapp
+# binbookingapp
 
 A new Flutter project.
 
