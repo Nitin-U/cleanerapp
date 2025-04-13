@@ -1,0 +1,64 @@
+import 'package:binbookingapp/utils/appcolors.dart';
+import 'package:binbookingapp/utils/cleanericonspng.dart' show AppIcons;
+import 'package:binbookingapp/utils/style.dart';
+import 'package:binbookingapp/view/dashboard_screens/my_orders/components/detail_label.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class DetailsCard extends StatelessWidget {
+  final String customername;
+  final String duration;
+  final String binsizename;
+  final String quantity;
+  final String location;
+  const DetailsCard({
+    super.key,
+    required this.customername,
+    required this.duration,
+    required this.binsizename,
+    required this.quantity,
+    required this.location,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10).r,
+          border: Border.all(color: CleanerAppcolors.primaryminigreycolor),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15).r,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                spacing: 5.r,
+                children: [
+                  Image.asset(AppIcons.myordersicon, height: 20.r),
+                  Text('Orders Details', style: ordercardheaderfont),
+                ],
+              ),
+              Divider(
+                color: CleanerAppcolors.primaryminigreycolor,
+              ),
+              SizedBox(height: 10.r),
+              DetailsLabel(label: 'Customer Name', sublabel: customername),
+              SizedBox(height: 5.r),
+              DetailsLabel(label: 'Duration', sublabel: duration),
+              SizedBox(height: 5.r),
+              DetailsLabel(label: 'Bin Size Name', sublabel: binsizename),
+              SizedBox(height: 5.r),
+              DetailsLabel(label: 'Quantity', sublabel: quantity),
+              SizedBox(height: 5.r),
+
+              DetailsLabel(label: 'Location', sublabel: location),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

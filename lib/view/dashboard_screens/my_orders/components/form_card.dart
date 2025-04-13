@@ -1,0 +1,87 @@
+import 'package:binbookingapp/utils/appcolors.dart';
+import 'package:binbookingapp/utils/style.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class FormCard extends StatelessWidget {
+  const FormCard({super.key, required this.quantity});
+
+  final int quantity;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.r),
+          border: Border.all(color: CleanerAppcolors.primaryminigreycolor),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15).r,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                spacing: 5.r,
+                children: [
+                  Icon(Icons.file_copy_outlined, size: 20.r),
+                  Text('Fill the form', style: ordercardheaderfont),
+                ],
+              ),
+              Divider(
+                color: CleanerAppcolors.primaryminigreycolor,
+              ),
+              SizedBox(height: 10.r),
+              Column(
+                children: List.generate(
+                  quantity,
+                  (index) => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Serial Number ${index + 1}',
+                        style: splashloadingfond,
+                      ),
+                      TextFormField(
+                        style: entertexttile,
+                        decoration: InputDecoration(
+                          isDense: true,
+                          contentPadding: EdgeInsets.symmetric(vertical: 10).r,
+                          hintText: 'Enter serial number',
+                          hintStyle: hintStyle,
+
+                          // 🔽 Default border when not focused
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color:
+                                  CleanerAppcolors
+                                      .primaryminigreycolor, // change this to your color
+                              width: 1.5.r, // change thickness here
+                            ),
+                          ),
+
+                          // 🔽 Border when focused (on tap)
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color:
+                                  CleanerAppcolors
+                                      .primarybrowncolor, // focused color
+                              width: 1.5.r, // focused thickness
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.r,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
