@@ -59,7 +59,7 @@ class MyOrdersCard extends StatelessWidget {
                       ),
                       CleanerChip(
                         onPressed: onPressed,
-                        label: 'Update',
+                        label: 'View',
                         backgroundColor: CleanerAppcolors.primarybrowncolor,
                       ),
                     ],
