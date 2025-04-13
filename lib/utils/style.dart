@@ -78,7 +78,13 @@ TextStyle get listiletitlefont {
     fontSize: 16.r,
   );
 }
-
+TextStyle get subtitlefonts {
+  return GoogleFonts.roboto(
+    fontWeight: FontWeight.w500,
+    color: Colors.grey,
+    fontSize: 15.r,
+  );
+}
 TextStyle get tabfonts {
   return GoogleFonts.roboto(
     fontWeight: FontWeight.w500,
@@ -166,7 +172,27 @@ TextStyle get forgotpasswordfont {
     fontSize: 15.r,
   );
 }
-
+TextStyle get ordercardheaderfont {
+  return GoogleFonts.roboto(
+    fontWeight: FontWeight.w500,
+    color: Colors.black,
+    fontSize: 17.r,
+  );
+}
+TextStyle get hintStyle {
+  return GoogleFonts.roboto(
+    fontWeight: FontWeight.w400,
+    color: const Color.fromARGB(255, 107, 106, 106),
+    fontSize: 13.r,
+  );
+}
+TextStyle get entertexttile {
+  return GoogleFonts.roboto(
+    fontWeight: FontWeight.w400,
+    color:  CleanerAppcolors.primarygreycolor,
+    fontSize: 13.r,
+  );
+}
 TextStyle get errorstyle {
   return GoogleFonts.roboto(
     fontWeight: FontWeight.w400,

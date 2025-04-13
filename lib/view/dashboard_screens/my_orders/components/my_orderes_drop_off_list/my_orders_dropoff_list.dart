@@ -21,7 +21,7 @@ class MyOrdersDropOffList extends StatelessWidget {
              var waredata = order.order?.data.warehouseRequests[index];
               return MyOrdersCard(
                 onPressed: () {
-                  Navigator.push(context, CustomPageRoute(child: MyOrdersDropOffDetailsScreen()));
+                  Navigator.push(context, CustomPageRoute(child: MyOrdersDropOffDetailsScreen(quantity: waredata?.quantity??0, customerName: waredata?.customerName??'', startdate: waredata?.startDate??'', endate: waredata?.startDate??'', location:waredata?.location??'',)));
                 },
               address: waredata?.location??'',
               quantity: waredata?.quantity.toString()??'',

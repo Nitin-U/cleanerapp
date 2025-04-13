@@ -15,22 +15,33 @@ class MyOrdersPickUpList extends StatelessWidget {
       builder: (context, order, child) {
         return Column(
           spacing: 15.r,
-          children: List.generate(
-            order.order?.data.siteRequests.length??0,
-            (index) {
-              var sitedata = order.order?.data.siteRequests[index];
-              return  MyOrdersCard(
-                onPressed: () {
-                  Navigator.push(context, CustomPageRoute(child: MyOrdersPickupDetailsScreen()));
-                },
-              address: sitedata?.location??'',
-              quantity: sitedata?.quantity.toString()??'',
-              startdate: sitedata?.startDate??'',
-              endDate:sitedata?.endDate??'',
-              binsizename: sitedata?.binSizeName??'',
+          children: List.generate(order.order?.data.siteRequests.length ?? 0, (
+            index,
+          ) {
+            var sitedata = order.order?.data.siteRequests[index];
+            return MyOrdersCard(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  CustomPageRoute(
+                    child: MyOrdersPickupDetailsScreen(
+                      binsizename: sitedata?.binSizeName??'',
+                      duration: sitedata?.orderDuration.toString()??'',
+                      customername: sitedata?.customerName ?? '',
+                      startDate: sitedata?.startDate ?? '',
+                      endate: sitedata?.endDate ?? '',
+                      quantity: sitedata?.quantity ?? 0, location: sitedata?.location??'',
+                    ),
+                  ),
+                );
+              },
+              address: sitedata?.location ?? '',
+              quantity: sitedata?.quantity.toString() ?? '',
+              startdate: sitedata?.startDate ?? '',
+              endDate: sitedata?.endDate ?? '',
+              binsizename: sitedata?.binSizeName ?? '',
             );
-            }
-          ),
+          }),
         );
       },
     );
