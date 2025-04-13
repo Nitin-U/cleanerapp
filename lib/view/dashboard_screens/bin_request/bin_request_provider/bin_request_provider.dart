@@ -15,7 +15,7 @@ class BinRequestProvider extends ChangeNotifier {
       notifyListeners();
       final binbook = await fetchBinbooking(token);
       _binBookingModel = BinBookingModel.fromJson(binbook);
-      print('binbooking $binbook');
+     
 
       loadingbinbooking = false;
       notifyListeners();

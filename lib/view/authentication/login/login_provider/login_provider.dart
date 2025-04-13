@@ -31,7 +31,6 @@ class LoginProvider extends ChangeNotifier {
         passwordcontroller.text,
       );
       _userModel = UserModel.fromJson(userMap);
-      print(userMap);
       if (userMap['status'] == 'success') {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(
@@ -44,7 +43,6 @@ class LoginProvider extends ChangeNotifier {
           (route) => false,
         );
       } else {
-        print('Login failed: $userMap');
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(
           userMap['message'],

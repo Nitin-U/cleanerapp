@@ -21,7 +21,6 @@ Future<Map<String, dynamic>> fetchBinbooking(String token) async {
       ),
     );
 
-    print('Raw Response Data: ${response.data}');
 
     if (response.data is Map<String, dynamic>) {
       return response.data;

@@ -1,11 +1,13 @@
 
 import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
-import 'package:binbookingapp/view/dashboard_screens/my_orders/components/my_orders_card.dart';
+import 'package:binbookingapp/view/dashboard_screens/my_orders/components/my_orderes_drop_off_list/my_orders_dropoff_list.dart';
+import 'package:binbookingapp/view/dashboard_screens/my_orders/components/my_orders_pickup_list/my_orders_pickup_list.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/profile/components/my_order_tabs/my_orders_tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 
 class MyOrdersScreen extends StatelessWidget {
@@ -27,26 +29,23 @@ class MyOrdersScreen extends StatelessWidget {
               backgroundColor: CleanerAppcolors.primaryminigreycolor,
             ),
             backgroundColor: CleanerAppcolors.primaryminigreycolor,
-            body: Padding(
+
+
+            body: orders.loadingmyorderdata == true?LoadingAnimationWidget.hexagonDots(
+              color: CleanerAppcolors.primarybrowncolor,size: 30.r
+              
+            ): Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10).r,
                 child: SingleChildScrollView(
                   child: Column(
                     spacing: 15.r,
                     children: [
                       MyOrdersTabs(),
-                      Column(
-                        spacing: 15.r,
-                        children: List.generate(
-                          6,
-                          (index) => MyOrdersCard(
-                            address: '',
-                            quantity: '',
-                            startdate: '',
-                            endDate: '',
-                            binsizename: '',
-                          ),
-                        ),
-                      ),
+                      if(orders.tabs ==0)
+                       MyOrdersPickUpList(),
+
+                       if(orders.tabs ==1)
+                      MyOrdersDropOffList()
                     ],
                   ),
                 )));
@@ -54,3 +53,6 @@ class MyOrdersScreen extends StatelessWidget {
     );
   }
 }
+
+
+

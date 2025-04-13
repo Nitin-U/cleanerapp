@@ -3,17 +3,40 @@
 
 import 'dart:io';
 
+import 'package:binbookingapp/view/dashboard_screens/my_orders/model/my_order_model.dart';
+import 'package:binbookingapp/view/dashboard_screens/my_orders/service/my_order_api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class MyOrderProvider extends ChangeNotifier{
+
+bool loadingmyorderdata = false;
+MyOrderModel? _myOrderModel;
+MyOrderModel? get order => _myOrderModel;
+
     int tabs = 0;
 void toggleTab(int index) {
     tabs = index;
     notifyListeners();
   }
+Future<void> getMyordersData(token,id) async {
+    try {
+      loadingmyorderdata = true;
+      notifyListeners();
+      final binbook = await fetchMyorders(token,id);
+      _myOrderModel = MyOrderModel.fromJson(binbook);
+      print('myorder $binbook');
 
-  
+      loadingmyorderdata = false;
+      notifyListeners();
+    } catch (e) {
+      loadingmyorderdata = false;
+      notifyListeners();
+      print('Error in getWalletData: $e');
+      rethrow;
+    }
+  }
+
     File? selectedimage;
 
   Future<File?> pickImage() async {
