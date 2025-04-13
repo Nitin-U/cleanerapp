@@ -1,5 +1,4 @@
 import 'package:binbookingapp/custom_widget/button.dart';
-
 import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/components/details_card.dart';
@@ -58,8 +57,3 @@ class MyOrdersPickupDetailsScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-

@@ -9,7 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class MyOrderProvider extends ChangeNotifier{
+bool isdamaged = true;
 
+void toggleisdamaged(){
+  isdamaged = isdamaged;
+  notifyListeners();
+}
 bool loadingmyorderdata = false;
 MyOrderModel? _myOrderModel;
 MyOrderModel? get order => _myOrderModel;
@@ -37,40 +42,61 @@ Future<void> getMyordersData(token,id) async {
     }
   }
 
-    File? selectedimage;
+ final ImagePicker _picker = ImagePicker();
+  List<XFile> images = [];
 
-  Future<File?> pickImage() async {
-    final pickedImage =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (pickedImage == null) return null; // User cancelled picking an image
-    return File(pickedImage.path);
-  }
+  Future<void> pickImage(BuildContext context) async {
+    if (images.length >= 3) {
+      _showLimitSnackbar(context);
+      return;
+    }
 
-  Future<File?> captureImage() async {
-    final capturedImage =
-        await ImagePicker().pickImage(source: ImageSource.camera);
-    if (capturedImage == null) return null; // User cancelled capturing an image
-    return File(capturedImage.path);
-  }
+    final pickedImage = await _picker.pickImage(source: ImageSource.gallery);
 
-  void pickImageAndUploadfromGallery(BuildContext context) async {
-    // Pick an image from gallery
-    final pickedImage = await pickImage();
     if (pickedImage != null) {
-      selectedimage = pickedImage;
-      // ignore: use_build_context_synchronously
-      Navigator.pop(context);
-    } else {}
+      images.add(pickedImage);
+    }
   }
 
-  void pickimageanduploadfromcamera(BuildContext context) async {
-    // Pick an image from gallery
-    final pickedImage = await captureImage();
-    if (pickedImage != null) {
-      selectedimage = pickedImage;
-      // ignore: use_build_context_synchronously
-      Navigator.pop(context);
-    } else {}
+  Future<void> captureImage(BuildContext context) async {
+    if (images.length >= 3) {
+      _showLimitSnackbar(context);
+      return;
+    }
+
+    final capturedImage = await _picker.pickImage(source: ImageSource.camera);
+
+    if (capturedImage != null) {
+      images.add(capturedImage);
+    }
   }
+
+  void _showLimitSnackbar(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('You can only select up to 3 images.'),
+        duration: Duration(seconds: 2),
+      ),
+    );
+  }
+  // void pickImageAndUploadfromGallery(BuildContext context) async {
+  //   // Pick an image from gallery
+  //   final pickedImage = await pickImage();
+  //   if (pickedImage != null) {
+  //     selectedimage = pickedImage;
+  //     // ignore: use_build_context_synchronously
+  //     Navigator.pop(context);
+  //   } else {}
+  // }
+
+  // void pickimageanduploadfromcamera(BuildContext context) async {
+  //   // Pick an image from gallery
+  //   final pickedImage = await captureImage();
+  //   if (pickedImage != null) {
+  //     selectedimage = pickedImage;
+  //     // ignore: use_build_context_synchronously
+  //     Navigator.pop(context);
+  //   } else {}
+  // }
 
 }
