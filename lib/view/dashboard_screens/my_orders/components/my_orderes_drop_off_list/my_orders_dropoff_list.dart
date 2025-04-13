@@ -1,4 +1,6 @@
+import 'package:binbookingapp/custom_widget/transaction_route.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/components/my_orders_card.dart';
+import 'package:binbookingapp/view/dashboard_screens/my_orders/detailscreen/my_orders_drop_off_details_screen.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,6 +20,9 @@ class MyOrdersDropOffList extends StatelessWidget {
             (index) {
              var waredata = order.order?.data.warehouseRequests[index];
               return MyOrdersCard(
+                onPressed: () {
+                  Navigator.push(context, CustomPageRoute(child: MyOrdersDropOffDetailsScreen()));
+                },
               address: waredata?.location??'',
               quantity: waredata?.quantity.toString()??'',
               startdate: waredata?.startDate??'',
