@@ -4,4 +4,5 @@ class AppUrl {
   // static const mainUrl = 'http://127.0.0.1:8000/api/';
   static const loginurl = '${mainUrl}login';
   static const binbooking = '${mainUrl}bin-bookings';
+   static const myorder = '${mainUrl}bin-bookings/order?driver_id=';
 }
