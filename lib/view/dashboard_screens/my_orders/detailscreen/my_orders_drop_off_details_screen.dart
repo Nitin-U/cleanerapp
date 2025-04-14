@@ -55,6 +55,7 @@ class MyOrdersDropOffDetailsScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20).r,
             child: SingleChildScrollView(
               child: Column(
+                spacing: 15.r,
                 children: [
                   DetailsCard(
                     customername: customerName,

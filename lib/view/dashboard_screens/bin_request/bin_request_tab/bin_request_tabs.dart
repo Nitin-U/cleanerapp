@@ -45,7 +45,7 @@ class BinRequestTabs extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 13).r,
                       child: Center(
                         child: Text(
-                          'On Site Delivery',
+                          'On Site',
                           style: home.currenttab == 0
                               ? resendwhitefont
                               : resendfontminigrey,
@@ -83,7 +83,7 @@ class BinRequestTabs extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 13).r,
                       child: Center(
                         child: Text(
-                          'Warehouse Delivery',
+                          'DropOff',
                           style: home.currenttab == 1
                               ? resendwhitefont
                               : resendfontminigrey,
