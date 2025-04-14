@@ -22,11 +22,11 @@ class CleanerAppDrawer extends StatelessWidget {
           children: [
             ProfileCard(),
             CustomListtile(
-              leading: Icon(
-                Icons.notifications_none,
-                size: 20.r,
+              leading: Image.asset(
+                AppIcons.requesticon,
+                height: 20.r,
               ),
-              title: 'Notification',
+              title: 'Bin Request',
             ),
             CustomListtile(
               leading: Image.asset(

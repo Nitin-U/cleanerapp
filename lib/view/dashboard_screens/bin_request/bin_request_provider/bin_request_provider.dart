@@ -32,20 +32,26 @@ class BinRequestProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<String> binRequestData = [
-    'Summers',
-    'Summers',
-    'Summers',
-    'Summers',
-    'Summers',
-    'Summers',
-    'Summers',
-    'Summers',
-    'Summers',
-    'Summers',
-    'Summers',
-    'Summers',
-    'Summers',
-    'Summers',
-  ];
+
+   List<RequestItem> allRequests = [];
+  List<RequestItem> filteredRequests = [];
+
+  void setRequests(List<RequestItem> siteRequests, List<RequestItem> warehouseRequests) {
+    allRequests = [...siteRequests, ...warehouseRequests];
+    filteredRequests = allRequests;
+    notifyListeners();
+  }
+
+  void filter(String query) {
+    query = query.toLowerCase();
+    filteredRequests = allRequests.where((item) {
+      return item.customerName.toLowerCase().contains(query) ||
+          item.location.toLowerCase().contains(query) ||
+          item.startDate.toLowerCase().contains(query) ||
+          item.endDate.toLowerCase().contains(query) ||
+          item.binSizeName.toLowerCase().contains(query) ||
+          item.type.toLowerCase().contains(query);
+    }).toList();
+    notifyListeners();
+  }
 }

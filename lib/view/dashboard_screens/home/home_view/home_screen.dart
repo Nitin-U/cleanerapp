@@ -3,6 +3,8 @@ import 'package:binbookingapp/custom_widget/cleaner_textfield.dart';
 import 'package:binbookingapp/custom_widget/transaction_route.dart';
 import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
+import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
+import 'package:binbookingapp/view/dashboard_screens/bin_request/model/bin_booking_model.dart';
 import 'package:binbookingapp/view/dashboard_screens/home/bin_search_bar/bin_search_bar_view.dart';
 import 'package:binbookingapp/view/dashboard_screens/home/components/cleaner_app_drawer/cleaner_app_drawer.dart';
 import 'package:binbookingapp/view/dashboard_screens/home/components/drop_off/drop_off_list.dart';
@@ -31,7 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Consumer<HomeProvider>(
       builder: (context, home, child) {
-        return Scaffold(
+        return Consumer<BinRequestProvider>(builder: (context, binr, child) {
+          return Scaffold(
           drawer: CleanerAppDrawer(),
           appBar: AppBar(
             scrolledUnderElevation: 0,
@@ -75,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       fillColor: CleanerAppcolors.primaryWhitecolor,
                       onTap: () {
                         Navigator.push(context,
-                            CustomPageRoute(child: BinSearchBarView()));
+                            CustomPageRoute(child: BinSearchScreen(model: BinBookingModel(status: binr.binbook?.status??'', message: binr.binbook?.message??'', data: BinRequestData(siteRequests: binr.binbook!.data.siteRequests, warehouseRequests: binr.binbook!.data.warehouseRequests)),)));
                       },
                       prefix: Icon(Icons.search),
                       hintlabel: 'Search'),
@@ -105,6 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         );
+        },);
       },
     );
   }
