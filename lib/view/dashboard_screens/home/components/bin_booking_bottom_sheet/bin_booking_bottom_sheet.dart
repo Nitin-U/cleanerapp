@@ -25,57 +25,64 @@ class BinBookingBottomSheet extends StatelessWidget {
     return SizedBox(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10).r,
-        child: SingleChildScrollView(
-          child: Column(
-            spacing: 10.r,
-            children: [
-              CustomListtile(
-                subtitle: customername,
-                title: 'Customer Name',
-                trailing: Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  size: 20.r,
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  spacing: 10.r,
+                  children: [
+                    CustomListtile(
+                      subtitle: customername,
+                      title: 'Customer Name',
+                      trailing: Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        size: 20.r,
+                      ),
+                    ),
+                    CustomListtile(
+                      subtitle: location,
+                      title: 'Location',
+                      trailing: Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        size: 20.r,
+                      ),
+                    ),
+                    CustomListtile(
+                      subtitle: endDate,
+                      title: 'End Date',
+                      trailing: Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        size: 20.r,
+                      ),
+                    ),
+                    CustomListtile(
+                      subtitle: endDate,
+                      title: 'Type',
+                      trailing: Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        size: 20.r,
+                      ),
+                    ),
+                    CustomListtile(
+                      subtitle: 'Bin Size:$binsizeName',
+                      title: 'Bin Size Name',
+                      trailing: Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        size: 20.r,
+                      ),
+                    ),
+                   
+                  ],
                 ),
               ),
-              CustomListtile(
-                subtitle: location,
-                title: 'Location',
-                trailing: Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  size: 20.r,
-                ),
-              ),
-              CustomListtile(
-                subtitle: endDate,
-                title: 'End Date',
-                trailing: Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  size: 20.r,
-                ),
-              ),
-              CustomListtile(
-                subtitle: endDate,
-                title: 'Type',
-                trailing: Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  size: 20.r,
-                ),
-              ),
-              CustomListtile(
-                subtitle: 'Bin Size:$binsizeName',
-                title: 'Bin Size Name',
-                trailing: Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  size: 20.r,
-                ),
-              ),
-              CleanerButton.elevated(
+            ),
+             CleanerButton.elevated(
                   width: MediaQuery.sizeOf(context).width,
                   backgroundcolor: CleanerAppcolors.primarybrowncolor,
                   label: 'Accept',
                   onPressed: () {})
-            ],
-          ),
+          ],
         ),
       ),
     );

@@ -87,9 +87,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         'Active Orders',
                         style: greetingsStyleblack,
                       ),
-                      Icon(
+                      Row(
+                        children: [
+                          Text('View more',style: dashboardlabelfontdarkgrey,),
+                          Icon(
                         Icons.keyboard_arrow_right_outlined,
-                        size: 20.r,
+                        size: 30.r,
+                      )],
                       )
                     ],
                   ),
