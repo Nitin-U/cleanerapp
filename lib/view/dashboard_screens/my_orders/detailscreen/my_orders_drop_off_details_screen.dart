@@ -145,7 +145,7 @@ class DropOffSelectImageCard extends StatelessWidget {
                           children: [
                             Icon(Icons.list,size: 30.r,),
                             Text(
-                              'Bin Serial Number ${index + 1}',
+                              'Bin Serial Number',
                               style: ordercardheaderfont,
                             ),
                           ],
@@ -155,7 +155,7 @@ class DropOffSelectImageCard extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              'Is Damaged_${index + 1}',
+                              'Is Damaged',
                               style: dashboardlabelfontblack,
                             ),
                             Checkbox(
