@@ -29,7 +29,7 @@ class GreetingsCard extends StatelessWidget {
                     ]),
                     borderRadius: BorderRadius.circular(20.r)),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 25).r,
+                  padding: EdgeInsets.symmetric(horizontal: 17, vertical: 25).r,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

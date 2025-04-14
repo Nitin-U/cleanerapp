@@ -6,14 +6,14 @@ import 'package:google_fonts/google_fonts.dart';
 TextStyle get dashboardlablefontbrown {
   return GoogleFonts.roboto(
       fontWeight: FontWeight.w400,
-      fontSize: 16.r,
+      fontSize: 18.r,
       color: CleanerAppcolors.primarybrowncolor);
 }
 
 TextStyle get dashboardlablefontgrey {
   return GoogleFonts.roboto(
       fontWeight: FontWeight.w500,
-      fontSize: 16.r,
+      fontSize: 18.r,
       color: CleanerAppcolors.primarygreycolor);
 }
 
@@ -46,20 +46,20 @@ TextStyle get dashboardlablefontdarkgreenfont {
 TextStyle get dashboardlabelfontdarkgrey {
   return GoogleFonts.roboto(
       fontWeight: FontWeight.w500,
-      fontSize: 13.r,
+      fontSize: 17.r,
       color: CleanerAppcolors.primarygreycolor);
 }
 
 TextStyle get greetingsStyleblack {
   return GoogleFonts.roboto(
-      fontWeight: FontWeight.w500, fontSize: 15.r, color: Colors.black);
+      fontWeight: FontWeight.w500, fontSize: 18.r, color: Colors.black);
 }
 
 TextStyle get dashboardlabelfontblack {
   return GoogleFonts.roboto(
     fontWeight: FontWeight.w400,
     color: Colors.black,
-    fontSize: 16.r,
+    fontSize: 18.r,
   );
 }
 
@@ -67,7 +67,7 @@ TextStyle get resendfont {
   return GoogleFonts.roboto(
     fontWeight: FontWeight.w500,
     color: Colors.black,
-    fontSize: 15.r,
+    fontSize: 18.r,
   );
 }
 
@@ -75,14 +75,14 @@ TextStyle get listiletitlefont {
   return GoogleFonts.roboto(
     fontWeight: FontWeight.w500,
     color: Colors.black,
-    fontSize: 16.r,
+    fontSize: 18.r,
   );
 }
 TextStyle get subtitlefonts {
   return GoogleFonts.roboto(
     fontWeight: FontWeight.w500,
     color: Colors.grey,
-    fontSize: 15.r,
+    fontSize: 18.r,
   );
 }
 TextStyle get tabfonts {
@@ -97,7 +97,7 @@ TextStyle get resendfontminigrey {
   return GoogleFonts.roboto(
     fontWeight: FontWeight.w500,
     color: CleanerAppcolors.primarygreycolor,
-    fontSize: 15.r,
+    fontSize: 18.r,
   );
 }
 
@@ -153,7 +153,7 @@ TextStyle get buttonfond {
   return GoogleFonts.roboto(
     fontWeight: FontWeight.w500,
     color: CleanerAppcolors.primaryWhitecolor,
-    fontSize: 16.r,
+    fontSize: 18.r,
   );
 }
 
@@ -161,7 +161,7 @@ TextStyle get drivernamefont {
   return GoogleFonts.roboto(
     fontWeight: FontWeight.w400,
     color: CleanerAppcolors.primaryWhitecolor,
-    fontSize: 15.r,
+    fontSize: 18.r,
   );
 }
 

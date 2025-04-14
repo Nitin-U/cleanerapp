@@ -29,29 +29,40 @@ class MyOrdersPickupDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Pick Up Details', style: appbartitlefont)),
-      body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20).r,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 15.r,
-          children: [
-            DetailsCard(
-              customername: customername,
-              duration: duration,
-              binsizename: binsizename,
-              quantity: quantity.toString(),
-              location: location,
-            ),
-            FormCard(quantity: quantity),
-            Spacer(),
-            CleanerButton.elevated(
+      backgroundColor: CleanerAppcolors.primaryWhitecolor,
+      bottomNavigationBar: BottomAppBar(
+        color:  CleanerAppcolors.primaryWhitecolor,
+        elevation: 0,
+        height: 95.r,
+        child:  CleanerButton.elevated(
               width: MediaQuery.sizeOf(context).width,
               backgroundcolor: CleanerAppcolors.primarybrowncolor,
               label: 'Update Order',
               onPressed: () {},
             ),
-          ],
+      ),
+      appBar: AppBar(
+        backgroundColor: CleanerAppcolors.primaryWhitecolor,
+        scrolledUnderElevation: 0.r,
+        title: Text('Pick Up Details', style: appbartitlefont)),
+      body: Padding(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20).r,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 15.r,
+            children: [
+              DetailsCard(
+                customername: customername,
+                duration: duration,
+                binsizename: binsizename,
+                quantity: quantity.toString(),
+                location: location,
+              ),
+              FormCard(quantity: quantity),
+           
+            ],
+          ),
         ),
       ),
     );

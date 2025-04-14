@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Scaffold.of(context).openDrawer();
                     },
                     child: CircleAvatar(
-                        backgroundColor: CleanerAppcolors.primarygreycolor,
+                        backgroundColor: CleanerAppcolors.primaryminidarkgreycolor,
                         radius: 20.r,
                         child: CircleAvatar(
                           radius: 18.r,
@@ -57,21 +57,8 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 width: 12.r,
               ),
-              CircleAvatar(
-                  backgroundColor: CleanerAppcolors.primarygreycolor,
-                  radius: 20.r,
-                  child: CircleAvatar(
-                    radius: 18.r,
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.notifications_none,
-                      size: 22.r,
-                      color: CleanerAppcolors.primarygreycolor,
-                    ),
-                  )),
-              SizedBox(
-                width: 12.r,
-              ),
+              
+              
             ],
             backgroundColor: CleanerAppcolors.primaryminigreycolor,
             automaticallyImplyLeading: false,

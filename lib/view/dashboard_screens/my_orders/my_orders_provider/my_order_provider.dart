@@ -1,7 +1,6 @@
 
 
 
-import 'dart:io';
 
 import 'package:binbookingapp/view/dashboard_screens/my_orders/model/my_order_model.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/service/my_order_api_service.dart';
@@ -11,10 +10,11 @@ import 'package:image_picker/image_picker.dart';
 class MyOrderProvider extends ChangeNotifier{
 bool isdamaged = true;
 
-void toggleisdamaged(){
-  isdamaged = isdamaged;
-  notifyListeners();
-}
+void toggleCheckbox(bool? value) {
+    isdamaged = value ?? false;
+    notifyListeners();
+  }
+
 bool loadingmyorderdata = false;
 MyOrderModel? _myOrderModel;
 MyOrderModel? get order => _myOrderModel;
@@ -45,18 +45,39 @@ Future<void> getMyordersData(token,id) async {
  final ImagePicker _picker = ImagePicker();
   List<XFile> images = [];
 
-  Future<void> pickImage(BuildContext context) async {
-    if (images.length >= 3) {
-      _showLimitSnackbar(context);
-      return;
-    }
-
-    final pickedImage = await _picker.pickImage(source: ImageSource.gallery);
-
-    if (pickedImage != null) {
-      images.add(pickedImage);
-    }
+Future<void> pickImage(BuildContext context) async {
+  // Prevent picker if already 3 images
+  if (images.length >= 3) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('You can only select up to 3 images.'),
+        duration: Duration(seconds: 2),
+      ),
+    );
+    return;
   }
+
+  final pickedImages = await _picker.pickMultiImage();
+
+  if ( pickedImages.isNotEmpty) {
+    final remainingSlots = 3 - images.length;
+
+    if (pickedImages.length > remainingSlots) {
+      // Show warning BEFORE adding too many images
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Only $remainingSlots more image(s) can be selected.'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
+
+    // Only add allowed number of images
+    images.addAll(pickedImages.take(remainingSlots));
+    notifyListeners();
+  }
+}
+
 
   Future<void> captureImage(BuildContext context) async {
     if (images.length >= 3) {
@@ -68,6 +89,7 @@ Future<void> getMyordersData(token,id) async {
 
     if (capturedImage != null) {
       images.add(capturedImage);
+      notifyListeners(); // notify UI
     }
   }
 
@@ -79,6 +101,12 @@ Future<void> getMyordersData(token,id) async {
       ),
     );
   }
+void removeImage(int index) {
+  if (index >= 0 && index < images.length) {
+    images.removeAt(index);
+    notifyListeners(); // Notify UI to rebuild
+  }
+}
   // void pickImageAndUploadfromGallery(BuildContext context) async {
   //   // Pick an image from gallery
   //   final pickedImage = await pickImage();
