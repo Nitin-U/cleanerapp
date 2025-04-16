@@ -52,7 +52,7 @@ class MyOrdersDropOffDetailsScreen extends StatelessWidget {
             title: Text('Drop Off Details', style: appbartitlefont),
           ),
           body: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20).r,
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15).r,
             child: SingleChildScrollView(
               child: Column(
                 spacing: 15.r,
@@ -84,99 +84,86 @@ class DropOffSelectImageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<MyOrderProvider>(
       builder: (context, order, child) {
+        // ✅ Initialize image and damaged list if lengths don't match quantity
+        if (order.imagesPerBin.length != quantity || order.isDamagedList.length != quantity) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            order.initializeDamagedList(quantity);
+          });
+        }
+
         return SizedBox(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15).r,
-            child: Column(
-              spacing: 15.r,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: List.generate(quantity, (index) {
-                return SizedBox(
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.r),
-                      border: Border.all(
-                      color: CleanerAppcolors.primaryminidarkgreycolor
-                    )),
-                    child: Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 15,vertical: 10).r,
-                      child: Column(
-                        children: [
-                          Row(
-                            spacing: 5.r,
-                            children: [
-                              Icon(Icons.list, size: 30.r),
-                              Text(
-                                'Bin Serial Number',
-                                style: ordercardheaderfont,
-                              ),
-                            ],
-                          ),
-                          Divider(),
-                      
-                          Row(
-                            children: [
-                              Text('Is Damaged', style: dashboardlabelfontblack),
-                              Checkbox(
-                                visualDensity: VisualDensity(
-                                  horizontal: -4,
-                                  vertical: -4,
-                                ),
-                                value: order.isdamaged,
-                                onChanged: (value) {
-                                  order.toggleCheckbox(value);
-                                },
-                              ),
-                            ],
-                          ),
-                          order.images.isEmpty
-                              ? GestureDetector(
+          child: Column(
+            spacing: 15.r,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: List.generate(quantity, (index) {
+              return SizedBox(
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.r),
+                    border: Border.all(
+                      color: CleanerAppcolors.primaryminidarkgreycolor,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10).r,
+                    child: Column(
+                      children: [
+                        Row(
+                          spacing: 5.r,
+                          children: [
+                            Icon(Icons.list, size: 30.r),
+                            Text('Bin Serial Number', style: ordercardheaderfont),
+                          ],
+                        ),
+                        Divider(),
+                        Row(
+                          children: [
+                            Text('Is Damaged', style: dashboardlabelfontblack),
+                            Checkbox(
+                              visualDensity: VisualDensity(horizontal: -4, vertical: -4),
+                              value: order.isDamagedList[index],
+                              onChanged: (value) {
+                                order.toggleCheckbox(index, value);
+                              },
+                            ),
+                          ],
+                        ),
+                        order.imagesPerBin[index].isEmpty
+                            ? GestureDetector(
                                 onTap: () {
                                   showDialog(
                                     context: context,
                                     builder: (context) {
                                       return AlertDialog(
                                         title: Center(
-                                          child: Text(
-                                            'Choose Image',
-                                            style: resendfont,
-                                          ),
+                                          child: Text('Choose Image', style: resendfont),
                                         ),
                                         content: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
+                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                                           children: [
                                             GestureDetector(
                                               onTap: () {
-                                                order.pickImage(context);
+                                                order.pickImage(index);
                                                 Navigator.pop(context);
                                               },
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
                                                   Icon(Icons.image),
-                                                  Text(
-                                                    'Gallery',
-                                                    style:
-                                                        dashboardlabelfontblack,
-                                                  ),
+                                                  Text('Gallery', style: dashboardlabelfontblack),
                                                 ],
                                               ),
                                             ),
                                             GestureDetector(
                                               onTap: () {
-                                                order.captureImage(context);
+                                                order.captureImage(index);
                                                 Navigator.pop(context);
                                               },
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
                                                   Icon(Icons.camera),
-                                                  Text(
-                                                    'Camera',
-                                                    style:
-                                                        dashboardlabelfontblack,
-                                                  ),
+                                                  Text('Camera', style: dashboardlabelfontblack),
                                                 ],
                                               ),
                                             ),
@@ -189,35 +176,20 @@ class DropOffSelectImageCard extends StatelessWidget {
                                 child: SizedBox(
                                   width: MediaQuery.sizeOf(context).width,
                                   child: DottedBorder(
-                                    color:
-                                        CleanerAppcolors.primaryminidarkgreycolor,
+                                    color: CleanerAppcolors.primaryminidarkgreycolor,
                                     dashPattern: [3, 3],
                                     borderType: BorderType.RRect,
                                     radius: Radius.circular(10.r),
                                     child: Center(
                                       child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: 20.r,
-                                        ),
+                                        padding: EdgeInsets.symmetric(vertical: 20.r),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
-                                            Icon(
-                                              Icons.image_outlined,
-                                              size: 30.r,
-                                              color:
-                                                  CleanerAppcolors
-                                                      .primarybrowncolor,
-                                            ),
+                                            Icon(Icons.image_outlined, size: 30.r, color: CleanerAppcolors.primarybrowncolor),
                                             SizedBox(height: 8.r),
-                                            Text(
-                                              'Choose an image or take a picture',
-                                              style: dashboardlablefontbrown,
-                                            ),
-                                            Text(
-                                              'Only 3 images allowed',
-                                              style: dashboardlablefontgrey,
-                                            ),
+                                            Text('Choose an image or take a picture', style: dashboardlablefontbrown),
+                                            Text('Only 3 images allowed', style: dashboardlablefontgrey),
                                           ],
                                         ),
                                       ),
@@ -225,11 +197,10 @@ class DropOffSelectImageCard extends StatelessWidget {
                                   ),
                                 ),
                               )
-                              : SizedBox(
+                            : SizedBox(
                                 width: MediaQuery.sizeOf(context).width,
                                 child: DottedBorder(
-                                  color:
-                                      CleanerAppcolors.primaryminidarkgreycolor,
+                                  color: CleanerAppcolors.primaryminidarkgreycolor,
                                   dashPattern: [3, 3],
                                   borderType: BorderType.RRect,
                                   radius: Radius.circular(10.r),
@@ -239,35 +210,32 @@ class DropOffSelectImageCard extends StatelessWidget {
                                       alignment: WrapAlignment.center,
                                       spacing: 10.r,
                                       runSpacing: 10.r,
-                                      children: List.generate(
-                                        order.images.length,
-                                        (index) {
-                                          var image = order.images[index];
-                                          return SelectedImageCard(
-                                            imagepath: image,
-                                            onTap: () {
-                                              order.removeImage(index);
-                                            },
-                                          );
-                                        },
-                                      ),
+                                      children: List.generate(order.imagesPerBin[index].length, (imgIndex) {
+                                        var image = order.imagesPerBin[index][imgIndex];
+                                        return SelectedImageCard(
+                                          imagepath: image,
+                                          onTap: () {
+                                            order.removeImage(index, imgIndex);
+                                          },
+                                        );
+                                      }),
                                     ),
                                   ),
                                 ),
                               ),
-                        ],
-                      ),
+                      ],
                     ),
                   ),
-                );
-              }),
-            ),
+                ),
+              );
+            }),
           ),
         );
       },
     );
   }
 }
+
 
 class SelectedImageCard extends StatelessWidget {
   final VoidCallback? onTap;

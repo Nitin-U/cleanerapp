@@ -10,10 +10,7 @@ import 'package:image_picker/image_picker.dart';
 class MyOrderProvider extends ChangeNotifier{
 bool isdamaged = true;
 
-void toggleCheckbox(bool? value) {
-    isdamaged = value ?? false;
-    notifyListeners();
-  }
+
 
 bool loadingmyorderdata = false;
 MyOrderModel? _myOrderModel;
@@ -42,55 +39,43 @@ Future<void> getMyordersData(token,id) async {
     }
   }
 
- final ImagePicker _picker = ImagePicker();
-  List<XFile> images = [];
+  List<bool> isDamagedList = [];
+  List<List<XFile>> imagesPerBin = [];
 
-Future<void> pickImage(BuildContext context) async {
-  // Prevent picker if already 3 images
-  if (images.length >= 3) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('You can only select up to 3 images.'),
-        duration: Duration(seconds: 2),
-      ),
-    );
-    return;
-  }
-
-  final pickedImages = await _picker.pickMultiImage();
-
-  if ( pickedImages.isNotEmpty) {
-    final remainingSlots = 3 - images.length;
-
-    if (pickedImages.length > remainingSlots) {
-      // Show warning BEFORE adding too many images
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Only $remainingSlots more image(s) can be selected.'),
-          duration: Duration(seconds: 2),
-        ),
-      );
-    }
-
-    // Only add allowed number of images
-    images.addAll(pickedImages.take(remainingSlots));
+  void initializeDamagedList(int count) {
+    isDamagedList = List.generate(count, (index) => false);
+    imagesPerBin = List.generate(count, (index) => []);
     notifyListeners();
   }
-}
 
-
-  Future<void> captureImage(BuildContext context) async {
-    if (images.length >= 3) {
-      _showLimitSnackbar(context);
-      return;
+  void toggleCheckbox(int index, bool? value) {
+    if (value != null && index >= 0 && index < isDamagedList.length) {
+      isDamagedList[index] = value;
+      notifyListeners();
     }
+  }
 
-    final capturedImage = await _picker.pickImage(source: ImageSource.camera);
-
-    if (capturedImage != null) {
-      images.add(capturedImage);
-      notifyListeners(); // notify UI
+  Future<void> pickImage(int index) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null && imagesPerBin[index].length < 3) {
+      imagesPerBin[index].add(pickedFile);
+      notifyListeners();
     }
+  }
+
+  Future<void> captureImage(int index) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+    if (pickedFile != null && imagesPerBin[index].length < 3) {
+      imagesPerBin[index].add(pickedFile);
+      notifyListeners();
+    }
+  }
+
+  void removeImage(int binIndex, int imageIndex) {
+    imagesPerBin[binIndex].removeAt(imageIndex);
+    notifyListeners();
   }
 
   void _showLimitSnackbar(BuildContext context) {
@@ -101,11 +86,7 @@ Future<void> pickImage(BuildContext context) async {
       ),
     );
   }
-void removeImage(int index) {
-  if (index >= 0 && index < images.length) {
-    images.removeAt(index);
-    notifyListeners(); // Notify UI to rebuild
-  }
+
 }
   // void pickImageAndUploadfromGallery(BuildContext context) async {
   //   // Pick an image from gallery
@@ -127,4 +108,3 @@ void removeImage(int index) {
   //   } else {}
   // }
 
-}
