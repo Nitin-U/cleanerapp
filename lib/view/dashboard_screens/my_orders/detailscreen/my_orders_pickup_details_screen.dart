@@ -3,10 +3,12 @@ import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/components/details_card.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/components/form_card.dart';
+import 'package:binbookingapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
-class MyOrdersPickupDetailsScreen extends StatelessWidget {
+class MyOrdersPickupDetailsScreen extends StatefulWidget {
   final String customername;
   final String startDate;
   final String endate;
@@ -27,8 +29,25 @@ class MyOrdersPickupDetailsScreen extends StatelessWidget {
   });
 
   @override
+  State<MyOrdersPickupDetailsScreen> createState() => _MyOrdersPickupDetailsScreenState();
+}
+
+class _MyOrdersPickupDetailsScreenState extends State<MyOrdersPickupDetailsScreen> {
+  @override
+  void initState() {
+    super.initState();
+     WidgetsBinding.instance.addPostFrameCallback((_) {
+      initialisethequantity();
+    });
+  }
+  Future<void> initialisethequantity()async{
+    var myorderstate = Provider.of<MyOrderProvider>(context,listen: false);
+  myorderstate.initializeControllers(widget.quantity);
+  }
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Consumer<MyOrderProvider>(builder: (context, order, child) {
+      return Scaffold(
       backgroundColor: CleanerAppcolors.primaryWhitecolor,
       bottomNavigationBar: BottomAppBar(
         color:  CleanerAppcolors.primaryWhitecolor,
@@ -38,7 +57,9 @@ class MyOrdersPickupDetailsScreen extends StatelessWidget {
               width: MediaQuery.sizeOf(context).width,
               backgroundcolor: CleanerAppcolors.primarybrowncolor,
               label: 'Update Order',
-              onPressed: () {},
+              onPressed: () {
+                order.submitSerials();
+              },
             ),
       ),
       appBar: AppBar(
@@ -53,18 +74,19 @@ class MyOrdersPickupDetailsScreen extends StatelessWidget {
             spacing: 15.r,
             children: [
               DetailsCard(
-                customername: customername,
-                duration: duration,
-                binsizename: binsizename,
-                quantity: quantity.toString(),
-                location: location,
+                customername: widget.customername,
+                duration: widget.duration,
+                binsizename: widget.binsizename,
+                quantity: widget.quantity.toString(),
+                location: widget.location,
               ),
-              FormCard(quantity: quantity),
+              FormCard(quantity: widget.quantity),
            
             ],
           ),
         ),
       ),
     );
+    },);
   }
 }

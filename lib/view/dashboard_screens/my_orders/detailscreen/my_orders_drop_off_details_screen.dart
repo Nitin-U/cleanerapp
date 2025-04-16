@@ -143,7 +143,7 @@ class DropOffSelectImageCard extends StatelessWidget {
                                           children: [
                                             GestureDetector(
                                               onTap: () {
-                                                order.pickImage(index);
+                                                order.pickImage(index,context);
                                                 Navigator.pop(context);
                                               },
                                               child: Column(

@@ -59,7 +59,7 @@ class BinRequestView extends StatelessWidget {
                                             endDate: bindata?.endDate ?? '',
                                             type: bindata?.type ?? '',
                                             binsizeName:
-                                                bindata?.binSizeName ?? '', bookingId: bindata?.id.toString()??'', userId: bindata?.id.toString()??'',);
+                                                bindata?.binSizeName ?? '', bookingId: bindata?.id.toString()??'', userId: log.user?.data?.user?.id.toString()??'', usertoken: log.user?.data?.token??'',);
                                       },
                                     );
                                   },
@@ -92,7 +92,7 @@ class BinRequestView extends StatelessWidget {
                                             endDate: waredata?.endDate ?? '',
                                             type: waredata?.type ?? '',
                                             binsizeName:
-                                                waredata?.binSizeName ?? '', bookingId:waredata?.id.toString()??'', userId: waredata?.id.toString()??'',);
+                                                waredata?.binSizeName ?? '', bookingId:waredata?.id.toString()??'', userId: log.user?.data?.user?.id.toString()??'', usertoken: log.user?.data?.token??'',);
                                       },
                                     );
                                   },

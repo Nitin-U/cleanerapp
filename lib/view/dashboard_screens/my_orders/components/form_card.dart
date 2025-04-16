@@ -1,7 +1,9 @@
 import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
+import 'package:binbookingapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class FormCard extends StatelessWidget {
   const FormCard({super.key, required this.quantity});
@@ -10,7 +12,8 @@ class FormCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Consumer<MyOrderProvider>(builder: (context, order, child) {
+      return SizedBox(
       child: DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
@@ -34,7 +37,7 @@ class FormCard extends StatelessWidget {
               SizedBox(height: 10.r),
               Column(
                 children: List.generate(
-                  quantity,
+                 quantity,
                   (index) => Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -43,6 +46,8 @@ class FormCard extends StatelessWidget {
                         style: splashloadingfond,
                       ),
                       TextFormField(
+                        onChanged: (value) => order.updateSerial(index, value),
+                        controller: order.serialControllers[index],
                         style: entertexttile,
                         decoration: InputDecoration(
                           isDense: true,
@@ -83,5 +88,6 @@ class FormCard extends StatelessWidget {
         ),
       ),
     );
+    },);
   }
 }

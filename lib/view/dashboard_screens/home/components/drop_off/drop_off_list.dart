@@ -1,6 +1,7 @@
 
 import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
+import 'package:binbookingapp/view/authentication/login/login_provider/login_provider.dart';
 import 'package:binbookingapp/view/dashboard/dashboard_provider/dashboard_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/components/bin_request_card.dart';
@@ -21,7 +22,8 @@ class DropOff extends StatelessWidget {
       builder: (context, dash, child) {
         return Consumer<BinRequestProvider>(
           builder: (context, bindata, child) {
-            return bindata.loadingbinbooking == true
+            return Consumer<LoginProvider>(builder: (context, log, child) {
+              return bindata.loadingbinbooking == true
                 ? LoadingAnimationWidget.hexagonDots(
                     color: CleanerAppcolors.primarybrowncolor, size: 20.r)
                 : Column(
@@ -48,7 +50,7 @@ class DropOff extends StatelessWidget {
                                     location: waredata?.location ?? '',
                                     endDate: waredata?.endDate ?? '',
                                     type: waredata?.type ?? '',
-                                    binsizeName: waredata?.binSizeName ?? '', bookingId: '', userId: '',);
+                                    binsizeName: waredata?.binSizeName ?? '', bookingId: waredata?.id.toString()??'', userId: log.user?.data?.token??'', usertoken: log.user?.data?.token??'',);
                               },
                             );
                           },
@@ -73,6 +75,7 @@ class DropOff extends StatelessWidget {
                         )
                     ],
                   );
+            },);
           },
         );
       },
