@@ -1,8 +1,9 @@
 
+import 'package:binbookingapp/utils/style.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/model/bin_booking_model.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/service/bin_booking_api_service.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BinRequestProvider extends ChangeNotifier {
   int currenttab = 0;
@@ -36,38 +37,59 @@ class BinRequestProvider extends ChangeNotifier {
     notifyListeners();
   }
 
- Future<void> getRequestAccept(context,driverid,binbookingid,token) async {
-    try {
-      loadingrequestaccept = true;
-      notifyListeners();
+Future<void> getRequestAccept(
+  BuildContext context,
+  String token,
+  String bookingid,
+  String driverid,
+) async {
+  print('${bookingid}${driverid}');
+  try {
+    loadingrequestaccept = true;
+    notifyListeners();
 
-      final accept = await fetchRequestAccept(
-        driverid,binbookingid,token
+    final accept = await fetchRequestAccept(token, bookingid, driverid);
+
+    loadingrequestaccept = false;
+    notifyListeners();
+
+    print('accept: $accept');
+
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          behavior: SnackBarBehavior.floating,
+          margin: EdgeInsets.only(
+            bottom: MediaQuery.sizeOf(context).height -170.r,
+            left: 10.r,
+            right: 10.r
+          ),
+          dismissDirection: DismissDirection.up,
+          content: Text(
+            accept['message'] ?? 'Unknown response',
+            style: dashboardlablefontwhite,
+          ),
+          backgroundColor: accept['status'] == 'success' ? Colors.black : Colors.black,
+        ),
       );
-      if (accept['status'] == 'success') {
-        
-       Fluttertoast.showToast(
-        gravity: ToastGravity.TOP,
-        msg: accept['message']);
-        print(accept);
-      
-      } else {
-       Fluttertoast.showToast(
-        gravity: ToastGravity.CENTER,
-        msg: accept['message']);
-        print(accept);
-      }
-
-      loadingrequestaccept = false;
-      notifyListeners();
-    } catch (e) {
-      loadingrequestaccept = false;
-      notifyListeners();
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$e')));
-      print('Error: $e'); // Log the error for debugging
-      throw {"error": e};
     }
+  } catch (e) {
+    loadingrequestaccept = false;
+    notifyListeners();
+
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+
+    print('Error: $e');
+    throw {"error": e};
   }
+}
 
 
 List<RequestedItem> allRequests = [];

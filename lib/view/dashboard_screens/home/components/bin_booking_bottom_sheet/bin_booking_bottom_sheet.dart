@@ -1,4 +1,3 @@
-
 import 'package:binbookingapp/custom_widget/button.dart';
 import 'package:binbookingapp/custom_widget/custom_tile.dart';
 import 'package:binbookingapp/utils/appcolors.dart';
@@ -22,79 +21,101 @@ class BinBookingBottomSheet extends StatelessWidget {
     required this.location,
     required this.endDate,
     required this.type,
-    required this.binsizeName, required this.bookingId, required this.userId, required this.usertoken,
+    required this.binsizeName,
+    required this.bookingId,
+    required this.userId,
+    required this.usertoken,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<BinRequestProvider>(builder: (context, binr, child) {
-      return SizedBox(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10).r,
-        child: Column(
-          children: [
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  spacing: 10.r,
-                  children: [
-                    CustomListtile(
-                      subtitle: customername,
-                      title: 'Customer Name',
-                      leading: Icon(
-                        Icons.arrow_forward_ios_outlined,
-                        size: 20.r,
-                      ),
+    return Consumer<BinRequestProvider>(
+      builder: (context, binr, child) {
+        return SizedBox(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10).r,
+            child: Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      spacing: 10.r,
+                      children: [
+                        CustomListtile(
+                          subtitle: customername,
+                          title: 'Customer Name',
+                          leading: Icon(
+                            Icons.arrow_forward_ios_outlined,
+                            size: 20.r,
+                          ),
+                        ),
+                        CustomListtile(
+                          subtitle: location,
+                          title: 'Location',
+                          leading: Icon(
+                            Icons.arrow_forward_ios_outlined,
+                            size: 20.r,
+                          ),
+                        ),
+                        CustomListtile(
+                          subtitle: endDate,
+                          title: 'End Date',
+                          leading: Icon(
+                            Icons.arrow_forward_ios_outlined,
+                            size: 20.r,
+                          ),
+                        ),
+                        CustomListtile(
+                          subtitle: endDate,
+                          title: 'Type',
+                          leading: Icon(
+                            Icons.arrow_forward_ios_outlined,
+                            size: 20.r,
+                          ),
+                        ),
+                        CustomListtile(
+                          subtitle: 'Bin Size:$binsizeName',
+                          title: 'Bin Size Name',
+                          leading: Icon(
+                            Icons.arrow_forward_ios_outlined,
+                            size: 20.r,
+                          ),
+                        ),
+                      ],
                     ),
-                    CustomListtile(
-                      subtitle: location,
-                      title: 'Location',
-                      leading: Icon(
-                        Icons.arrow_forward_ios_outlined,
-                        size: 20.r,
-                      ),
-                    ),
-                    CustomListtile(
-                      subtitle: endDate,
-                      title: 'End Date',
-                      leading: Icon(
-                        Icons.arrow_forward_ios_outlined,
-                        size: 20.r,
-                      ),
-                    ),
-                    CustomListtile(
-                      subtitle: endDate,
-                      title: 'Type',
-                      leading: Icon(
-                        Icons.arrow_forward_ios_outlined,
-                        size: 20.r,
-                      ),
-                    ),
-                    CustomListtile(
-                      subtitle: 'Bin Size:$binsizeName',
-                      title: 'Bin Size Name',
-                      leading: Icon(
-                        Icons.arrow_forward_ios_outlined,
-                        size: 20.r,
-                      ),
-                    ),
-                   
-                  ],
+                  ),
                 ),
-              ),
-            ),
-             CleanerButton.elevated(
+                CleanerButton.elevated(
                   width: MediaQuery.sizeOf(context).width,
                   backgroundcolor: CleanerAppcolors.primarybrowncolor,
-                  label:binr.loadingrequestaccept == true?'Please Wait....': 'Accept Request',
-                  onPressed: () {
-                    binr.getRequestAccept(context, userId,bookingId,usertoken);
-                    Navigator.pop(context);
-                  })
-          ],
-        ),
-      ),
+                  label:
+                      binr.loadingrequestaccept == true
+                          ? 'Please Wait....'
+                          : 'Accept Request',
+                  onPressed: () async {
+                    binr.getBinRequestData(
+                      usertoken,
+                    ); // ← optional, if you want
+
+                    await binr.getRequestAccept(
+                      context,
+                      userId,
+                      bookingId,
+                      usertoken,
+                    );
+
+                    // Delay before closing to ensure SnackBar appears
+                    await Future.delayed(Duration(milliseconds: 300));
+                    if (context.mounted) {
+                      Navigator.pop(context);
+                    }
+                  },
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
-    },);
   }
 }
