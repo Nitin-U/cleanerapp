@@ -1,6 +1,7 @@
 import 'package:binbookingapp/custom_widget/button.dart';
 import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
+import 'package:binbookingapp/view/authentication/login/login_provider/login_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/components/details_card.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/components/form_card.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart';
@@ -16,6 +17,7 @@ class MyOrdersPickupDetailsScreen extends StatefulWidget {
   final String binsizename;
   final String duration;
   final String location;
+  final String bookingid;
 
   const MyOrdersPickupDetailsScreen({
     super.key,
@@ -25,7 +27,7 @@ class MyOrdersPickupDetailsScreen extends StatefulWidget {
     required this.quantity,
     required this.binsizename,
     required this.duration,
-    required this.location,
+    required this.location, required this.bookingid,
   });
 
   @override
@@ -47,7 +49,9 @@ class _MyOrdersPickupDetailsScreenState extends State<MyOrdersPickupDetailsScree
   @override
   Widget build(BuildContext context) {
     return Consumer<MyOrderProvider>(builder: (context, order, child) {
-      return Scaffold(
+      return Consumer<LoginProvider>(builder: (context, log, child) {
+        var userdata = log.user?.data?.user;
+        return Scaffold(
       backgroundColor: CleanerAppcolors.primaryWhitecolor,
       bottomNavigationBar: BottomAppBar(
         color:  CleanerAppcolors.primaryWhitecolor,
@@ -56,9 +60,9 @@ class _MyOrdersPickupDetailsScreenState extends State<MyOrdersPickupDetailsScree
         child:  CleanerButton.elevated(
               width: MediaQuery.sizeOf(context).width,
               backgroundcolor: CleanerAppcolors.primarybrowncolor,
-              label: 'Update Order',
+              label:order.loadingserialdata == true?'Please Wait...' :'Update Order',
               onPressed: () {
-                order.submitSerials();
+                order.getSerialData(context, log.user?.data?.token??'',widget.bookingid, userdata?.id.toString()??'');
               },
             ),
       ),
@@ -87,6 +91,7 @@ class _MyOrdersPickupDetailsScreenState extends State<MyOrdersPickupDetailsScree
         ),
       ),
     );
+      },);
     },);
   }
 }

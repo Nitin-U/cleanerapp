@@ -29,15 +29,18 @@ class BinRequestData {
 
   factory BinRequestData.fromJson(Map<String, dynamic> json) {
     return BinRequestData(
-      siteRequests: (json['site_requests'] as List)
-          .map((e) => RequestedItem.fromJson(e))
-          .toList(),
-      warehouseRequests: (json['warehouse_requests'] as List)
-          .map((e) => RequestedItem.fromJson(e))
-          .toList(),
+      siteRequests: (json['site_requests'] as List<dynamic>?)
+              ?.map((e) => RequestedItem.fromJson(e))
+              .toList() ??
+          [],
+      warehouseRequests: (json['warehouse_requests'] as List<dynamic>?)
+              ?.map((e) => RequestedItem.fromJson(e))
+              .toList() ??
+          [],
     );
   }
 }
+
 
 class RequestedItem {
   final int id;
@@ -49,6 +52,8 @@ class RequestedItem {
   final int orderDuration;
   final String binSizeName;
   final String type;
+  final String stage;
+  final String status;
 
   RequestedItem({
     required this.id,
@@ -60,6 +65,8 @@ class RequestedItem {
     required this.orderDuration,
     required this.binSizeName,
     required this.type,
+    required this.stage,
+    required this.status,
   });
 
   factory RequestedItem.fromJson(Map<String, dynamic> json) {
@@ -73,6 +80,8 @@ class RequestedItem {
       orderDuration: json['order_duration'],
       binSizeName: json['bin_size_name'],
       type: json['type'],
+      stage: json['stage'],
+      status: json['status'],
     );
   }
 }

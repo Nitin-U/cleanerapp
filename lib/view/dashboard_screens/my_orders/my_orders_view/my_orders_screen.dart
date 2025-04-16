@@ -1,6 +1,7 @@
 
 import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
+import 'package:binbookingapp/view/authentication/login/login_provider/login_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/components/my_orderes_drop_off_list/my_orders_dropoff_list.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/components/my_orders_pickup_list/my_orders_pickup_list.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart';
@@ -10,9 +11,24 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 
-class MyOrdersScreen extends StatelessWidget {
+class MyOrdersScreen extends StatefulWidget {
   const MyOrdersScreen({super.key});
 
+  @override
+  State<MyOrdersScreen> createState() => _MyOrdersScreenState();
+}
+
+class _MyOrdersScreenState extends State<MyOrdersScreen> {
+
+
+ Future<void> refestdata()async{
+     final logindata = Provider.of<LoginProvider>(context, listen: false);
+    final myordersdata = Provider.of<MyOrderProvider>(context, listen: false);
+      await myordersdata.getMyordersData(
+      logindata.user?.data?.token ?? '',
+      logindata.user?.data?.user?.id.toString() ?? '',
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Consumer<MyOrderProvider>(
@@ -36,17 +52,20 @@ class MyOrdersScreen extends StatelessWidget {
               
             ): Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10).r,
-                child: SingleChildScrollView(
-                  child: Column(
+                child:RefreshIndicator(
+                  onRefresh: refestdata,
+                  child: ListView(
+                    children: [ Column(
                     spacing: 15.r,
                     children: [
                       MyOrdersTabs(),
                       if(orders.tabs ==0)
                        MyOrdersPickUpList(),
-
+                  
                        if(orders.tabs ==1)
                       MyOrdersDropOffList()
                     ],
+                  )],
                   ),
                 )));
       },

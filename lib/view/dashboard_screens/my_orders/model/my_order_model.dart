@@ -1,7 +1,7 @@
 class MyOrderModel {
   final String status;
   final String message;
-  final RequestData data;
+  final BinOrderData data;
 
   MyOrderModel({
     required this.status,
@@ -13,33 +13,35 @@ class MyOrderModel {
     return MyOrderModel(
       status: json['status'],
       message: json['message'],
-      data: RequestData.fromJson(json['data']),
+      data: BinOrderData.fromJson(json['data']),
     );
   }
 }
 
-class RequestData {
-  final List<RequestItem> siteRequests;
-  final List<RequestItem> warehouseRequests;
+class BinOrderData {
+  final List<RequestsItem> siteOrder;
+  final List<RequestsItem> warehouseOrder;
 
-  RequestData({
-    required this.siteRequests,
-    required this.warehouseRequests,
+  BinOrderData({
+    required this.siteOrder,
+    required this.warehouseOrder,
   });
 
-  factory RequestData.fromJson(Map<String, dynamic> json) {
-    return RequestData(
-      siteRequests: (json['site_requests'] as List)
-          .map((item) => RequestItem.fromJson(item))
-          .toList(),
-      warehouseRequests: (json['warehouse_requests'] as List)
-          .map((item) => RequestItem.fromJson(item))
-          .toList(),
+  factory BinOrderData.fromJson(Map<String, dynamic> json) {
+    return BinOrderData(
+      siteOrder: (json['site_order'] as List<dynamic>?)
+              ?.map((e) => RequestsItem.fromJson(e))
+              .toList() ??
+          [],
+      warehouseOrder: (json['warehouse_order'] as List<dynamic>?)
+              ?.map((e) => RequestsItem.fromJson(e))
+              .toList() ??
+          [],
     );
   }
 }
 
-class RequestItem {
+class RequestsItem {
   final int id;
   final int quantity;
   final String startDate;
@@ -49,8 +51,10 @@ class RequestItem {
   final int orderDuration;
   final String binSizeName;
   final String type;
+  final String stage;
+  final String status;
 
-  RequestItem({
+  RequestsItem({
     required this.id,
     required this.quantity,
     required this.startDate,
@@ -60,10 +64,12 @@ class RequestItem {
     required this.orderDuration,
     required this.binSizeName,
     required this.type,
+    required this.stage,
+    required this.status,
   });
 
-  factory RequestItem.fromJson(Map<String, dynamic> json) {
-    return RequestItem(
+  factory RequestsItem.fromJson(Map<String, dynamic> json) {
+    return RequestsItem(
       id: json['Id'],
       quantity: json['quantity'],
       startDate: json['start_date'],
@@ -73,6 +79,8 @@ class RequestItem {
       orderDuration: json['order_duration'],
       binSizeName: json['bin_size_name'],
       type: json['type'],
+      stage: json['stage'],
+      status: json['status'],
     );
   }
 }

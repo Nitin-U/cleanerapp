@@ -1,4 +1,5 @@
 
+import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/model/bin_booking_model.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/service/bin_booking_api_service.dart';
@@ -20,14 +21,13 @@ class BinRequestProvider extends ChangeNotifier {
       notifyListeners();
       final binbook = await fetchBinbooking(token);
       _binBookingModel = BinBookingModel.fromJson(binbook);
-     
-
+      print('book${binbook}');
       loadingbinbooking = false;
       notifyListeners();
     } catch (e) {
       loadingbinbooking = false;
       notifyListeners();
-      print('Error in getWalletData: $e');
+      print('Error in binbookingdata $e');
       rethrow;
     }
   }
@@ -43,7 +43,6 @@ Future<void> getRequestAccept(
   String bookingid,
   String driverid,
 ) async {
-  print('${bookingid}${driverid}');
   try {
     loadingrequestaccept = true;
     notifyListeners();
@@ -67,9 +66,9 @@ Future<void> getRequestAccept(
           dismissDirection: DismissDirection.up,
           content: Text(
             accept['message'] ?? 'Unknown response',
-            style: dashboardlablefontwhite,
+            style: buttonfond,
           ),
-          backgroundColor: accept['status'] == 'success' ? Colors.black : Colors.black,
+          backgroundColor: accept['status'] == 'success' ? CleanerAppcolors.primarydarkGreencolor :CleanerAppcolors.primaryRedcolor,
         ),
       );
     }

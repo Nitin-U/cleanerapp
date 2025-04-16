@@ -37,7 +37,7 @@ class FormCard extends StatelessWidget {
               SizedBox(height: 10.r),
               Column(
                 children: List.generate(
-                 quantity,
+                 order.serialControllers.length,
                   (index) => Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

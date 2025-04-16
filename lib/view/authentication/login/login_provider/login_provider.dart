@@ -1,5 +1,6 @@
 
 import 'package:binbookingapp/custom_widget/transaction_route.dart';
+import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
 import 'package:binbookingapp/view/authentication/login/model/user_model.dart';
 import 'package:binbookingapp/view/authentication/login/service/login_api_service.dart';
@@ -33,9 +34,10 @@ class LoginProvider extends ChangeNotifier {
       _userModel = UserModel.fromJson(userMap);
       if (userMap['status'] == 'success') {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: CleanerAppcolors.primaryGreencolor,
             content: Text(
           userMap['message'],
-          style: dashboardlablefontwhite,
+          style: buttonfond,
         )));
         Navigator.pushAndRemoveUntil(
           context,
@@ -44,9 +46,10 @@ class LoginProvider extends ChangeNotifier {
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: CleanerAppcolors.primaryRedcolor,
             content: Text(
           userMap['message'],
-          style: dashboardlablefontwhite,
+          style: buttonfond,
         )));
       }
 

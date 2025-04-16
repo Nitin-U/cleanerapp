@@ -13,18 +13,15 @@ class MyOrdersPickUpList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<MyOrderProvider>(
       builder: (context, order, child) {
-        final siteRequests = order.order?.data.siteRequests ?? [];
+        final siteRequests = order.order?.data.siteOrder ?? [];
 
         if (siteRequests.isEmpty) {
           return Center(
             child: Padding(
-              padding:  EdgeInsets.symmetric(vertical: 330).r,
+              padding: EdgeInsets.symmetric(vertical: 330).r,
               child: Text(
                 'No Pickup Order Found',
-                style: TextStyle(
-                  fontSize:22.r,
-                  color: Colors.black,
-                ),
+                style: TextStyle(fontSize: 22.r, color: Colors.black),
               ),
             ),
           );
@@ -35,27 +32,35 @@ class MyOrdersPickUpList extends StatelessWidget {
           children: List.generate(siteRequests.length, (index) {
             var sitedata = siteRequests[index];
             return MyOrdersCard(
+              
               onPressed: () {
-                Navigator.push(
-                  context,
-                  CustomPageRoute(
-                    child: MyOrdersPickupDetailsScreen(
-                      binsizename: sitedata.binSizeName,
-                      duration: sitedata.orderDuration.toString(),
-                      customername: sitedata.customerName,
-                      startDate: sitedata.startDate,
-                      endate: sitedata.endDate,
-                      quantity: sitedata.quantity,
-                      location: sitedata.location,
+                if (sitedata.stage == 'order_picked_up') {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('lol')));
+                } else {
+                  Navigator.push(
+                    context,
+                    CustomPageRoute(
+                      child: MyOrdersPickupDetailsScreen(
+                        binsizename: sitedata.binSizeName,
+                        duration: sitedata.orderDuration.toString(),
+                        customername: sitedata.customerName,
+                        startDate: sitedata.startDate,
+                        endate: sitedata.endDate,
+                        quantity: sitedata.quantity,
+                        location: sitedata.location,
+                        bookingid: sitedata.id.toString(),
+                      ),
                     ),
-                  ),
-                );
+                  );
+                }
               },
               address: sitedata.location,
               quantity: sitedata.quantity.toString(),
               startdate: sitedata.startDate,
               endDate: sitedata.endDate,
               binsizename: sitedata.binSizeName,
+              buttonlabel: sitedata.stage == 'order_picked_up'?'Confirm Delivery':'View',
+              stage: '',
             );
           }),
         );

@@ -9,6 +9,8 @@ class MyOrdersCard extends StatelessWidget {
   final String address;
   final String binsizename;
   final String quantity;
+  final String stage;
+  final String buttonlabel;
   final String startdate;
   final String endDate;
   final VoidCallback? onTap;
@@ -21,7 +23,7 @@ class MyOrdersCard extends StatelessWidget {
     required this.binsizename,
     required this.endDate,
     this.onPressed,
-    this.onTap,
+    this.onTap, required this.buttonlabel, required this.stage,
   });
 
   @override
@@ -59,7 +61,7 @@ class MyOrdersCard extends StatelessWidget {
                       ),
                       CleanerChip(
                         onPressed: onPressed,
-                        label: 'View',
+                        label: buttonlabel,
                         backgroundColor: CleanerAppcolors.primarybrowncolor,
                       ),
                     ],

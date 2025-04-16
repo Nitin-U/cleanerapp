@@ -16,10 +16,10 @@ class MyOrdersDropOffList extends StatelessWidget {
         return Column(
           spacing: 15.r,
           children: List.generate(
-            order.order?.data.warehouseRequests.length??0,
+            order.order?.data.warehouseOrder.length??0,
             (index) {
-             var waredata = order.order?.data.warehouseRequests[index];
-             var warehousedata = order.order?.data.warehouseRequests??[];
+             var waredata = order.order?.data.warehouseOrder[index];
+             var warehousedata = order.order?.data.warehouseOrder??[];
 
              if(warehousedata.isEmpty){
               return Padding(
@@ -41,7 +41,7 @@ class MyOrdersDropOffList extends StatelessWidget {
               quantity: waredata?.quantity.toString()??'',
               startdate: waredata?.startDate??'',
               endDate: waredata?.endDate??'',
-              binsizename: waredata?.binSizeName??'',
+              binsizename: waredata?.binSizeName??'', buttonlabel: '', stage: '',
             );
             }
           ),

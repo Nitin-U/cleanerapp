@@ -20,7 +20,7 @@ Future<Map<String, dynamic>> fetchBinbooking(String token) async {
         validateStatus: (status) => status != null && status < 500,
       ),
     );
-
+print('response.data${response.data}');
     if (response.data is Map<String, dynamic>) {
       return response.data;
     } else if (response.data is String) {
@@ -51,15 +51,13 @@ Future<Map<String, dynamic>> fetchRequestAccept(
   String token,
 ) async {
   var headers = {
+    'Accept': 'application/json',
     'Content-Type': 'application/json',
     'Authorization': 'Bearer $token', // Ensure token is valid and not expired
   };
 
-  var data = jsonEncode({
-    "driver_id": driverId,
-    "booking_id": binBookingId,
-  });
-print(data);
+  var data = jsonEncode({"driver_id": driverId, "booking_id": binBookingId});
+  print(data);
   var dio = Dio();
 
   try {
@@ -88,7 +86,6 @@ print(data);
     } catch (e) {
       return {"status": "error", "message": "Failed to parse response"};
     }
-
   } catch (e) {
     print('Error during request accept: $e');
     return {"status": "error", "message": "Something went wrong"};
