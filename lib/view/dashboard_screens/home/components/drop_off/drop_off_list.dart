@@ -33,10 +33,10 @@ class DropOff extends StatelessWidget {
                                   6
                               ? 6
                               : (bindata
-                                      .binbook?.data?.warehouseRequests?.length ??
+                                      .binbook?.data.warehouseRequests.length ??
                                   0), (index) {
                         final waredata =
-                            bindata.binbook?.data?.warehouseRequests?[index];
+                            bindata.binbook?.data.warehouseRequests[index];
                         return BinRequestCard(
                           onPressed: () {
                             showModalBottomSheet(
@@ -59,7 +59,7 @@ class DropOff extends StatelessWidget {
                           duration: waredata?.orderDuration.toString() ?? '',
                         );
                       }),
-                      if ((bindata.binbook?.data?.warehouseRequests?.length ??
+                      if ((bindata.binbook?.data.warehouseRequests.length ??
                               0) >
                           6)
                         GestureDetector(

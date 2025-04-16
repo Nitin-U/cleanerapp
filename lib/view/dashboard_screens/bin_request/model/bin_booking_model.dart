@@ -19,8 +19,8 @@ class BinBookingModel {
 }
 
 class BinRequestData {
-  final List<RequestItem> siteRequests;
-  final List<RequestItem> warehouseRequests;
+  final List<RequestedItem> siteRequests;
+  final List<RequestedItem> warehouseRequests;
 
   BinRequestData({
     required this.siteRequests,
@@ -30,16 +30,16 @@ class BinRequestData {
   factory BinRequestData.fromJson(Map<String, dynamic> json) {
     return BinRequestData(
       siteRequests: (json['site_requests'] as List)
-          .map((e) => RequestItem.fromJson(e))
+          .map((e) => RequestedItem.fromJson(e))
           .toList(),
       warehouseRequests: (json['warehouse_requests'] as List)
-          .map((e) => RequestItem.fromJson(e))
+          .map((e) => RequestedItem.fromJson(e))
           .toList(),
     );
   }
 }
 
-class RequestItem {
+class RequestedItem {
   final int id;
   final int quantity;
   final String startDate;
@@ -50,7 +50,7 @@ class RequestItem {
   final String binSizeName;
   final String type;
 
-  RequestItem({
+  RequestedItem({
     required this.id,
     required this.quantity,
     required this.startDate,
@@ -62,8 +62,8 @@ class RequestItem {
     required this.type,
   });
 
-  factory RequestItem.fromJson(Map<String, dynamic> json) {
-    return RequestItem(
+  factory RequestedItem.fromJson(Map<String, dynamic> json) {
+    return RequestedItem(
       id: json['Id'],
       quantity: json['quantity'],
       startDate: json['start_date'],

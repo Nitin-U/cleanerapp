@@ -33,26 +33,27 @@ class BinRequestProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+List<RequestedItem> allRequests = [];
+List<RequestedItem> filteredRequests = [];
 
-  //  List<RequestData> allRequests = [];
-  // List<RequestData> filteredRequests = [];
+void setRequests(List<RequestedItem> siteRequests, List<RequestedItem> warehouseRequests) {
+  allRequests = [...siteRequests, ...warehouseRequests];
+  filteredRequests = allRequests;
+  notifyListeners();
+}
 
-  // void setRequests(List<RequestData> siteRequests, List<RequestData> warehouseRequests) {
-  //   allRequests = [...siteRequests, ...warehouseRequests];
-  //   filteredRequests = allRequests;
-  //   notifyListeners();
-  // }
 
-  // void filter(String query) {
-  //   query = query.toLowerCase();
-  //   filteredRequests = allRequests.where((item) {
-  //     return item..toLowerCase().contains(query) ||
-  //         item.location.toLowerCase().contains(query) ||
-  //         item.startDate.toLowerCase().contains(query) ||
-  //         item.endDate.toLowerCase().contains(query) ||
-  //         item.binSizeName.toLowerCase().contains(query) ||
-  //         item.type.toLowerCase().contains(query);
-  //   }).toList();
-  //   notifyListeners();
-  // }
+ void filter(String query) {
+  query = query.toLowerCase();
+  filteredRequests = allRequests.where((item) {
+    return item.customerName.toLowerCase().contains(query) ||
+        item.location.toLowerCase().contains(query) ||
+        item.startDate.toLowerCase().contains(query) ||
+        item.endDate.toLowerCase().contains(query) ||
+        item.binSizeName.toLowerCase().contains(query) ||
+        item.type.toLowerCase().contains(query);
+  }).toList();
+  notifyListeners();
+}
+
 }
