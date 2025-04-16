@@ -1,7 +1,6 @@
 
 import 'package:binbookingapp/view/dashboard_screens/bin_request/model/bin_booking_model.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/service/bin_booking_api_service.dart';
-import 'package:binbookingapp/view/dashboard_screens/my_orders/model/my_order_model.dart';
 import 'package:flutter/material.dart';
 
 class BinRequestProvider extends ChangeNotifier {
