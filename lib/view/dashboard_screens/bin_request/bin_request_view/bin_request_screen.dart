@@ -42,10 +42,10 @@ class BinRequestView extends StatelessWidget {
                             Column(
                               spacing: 15.r,
                               children: List.generate(
-                                  binr.binbook?.data?.siteRequests?.length ?? 0,
+                                  binr.binbook?.data.siteRequests.length ?? 0,
                                   (index) {
                                 var bindata =
-                                    binr.binbook?.data?.siteRequests?[index];
+                                    binr.binbook?.data.siteRequests[index];
                                 return BinRequestCard(
                                   onPressed: () {
                                     showModalBottomSheet(
@@ -75,10 +75,10 @@ class BinRequestView extends StatelessWidget {
                             Column(
                               spacing: 15.r,
                               children: List.generate(
-                                  binr.binbook?.data?.warehouseRequests?.length ??
+                                  binr.binbook?.data.warehouseRequests.length ??
                                       0, (index) {
                                 final waredata =
-                                    binr.binbook?.data?.warehouseRequests?[index];
+                                    binr.binbook?.data.warehouseRequests[index];
                                 return BinRequestCard(
                                   onPressed: () {
                                     showModalBottomSheet(

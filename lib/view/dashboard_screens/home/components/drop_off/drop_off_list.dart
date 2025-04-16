@@ -28,7 +28,7 @@ class DropOff extends StatelessWidget {
                     spacing: 15.r,
                     children: [
                       ...List.generate(
-                          (bindata.binbook?.data?.warehouseRequests?.length ??
+                          (bindata.binbook?.data.warehouseRequests.length ??
                                       0) >
                                   6
                               ? 6
