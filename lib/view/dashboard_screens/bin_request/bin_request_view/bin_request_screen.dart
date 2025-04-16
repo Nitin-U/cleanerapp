@@ -1,5 +1,6 @@
 import 'package:binbookingapp/utils/appcolors.dart';
-import 'package:binbookingapp/utils/style.dart' show appbartitlefont;
+import 'package:binbookingapp/utils/style.dart'
+    show appbartitlefont, resendfont;
 import 'package:binbookingapp/view/authentication/login/login_provider/login_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_tab/bin_request_tabs.dart';
@@ -49,57 +50,88 @@ class BinRequestView extends StatelessWidget {
                             children: [
                               BinRequestTabs(),
                               if (binr.currenttab == 0)
-                                Column(
-                                  spacing: 15.r,
-                                  children: List.generate(
-                                    binr.binbook?.data.siteRequests.length ?? 0,
-                                    (index) {
-                                   
-                                      var bindata =
-                                          binr
-                                              .binbook
-                                              ?.data
-                                              .siteRequests[index];
-                           
-                                      return BinRequestCard(
-                                        onPressed: () {
-                                          showModalBottomSheet(
-                                            showDragHandle: true,
-                                            context: context,
-                                            builder: (context) {
-                                              return BinBookingBottomSheet(
-                                                customername:
-                                                    bindata?.customerName ?? '',
-                                                location:
-                                                    bindata?.location ?? '',
-                                                endDate: bindata?.endDate ?? '',
-                                                type: bindata?.type ?? '',
-                                                binsizeName:
-                                                    bindata?.binSizeName ?? '',
-                                                bookingId:
-                                                    bindata?.id.toString() ??
-                                                    '',
-                                                userId:
-                                                    log.user?.data?.user?.id
-                                                        .toString() ??
-                                                    '',
-                                                usertoken:
-                                                    log.user?.data?.token ?? '',
+                                // Check if siteRequests is empty
+                                (binr.binbook?.data.siteRequests.isEmpty ??
+                                        true)
+                                    ? Center(
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 300.r,
+                                        ),
+                                        child: Text(
+                                          'No Pick Up Request Found',
+                                          style: resendfont,
+                                        ),
+                                      ),
+                                    )
+                                    : Column(
+                                      spacing: 15.r,
+                                      children: List.generate(
+                                        binr
+                                                .binbook
+                                                ?.data
+                                                .siteRequests
+                                                .length ??
+                                            0,
+                                        (index) {
+                                          var bindata =
+                                              binr
+                                                  .binbook
+                                                  ?.data
+                                                  .siteRequests[index];
+                                          return BinRequestCard(
+                                            onPressed: () {
+                                              showModalBottomSheet(
+                                                showDragHandle: true,
+                                                context: context,
+                                                builder: (context) {
+                                                  return BinBookingBottomSheet(
+                                                    customername:
+                                                        bindata?.customerName ??
+                                                        '',
+                                                    location:
+                                                        bindata?.location ?? '',
+                                                    endDate:
+                                                        bindata?.endDate ?? '',
+                                                    type: bindata?.type ?? '',
+                                                    binsizeName:
+                                                        bindata?.binSizeName ??
+                                                        '',
+                                                    bookingId:
+                                                        bindata?.id
+                                                            .toString() ??
+                                                        '',
+                                                    userId:
+                                                        log.user?.data?.user?.id
+                                                            .toString() ??
+                                                        '',
+                                                    usertoken:
+                                                        log.user?.data?.token ??
+                                                        '',
+                                                  );
+                                                },
                                               );
                                             },
+                                            address: bindata?.location ?? 'N/A',
+                                            quantity:
+                                                bindata?.quantity.toString() ??
+                                                '0',
+                                            startdate: bindata?.startDate ?? '',
+                                            duration: bindata?.endDate ?? '0',
+                                            binsizename: '',
                                           );
                                         },
-                                        address: bindata?.location ?? 'N/A',
-                                        quantity:
-                                            bindata?.quantity.toString() ?? '0',
-                                        startdate: bindata?.startDate ?? '',
-                                        duration: bindata?.endDate ?? '0',
-                                        binsizename: '',
-                                      );
-                                    },
-                                  ),
-                                ),
+                                      ),
+                                    ),
                               if (binr.currenttab == 1)
+                               (binr.binbook?.data.warehouseRequests.isEmpty ??
+                                        true)?  Padding(
+                                          padding:  EdgeInsets.symmetric(vertical: 300.r),
+                                          child: Center(
+                                            child: Text('No Pick Up Request Found',style: resendfont,),
+                                          ),
+                                        ):
+                                      
                                 Column(
                                   spacing: 15.r,
                                   children: List.generate(
