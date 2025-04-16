@@ -12,9 +12,7 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 
 class PickUp extends StatelessWidget {
-  const PickUp({
-    super.key,
-  });
+  const PickUp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,58 +20,74 @@ class PickUp extends StatelessWidget {
       builder: (context, dash, child) {
         return Consumer<LoginProvider>(builder: (context, log, child) {
           return Consumer<BinRequestProvider>(
-          builder: (context, bindata, child) {
-            return bindata.loadingbinbooking == true
-                ? LoadingAnimationWidget.hexagonDots(
-                    color: CleanerAppcolors.primarybrowncolor, size: 20.r)
-                : Column(
-                    spacing: 15.r,
-                    children: [
-                      ...List.generate(
-                        (bindata.binbook?.data.siteRequests.length ?? 0) > 6
-                            ? 6
-                            : (bindata.binbook?.data.siteRequests.length ?? 0),
-                        (index) {
-                          var data = bindata.binbook?.data.siteRequests[index];
-                          return BinRequestCard(
-                            onPressed: () {
-                              showModalBottomSheet(
-                                showDragHandle: true,
-                                context: context,
-                                builder: (context) {
-                                  return BinBookingBottomSheet(
-                                    customername: data?.customerName ?? '',
-                                    location: data?.location ?? '',
-                                    endDate: data?.endDate ?? '',
-                                    type: data?.type ?? '',
-                                    binsizeName: data?.binSizeName ?? '', bookingId: data?.id.toString()??'', userId: log.user?.data?.user?.id.toString()??'', usertoken: log.user?.data?.token??'',
-                                  );
-                                },
-                              );
-                            },
-                            address: data?.location ?? 'N/A',
-                            quantity: data?.quantity.toString() ?? 'N/A',
-                            startdate: data?.startDate ?? 'N/A',
-                            duration: data?.orderDuration.toString() ?? 'N/A',
-                            binsizename: data?.binSizeName ?? '',
-                          );
-                        },
-                      ),
-                      if ((bindata.binbook?.data.siteRequests.length ?? 0) > 6)
-                        GestureDetector(
-                          onTap: () {
-                            dash.screenTabs(dash.currenttab = 1);
+            builder: (context, bindata, child) {
+              if (bindata.loadingbinbooking == true) {
+                return LoadingAnimationWidget.hexagonDots(
+                    color: CleanerAppcolors.primarybrowncolor, size: 20.r);
+              } else if ((bindata.binbook?.data.siteRequests.length ?? 0) == 0) {
+                // If the data is empty, show "No data found"
+                return Padding(
+                  padding:  EdgeInsets.symmetric(vertical: 120.r),
+                  child: Center(
+                    child: Text(
+                      'No Pick Up Request Found',
+                      style: resendfont,
+                    ),
+                  ),
+                );
+              } else {
+                return Column(
+                  spacing: 15.r,
+                  children: [
+                    ...List.generate(
+                      (bindata.binbook?.data.siteRequests.length ?? 0) > 6
+                          ? 6
+                          : (bindata.binbook?.data.siteRequests.length ?? 0),
+                      (index) {
+                        var data = bindata.binbook?.data.siteRequests[index];
+                        return BinRequestCard(
+                          onPressed: () {
+                            showModalBottomSheet(
+                              showDragHandle: true,
+                              context: context,
+                              builder: (context) {
+                                return BinBookingBottomSheet(
+                                  customername: data?.customerName ?? '',
+                                  location: data?.location ?? '',
+                                  endDate: data?.endDate ?? '',
+                                  type: data?.type ?? '',
+                                  binsizeName: data?.binSizeName ?? '',
+                                  bookingId: data?.id.toString() ?? '',
+                                  userId: log.user?.data?.user?.id.toString() ?? '',
+                                  usertoken: log.user?.data?.token ?? '',
+                                );
+                              },
+                            );
                           },
-                          child: Text(
-                            'See all',
-                            style: seeallfont,
-                          ),
-                        )
-                    ],
-                  );
-          },
-        );
-        },);
+                          address: data?.location ?? 'N/A',
+                          quantity: data?.quantity.toString() ?? 'N/A',
+                          startdate: data?.startDate ?? 'N/A',
+                          duration: data?.orderDuration.toString() ?? 'N/A',
+                          binsizename: data?.binSizeName ?? '',
+                        );
+                      },
+                    ),
+                    if ((bindata.binbook?.data.siteRequests.length ?? 0) > 6)
+                      GestureDetector(
+                        onTap: () {
+                          dash.screenTabs(dash.currenttab = 1);
+                        },
+                        child: Text(
+                          'See all',
+                          style: seeallfont,
+                        ),
+                      )
+                  ],
+                );
+              }
+            },
+          );
+        });
       },
     );
   }
