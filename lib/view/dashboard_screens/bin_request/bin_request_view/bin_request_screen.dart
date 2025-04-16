@@ -1,6 +1,7 @@
 
 import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart' show appbartitlefont;
+import 'package:binbookingapp/view/authentication/login/login_provider/login_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_tab/bin_request_tabs.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/components/bin_request_card.dart';
@@ -17,7 +18,8 @@ class BinRequestView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<BinRequestProvider>(
       builder: (context, binr, child) {
-        return Scaffold(
+        return Consumer<LoginProvider>(builder: (context, log, child) {
+          return Scaffold(
             appBar: AppBar(
               backgroundColor: CleanerAppcolors.primaryminigreycolor,
               centerTitle: true,
@@ -40,10 +42,10 @@ class BinRequestView extends StatelessWidget {
                             Column(
                               spacing: 15.r,
                               children: List.generate(
-                                  binr.binbook?.data.siteRequests.length ?? 0,
+                                  binr.binbook?.data?.siteRequests?.length ?? 0,
                                   (index) {
                                 var bindata =
-                                    binr.binbook?.data.siteRequests[index];
+                                    binr.binbook?.data?.siteRequests?[index];
                                 return BinRequestCard(
                                   onPressed: () {
                                     showModalBottomSheet(
@@ -57,7 +59,7 @@ class BinRequestView extends StatelessWidget {
                                             endDate: bindata?.endDate ?? '',
                                             type: bindata?.type ?? '',
                                             binsizeName:
-                                                bindata?.binSizeName ?? '');
+                                                bindata?.binSizeName ?? '', bookingId: bindata?.id.toString()??'', userId: bindata?.id.toString()??'',);
                                       },
                                     );
                                   },
@@ -73,10 +75,10 @@ class BinRequestView extends StatelessWidget {
                             Column(
                               spacing: 15.r,
                               children: List.generate(
-                                  binr.binbook?.data.warehouseRequests.length ??
+                                  binr.binbook?.data?.warehouseRequests?.length ??
                                       0, (index) {
                                 final waredata =
-                                    binr.binbook?.data.warehouseRequests[index];
+                                    binr.binbook?.data?.warehouseRequests?[index];
                                 return BinRequestCard(
                                   onPressed: () {
                                     showModalBottomSheet(
@@ -90,7 +92,7 @@ class BinRequestView extends StatelessWidget {
                                             endDate: waredata?.endDate ?? '',
                                             type: waredata?.type ?? '',
                                             binsizeName:
-                                                waredata?.binSizeName ?? '');
+                                                waredata?.binSizeName ?? '', bookingId:waredata?.id.toString()??'', userId: waredata?.id.toString()??'',);
                                       },
                                     );
                                   },
@@ -106,6 +108,7 @@ class BinRequestView extends StatelessWidget {
                         ],
                       ),
                     )));
+        },);
       },
     );
   }

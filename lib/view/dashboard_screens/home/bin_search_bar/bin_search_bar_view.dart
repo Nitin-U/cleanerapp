@@ -10,51 +10,54 @@ class BinSearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => BinRequestProvider()..setRequests(
-        model.data.siteRequests, model.data.warehouseRequests),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Search Requests"),
-        ),
-        body: Consumer<BinRequestProvider>(
-          builder: (context, provider, _) {
-            return Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    onChanged: provider.filter,
-                    decoration: InputDecoration(
-                      hintText: 'Search by name, location, date, etc.',
-                      prefixIcon: Icon(Icons.search),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: provider.filteredRequests.length,
-                    itemBuilder: (context, index) {
-                      final item = provider.filteredRequests[index];
-                      return Card(
-                        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                        child: ListTile(
-                          title: Text(item.customerName),
-                          subtitle: Text("${item.location} • ${item.startDate} → ${item.endDate}"),
-                          trailing: Text(item.binSizeName),
-                        ),
-                      );
-                    },
-                  ),
-                )
-              ],
-            );
-          },
-        ),
-      ),
-    );
+    return  Scaffold();
   }
 }
+
+
+// ChangeNotifierProvider(
+//       create: (_) => BinRequestProvider()..setRequests(
+//         model?.data?.siteRequests??0, model.data.warehouseRequests),
+//       child: Scaffold(
+//         appBar: AppBar(
+//           title: Text("Search Requests"),
+//         ),
+//         body: Consumer<BinRequestProvider>(
+//           builder: (context, provider, _) {
+//             return Column(
+//               children: [
+//                 Padding(
+//                   padding: const EdgeInsets.all(8.0),
+//                   child: TextField(
+//                     onChanged: provider.filter,
+//                     decoration: InputDecoration(
+//                       hintText: 'Search by name, location, date, etc.',
+//                       prefixIcon: Icon(Icons.search),
+//                       border: OutlineInputBorder(
+//                         borderRadius: BorderRadius.circular(10),
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//                 Expanded(
+//                   child: ListView.builder(
+//                     itemCount: provider.filteredRequests.length,
+//                     itemBuilder: (context, index) {
+//                       final item = provider.filteredRequests[index];
+//                       return Card(
+//                         margin: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+//                         child: ListTile(
+//                           title: Text(item.customerName),
+//                           subtitle: Text("${item.location} • ${item.startDate} → ${item.endDate}"),
+//                           trailing: Text(item.binSizeName),
+//                         ),
+//                       );
+//                     },
+//                   ),
+//                 )
+//               ],
+//             );
+//           },
+//         ),
+//       ),
+//     );

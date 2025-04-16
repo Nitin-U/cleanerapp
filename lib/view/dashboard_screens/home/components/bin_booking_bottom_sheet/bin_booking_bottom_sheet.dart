@@ -11,13 +11,15 @@ class BinBookingBottomSheet extends StatelessWidget {
   final String endDate;
   final String type;
   final String binsizeName;
+  final String bookingId;
+  final String userId;
   const BinBookingBottomSheet({
     super.key,
     required this.customername,
     required this.location,
     required this.endDate,
     required this.type,
-    required this.binsizeName,
+    required this.binsizeName, required this.bookingId, required this.userId,
   });
 
   @override
@@ -35,7 +37,7 @@ class BinBookingBottomSheet extends StatelessWidget {
                     CustomListtile(
                       subtitle: customername,
                       title: 'Customer Name',
-                      trailing: Icon(
+                      leading: Icon(
                         Icons.arrow_forward_ios_outlined,
                         size: 20.r,
                       ),
@@ -43,7 +45,7 @@ class BinBookingBottomSheet extends StatelessWidget {
                     CustomListtile(
                       subtitle: location,
                       title: 'Location',
-                      trailing: Icon(
+                      leading: Icon(
                         Icons.arrow_forward_ios_outlined,
                         size: 20.r,
                       ),
@@ -51,7 +53,7 @@ class BinBookingBottomSheet extends StatelessWidget {
                     CustomListtile(
                       subtitle: endDate,
                       title: 'End Date',
-                      trailing: Icon(
+                      leading: Icon(
                         Icons.arrow_forward_ios_outlined,
                         size: 20.r,
                       ),
@@ -59,7 +61,7 @@ class BinBookingBottomSheet extends StatelessWidget {
                     CustomListtile(
                       subtitle: endDate,
                       title: 'Type',
-                      trailing: Icon(
+                      leading: Icon(
                         Icons.arrow_forward_ios_outlined,
                         size: 20.r,
                       ),
@@ -67,7 +69,7 @@ class BinBookingBottomSheet extends StatelessWidget {
                     CustomListtile(
                       subtitle: 'Bin Size:$binsizeName',
                       title: 'Bin Size Name',
-                      trailing: Icon(
+                      leading: Icon(
                         Icons.arrow_forward_ios_outlined,
                         size: 20.r,
                       ),
@@ -80,7 +82,7 @@ class BinBookingBottomSheet extends StatelessWidget {
              CleanerButton.elevated(
                   width: MediaQuery.sizeOf(context).width,
                   backgroundcolor: CleanerAppcolors.primarybrowncolor,
-                  label: 'Accept',
+                  label: 'Accept Request',
                   onPressed: () {})
           ],
         ),

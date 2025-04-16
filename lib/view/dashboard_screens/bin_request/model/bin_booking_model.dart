@@ -40,6 +40,7 @@ class BinRequestData {
 }
 
 class RequestItem {
+  final int id;
   final int quantity;
   final String startDate;
   final String endDate;
@@ -50,6 +51,7 @@ class RequestItem {
   final String type;
 
   RequestItem({
+    required this.id,
     required this.quantity,
     required this.startDate,
     required this.endDate,
@@ -62,6 +64,7 @@ class RequestItem {
 
   factory RequestItem.fromJson(Map<String, dynamic> json) {
     return RequestItem(
+      id: json['Id'],
       quantity: json['quantity'],
       startDate: json['start_date'],
       endDate: json['end_date'],

@@ -4,6 +4,7 @@ import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
 import 'package:binbookingapp/view/authentication/login/login_provider/login_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
+import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_view/bin_request_screen.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/model/bin_booking_model.dart';
 import 'package:binbookingapp/view/dashboard_screens/home/bin_search_bar/bin_search_bar_view.dart';
 import 'package:binbookingapp/view/dashboard_screens/home/components/cleaner_app_drawer/cleaner_app_drawer.dart';
@@ -99,26 +100,26 @@ class _HomeScreenState extends State<HomeScreen> {
                             CleanerTextfield(
                               fillColor: CleanerAppcolors.primaryWhitecolor,
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  CustomPageRoute(
-                                    child: BinSearchScreen(
-                                      model: BinBookingModel(
-                                        status: binr.binbook?.status ?? '',
-                                        message: binr.binbook?.message ?? '',
-                                        data: BinRequestData(
-                                          siteRequests:
-                                              binr.binbook!.data.siteRequests,
-                                          warehouseRequests:
-                                              binr
-                                                  .binbook!
-                                                  .data
-                                                  .warehouseRequests,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                );
+                                // Navigator.push(
+                                //   context,
+                                //   CustomPageRoute(
+                                //     child: BinSearchScreen(
+                                //       model: BinBookingModel(
+                                //         status: binr.binbook?.status ?? '',
+                                //         message: binr.binbook?.message ?? '',
+                                //         data: BinRequestView(
+                                //           siteRequests:
+                                //               binr.binbook!.data.siteRequests,
+                                //           warehouseRequests:
+                                //               binr
+                                //                   .binbook!
+                                //                   .data
+                                //                   .warehouseRequests,
+                                //         ),
+                                //       ),
+                                //     ),
+                                //   ),
+                                // );
                               },
                               prefix: Icon(Icons.search),
                               hintlabel: 'Search',

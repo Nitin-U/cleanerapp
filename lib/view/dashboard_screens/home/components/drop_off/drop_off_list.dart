@@ -28,15 +28,15 @@ class DropOff extends StatelessWidget {
                     spacing: 15.r,
                     children: [
                       ...List.generate(
-                          (bindata.binbook?.data.warehouseRequests.length ??
+                          (bindata.binbook?.data?.warehouseRequests?.length ??
                                       0) >
                                   6
                               ? 6
                               : (bindata
-                                      .binbook?.data.warehouseRequests.length ??
+                                      .binbook?.data?.warehouseRequests?.length ??
                                   0), (index) {
                         final waredata =
-                            bindata.binbook?.data.warehouseRequests[index];
+                            bindata.binbook?.data?.warehouseRequests?[index];
                         return BinRequestCard(
                           onPressed: () {
                             showModalBottomSheet(
@@ -48,7 +48,7 @@ class DropOff extends StatelessWidget {
                                     location: waredata?.location ?? '',
                                     endDate: waredata?.endDate ?? '',
                                     type: waredata?.type ?? '',
-                                    binsizeName: waredata?.binSizeName ?? '');
+                                    binsizeName: waredata?.binSizeName ?? '', bookingId: '', userId: '',);
                               },
                             );
                           },
@@ -59,7 +59,7 @@ class DropOff extends StatelessWidget {
                           duration: waredata?.orderDuration.toString() ?? '',
                         );
                       }),
-                      if ((bindata.binbook?.data.warehouseRequests.length ??
+                      if ((bindata.binbook?.data?.warehouseRequests?.length ??
                               0) >
                           6)
                         GestureDetector(

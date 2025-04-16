@@ -1,6 +1,7 @@
 
 import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
+import 'package:binbookingapp/view/authentication/login/login_provider/login_provider.dart';
 import 'package:binbookingapp/view/dashboard/dashboard_provider/dashboard_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/components/bin_request_card.dart';
@@ -19,7 +20,8 @@ class PickUp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<DashboardProvider>(
       builder: (context, dash, child) {
-        return Consumer<BinRequestProvider>(
+        return Consumer<LoginProvider>(builder: (context, log, child) {
+          return Consumer<BinRequestProvider>(
           builder: (context, bindata, child) {
             return bindata.loadingbinbooking == true
                 ? LoadingAnimationWidget.hexagonDots(
@@ -44,7 +46,7 @@ class PickUp extends StatelessWidget {
                                     location: data?.location ?? '',
                                     endDate: data?.endDate ?? '',
                                     type: data?.type ?? '',
-                                    binsizeName: data?.binSizeName ?? '',
+                                    binsizeName: data?.binSizeName ?? '', bookingId: data?.id.toString()??'', userId: log.user?.data?.user?.id.toString()??'',
                                   );
                                 },
                               );
@@ -71,6 +73,7 @@ class PickUp extends StatelessWidget {
                   );
           },
         );
+        },);
       },
     );
   }

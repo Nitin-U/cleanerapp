@@ -13,33 +13,49 @@ class MyOrdersPickUpList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<MyOrderProvider>(
       builder: (context, order, child) {
+        final siteRequests = order.order?.data.siteRequests ?? [];
+
+        if (siteRequests.isEmpty) {
+          return Center(
+            child: Padding(
+              padding:  EdgeInsets.symmetric(vertical: 330).r,
+              child: Text(
+                'No Pickup Order Found',
+                style: TextStyle(
+                  fontSize:22.r,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          );
+        }
+
         return Column(
           spacing: 15.r,
-          children: List.generate(order.order?.data.siteRequests.length ?? 0, (
-            index,
-          ) {
-            var sitedata = order.order?.data.siteRequests[index];
+          children: List.generate(siteRequests.length, (index) {
+            var sitedata = siteRequests[index];
             return MyOrdersCard(
               onPressed: () {
                 Navigator.push(
                   context,
                   CustomPageRoute(
                     child: MyOrdersPickupDetailsScreen(
-                      binsizename: sitedata?.binSizeName??'',
-                      duration: sitedata?.orderDuration.toString()??'',
-                      customername: sitedata?.customerName ?? '',
-                      startDate: sitedata?.startDate ?? '',
-                      endate: sitedata?.endDate ?? '',
-                      quantity: sitedata?.quantity ?? 0, location: sitedata?.location??'',
+                      binsizename: sitedata.binSizeName,
+                      duration: sitedata.orderDuration.toString(),
+                      customername: sitedata.customerName,
+                      startDate: sitedata.startDate,
+                      endate: sitedata.endDate,
+                      quantity: sitedata.quantity,
+                      location: sitedata.location,
                     ),
                   ),
                 );
               },
-              address: sitedata?.location ?? '',
-              quantity: sitedata?.quantity.toString() ?? '',
-              startdate: sitedata?.startDate ?? '',
-              endDate: sitedata?.endDate ?? '',
-              binsizename: sitedata?.binSizeName ?? '',
+              address: sitedata.location,
+              quantity: sitedata.quantity.toString(),
+              startdate: sitedata.startDate,
+              endDate: sitedata.endDate,
+              binsizename: sitedata.binSizeName,
             );
           }),
         );

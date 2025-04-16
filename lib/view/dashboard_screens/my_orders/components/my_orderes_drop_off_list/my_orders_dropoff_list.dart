@@ -19,6 +19,20 @@ class MyOrdersDropOffList extends StatelessWidget {
             order.order?.data.warehouseRequests.length??0,
             (index) {
              var waredata = order.order?.data.warehouseRequests[index];
+             var warehousedata = order.order?.data.warehouseRequests??[];
+
+             if(warehousedata.isEmpty){
+              return Padding(
+                padding:  EdgeInsets.symmetric(vertical: 350).r,
+                child: Text(
+                'No DropOff Order Found',
+                style: TextStyle(
+                  fontSize:22.r,
+                  color: Colors.black,
+                ),
+              ),
+              );
+             }
               return MyOrdersCard(
                 onPressed: () {
                   Navigator.push(context, CustomPageRoute(child: MyOrdersDropOffDetailsScreen(quantity: waredata?.quantity??0, customerName: waredata?.customerName??'', startdate: waredata?.startDate??'', endate: waredata?.startDate??'', location:waredata?.location??'', duration: waredata?.orderDuration.toString()??'', binsizename: waredata?.binSizeName??'',)));
