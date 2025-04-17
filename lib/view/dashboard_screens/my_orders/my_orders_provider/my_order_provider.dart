@@ -1,5 +1,6 @@
 import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
+import 'package:binbookingapp/view/dashboard_screens/my_orders/model/my_order_dropoff_details_model.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/model/my_order_model.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/service/my_order_api_service.dart';
 import 'package:flutter/material.dart';
@@ -10,10 +11,12 @@ class MyOrderProvider extends ChangeNotifier {
   bool isdamaged = true;
 
   bool loadingserialdata = false;
-
+  bool loadingmyorderdropoffdetail = false;
   bool loadingmyorderdata = false;
   MyOrderModel? _myOrderModel;
   MyOrderModel? get order => _myOrderModel;
+  MyOrdersDropOffDetailModel? _myOrdersDropOffDetailModel;
+  MyOrdersDropOffDetailModel? get orderdetail => _myOrdersDropOffDetailModel;
 
   int tabs = 0;
   void toggleTab(int index) {
@@ -38,7 +41,23 @@ class MyOrderProvider extends ChangeNotifier {
       rethrow;
     }
   }
+Future<void> getMyorderDropOffDetail(token, id) async {
+    try {
+      loadingmyorderdata = true;
+      notifyListeners();
+      final binbook = await fetchMyorders(token, id);
+      _myOrderModel = MyOrderModel.fromJson(binbook);
+      print('myorder $binbook');
 
+      loadingmyorderdata = false;
+      notifyListeners();
+    } catch (e) {
+      loadingmyorderdata = false;
+      notifyListeners();
+      print('Error in getWalletData: $e');
+      rethrow;
+    }
+  }
   List<bool> isDamagedList = [];
   List<List<XFile>> imagesPerBin = [];
 
@@ -104,69 +123,71 @@ class MyOrderProvider extends ChangeNotifier {
   List<TextEditingController> serialControllers = [];
   List<String> binSerialNumbers = [];
 
+  Future<void> getSerialData(
+    BuildContext context,
+    String token,
+    String bookingid,
+    String driverid,
+  ) async {
+    print('Booking ID: $bookingid, Driver ID: $driverid');
 
-Future<void> getSerialData(
-  BuildContext context,
-  String token,
-  String bookingid,
-  String driverid,
-) async {
-  print('Booking ID: $bookingid, Driver ID: $driverid');
+    try {
+      loadingserialdata = true;
+      notifyListeners();
 
-  try {
-    loadingserialdata = true;
-    notifyListeners();
+      // Extract the values from the controllers
+      List<String> serialNumbers =
+          serialControllers
+              .map((controller) => controller.text.trim())
+              .toList();
 
-    // Extract the values from the controllers
-    List<String> serialNumbers = serialControllers.map((controller) => controller.text.trim()).toList();
-
-    final accept = await fetchSerialData(driverid, bookingid, serialNumbers, token);
-
-    loadingserialdata = false;
-    notifyListeners();
-
-    print('API Response: $accept');
-
-    if (context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          behavior: SnackBarBehavior.floating,
-          margin: EdgeInsets.only(
-            bottom: MediaQuery.sizeOf(context).height - 170.r,
-            left: 10.r,
-            right: 10.r,
-          ),
-          dismissDirection: DismissDirection.up,
-          content: Text(
-            accept['message'] ?? 'Unknown response',
-            style: buttonfond,
-          ),
-          backgroundColor: accept['status'] == 'success'
-              ? CleanerAppcolors.primarydarkGreencolor
-              : CleanerAppcolors.primaryRedcolor,
-        ),
+      final accept = await fetchSerialData(
+        driverid,
+        bookingid,
+        serialNumbers,
+        token,
       );
-    }
-  } catch (e) {
-    loadingserialdata = false;
-    notifyListeners();
 
-    if (context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
+      loadingserialdata = false;
+      notifyListeners();
 
-    print('Error: $e');
-    throw {"error": e};
+      print('API Response: $accept');
+
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            behavior: SnackBarBehavior.floating,
+            margin: EdgeInsets.only(
+              bottom: MediaQuery.sizeOf(context).height - 170.r,
+              left: 10.r,
+              right: 10.r,
+            ),
+            dismissDirection: DismissDirection.up,
+            content: Text(
+              accept['message'] ?? 'Unknown response',
+              style: buttonfond,
+            ),
+            backgroundColor:
+                accept['status'] == 'success'
+                    ? CleanerAppcolors.primarydarkGreencolor
+                    : CleanerAppcolors.primaryRedcolor,
+          ),
+        );
+      }
+    } catch (e) {
+      loadingserialdata = false;
+      notifyListeners();
+
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
+        );
+      }
+
+      print('Error: $e');
+      throw {"error": e};
+    }
   }
-}
-
-
-
 
   void initializeControllers(int quantity) {
     serialControllers = List.generate(quantity, (_) => TextEditingController());
