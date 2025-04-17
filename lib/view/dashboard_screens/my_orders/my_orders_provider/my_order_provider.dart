@@ -17,7 +17,6 @@ class MyOrderProvider extends ChangeNotifier {
   MyOrderModel? get order => _myOrderModel;
   MyOrdersDropOffDetailModel? _myOrdersDropOffDetailModel;
   MyOrdersDropOffDetailModel? get orderdetail => _myOrdersDropOffDetailModel;
-
   int tabs = 0;
   void toggleTab(int index) {
     tabs = index;
@@ -30,7 +29,7 @@ class MyOrderProvider extends ChangeNotifier {
       notifyListeners();
       final binbook = await fetchMyorders(token, id);
       _myOrderModel = MyOrderModel.fromJson(binbook);
-      print('myorder $binbook');
+      print('myorderdetails $binbook');
 
       loadingmyorderdata = false;
       notifyListeners();
@@ -41,31 +40,40 @@ class MyOrderProvider extends ChangeNotifier {
       rethrow;
     }
   }
-Future<void> getMyorderDropOffDetail(token, id) async {
-    try {
-      loadingmyorderdata = true;
-      notifyListeners();
-      final binbook = await fetchMyorders(token, id);
-      _myOrderModel = MyOrderModel.fromJson(binbook);
-      print('myorder $binbook');
 
-      loadingmyorderdata = false;
-      notifyListeners();
-    } catch (e) {
-      loadingmyorderdata = false;
-      notifyListeners();
-      print('Error in getWalletData: $e');
-      rethrow;
-    }
+ Future<void> getMyorderDropOffDetail(String token, String id) async {
+  try {
+    loadingmyorderdata = true;
+    notifyListeners();
+
+    final binbook = await fetchmyordersdropoff(token, id);
+    _myOrdersDropOffDetailModel = MyOrdersDropOffDetailModel.fromJson(binbook);
+
+    // ✅ Initialize isDamagedList and imagesPerBin here
+    final count = _myOrdersDropOffDetailModel?.bookingSerialNumbers?.length??0;
+    initializeDamagedList(count);
+
+    print('myorder $binbook');
+
+    loadingmyorderdata = false;
+    notifyListeners();
+  } catch (e) {
+    loadingmyorderdata = false;
+    notifyListeners();
+    print('Error in getfetchdetailsdata: $e');
+    rethrow;
   }
+}
+
   List<bool> isDamagedList = [];
   List<List<XFile>> imagesPerBin = [];
 
-  void initializeDamagedList(int count) {
-    isDamagedList = List.generate(count, (index) => false);
-    imagesPerBin = List.generate(count, (index) => []);
-    notifyListeners();
-  }
+ void initializeDamagedList(int count) {
+  isDamagedList = List.generate(count, (_) => false);
+  imagesPerBin = List.generate(count, (_) => []);
+  notifyListeners();
+}
+
 
   void toggleCheckbox(int index, bool? value) {
     if (value != null && index >= 0 && index < isDamagedList.length) {
@@ -209,4 +217,25 @@ Future<void> getMyorderDropOffDetail(token, id) async {
       debugPrint(binSerialNumbers.toString());
     }
   }
+Map<String, dynamic> buildDropOffSubmissionData() {
+  final serialNumbers = orderdetail?.bookingSerialNumbers ?? [];
+  Map<String, dynamic> result = {};
+
+  for (int i = 0; i < serialNumbers.length; i++) {
+    final binId = serialNumbers[i].id?.toString(); // Convert ID to String
+
+    if (binId != null) {
+      result[binId] = {
+        'isDamaged': isDamagedList[i],
+        'images': imagesPerBin[i].map((xfile) => xfile.path).toList(),
+      };
+    }
+  }
+
+  return result;
+}
+
+
+
+
 }

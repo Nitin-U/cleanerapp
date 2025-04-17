@@ -109,7 +109,7 @@ Future<Map<String, dynamic>> fetchmyordersdropoff(String token, String id) async
     var dio = Dio();
 
     var response = await dio.request(
-      '${AppUrl.myorder}$id',
+      '${AppUrl.binbookingdetails}$id',
       options: Options(
         method: 'GET',
         headers: headers,
