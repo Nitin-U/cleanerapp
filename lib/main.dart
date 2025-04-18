@@ -1,18 +1,27 @@
 import 'package:binbookingapp/providers/cleaner_app_provider.dart';
+import 'package:binbookingapp/view/no_internet/no_internet_provider.dart';
+import 'package:binbookingapp/view/no_internet/no_internet_view.dart';
 import 'package:binbookingapp/view/splash_screen/splash_screen.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MultiProvider(
-      providers: getProviders(),
+  runApp(
+    MultiProvider(
+      
+      providers: [
+        ...getProviders(),
+        ChangeNotifierProvider(create: (_) => InternetProvider()..startMonitoring()),
+      ],
       child: ScreenUtilInit(
-          minTextAdapt: true,
-          splitScreenMode: true,
-          designSize: Size(430, 923),
-          child: const MyApp())));
+        minTextAdapt: true,
+        splitScreenMode: true,
+        designSize: const Size(430, 923),
+        child: const MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -21,8 +30,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(),
-        home: SplashScreen());
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(),
+      home: NoInternetOverlay(
+        child: const SplashScreen(),
+      ),
+    );
   }
 }
