@@ -62,7 +62,7 @@ class LoginView extends StatelessWidget {
                           validation: validateEmail,
                           controller: login.emailcontroller,
                           prefix: Icon(
-                            Icons.email,
+                            Icons.email_outlined,
                             size: 18.r,
                           ),
                           hintlabel: 'Enter your email',
@@ -89,8 +89,8 @@ class LoginView extends StatelessWidget {
                               },
                               child: Icon(
                                 login.hidepassword == true
-                                    ? Icons.visibility_off
-                                    : Icons.visibility,
+                                    ? Icons.visibility_off_outlined
+                                    : Icons.visibility_off_outlined,
                                 size: 18.r,
                                 color: login.hidepassword == true
                                     ? CleanerAppcolors.primarygreycolor
@@ -98,7 +98,7 @@ class LoginView extends StatelessWidget {
                               ),
                             ),
                             prefix: Icon(
-                              Icons.lock,
+                              Icons.lock_clock_outlined,
                               size: 18.r,
                             ),
                             hintlabel: 'Enter your password'),

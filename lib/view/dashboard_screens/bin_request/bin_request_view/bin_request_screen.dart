@@ -47,174 +47,225 @@ class BinRequestView extends StatelessWidget {
                               () => binr.getBinRequestData(
                                 log.user?.data?.token ?? '',
                               ),
-                          child: ListView(
+                          child: Column(
+                            spacing: 15.r,
                             children: [
                               BinRequestTabs(),
-                              if (binr.currenttab == 0)
-                                // Check if siteRequests is empty
-                                (binr.binbook?.data.siteRequests.isEmpty ??
-                                        true)
-                                    ? Center(
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: 250.r,
-                                        ),
-                                        child: Center(
-                                          child: Column(
-                                            children: [
-                                              Image.asset(
-                                                AppIcons.nodatafound,
-                                                height: 70.r,
+                              Expanded(
+                                child: ListView(
+                                  children: [
+                                    if (binr.currenttab == 0)
+                                      // Check if siteRequests is empty
+                                      (binr
+                                                  .binbook
+                                                  ?.data
+                                                  .siteRequests
+                                                  .isEmpty ??
+                                              true)
+                                          ? Center(
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                vertical: 250.r,
                                               ),
-                                              Text(
+                                              child: Center(
+                                                child: Column(
+                                                  children: [
+                                                    Image.asset(
+                                                      AppIcons.nodatafound,
+                                                      height: 70.r,
+                                                    ),
+                                                    Text(
+                                                      'No Pick Up Request Found',
+                                                      style: resendfont,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                          : Column(
+                                            spacing: 15.r,
+                                            children: List.generate(
+                                              binr
+                                                      .binbook
+                                                      ?.data
+                                                      .siteRequests
+                                                      .length ??
+                                                  0,
+                                              (index) {
+                                                var bindata =
+                                                    binr
+                                                        .binbook
+                                                        ?.data
+                                                        .siteRequests[index];
+                                                return BinRequestCard(
+                                                  onPressed: () {
+                                                    showModalBottomSheet(
+                                                      showDragHandle: true,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return BinBookingBottomSheet(
+                                                          customername:
+                                                              bindata
+                                                                  ?.customerName ??
+                                                              '',
+                                                          location:
+                                                              bindata
+                                                                  ?.location ??
+                                                              '',
+                                                          endDate:
+                                                              bindata
+                                                                  ?.endDate ??
+                                                              '',
+                                                          type:
+                                                              bindata?.type ??
+                                                              '',
+                                                          binsizeName:
+                                                              bindata
+                                                                  ?.binSizeName ??
+                                                              '',
+                                                          bookingId:
+                                                              bindata?.id
+                                                                  .toString() ??
+                                                              '',
+                                                          userId:
+                                                              log
+                                                                  .user
+                                                                  ?.data
+                                                                  ?.user
+                                                                  ?.id
+                                                                  .toString() ??
+                                                              '',
+                                                          usertoken:
+                                                              log
+                                                                  .user
+                                                                  ?.data
+                                                                  ?.token ??
+                                                              '',
+                                                        );
+                                                      },
+                                                    );
+                                                  },
+                                                  address:
+                                                      bindata?.location ??
+                                                      'N/A',
+                                                  quantity:
+                                                      bindata?.quantity
+                                                          .toString() ??
+                                                      '0',
+                                                  startdate:
+                                                      bindata?.startDate ?? '',
+                                                  duration:
+                                                      bindata?.endDate ?? '0',
+                                                  binsizename: '',
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                    if (binr.currenttab == 1)
+                                      (binr
+                                                  .binbook
+                                                  ?.data
+                                                  .warehouseRequests
+                                                  .isEmpty ??
+                                              true)
+                                          ? Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              vertical: 300.r,
+                                            ),
+                                            child: Center(
+                                              child: Text(
                                                 'No Pick Up Request Found',
                                                 style: resendfont,
                                               ),
-                                            ],
+                                            ),
+                                          )
+                                          : Column(
+                                            spacing: 15.r,
+                                            children: List.generate(
+                                              binr
+                                                      .binbook
+                                                      ?.data
+                                                      .warehouseRequests
+                                                      .length ??
+                                                  0,
+                                              (index) {
+                                                final waredata =
+                                                    binr
+                                                        .binbook
+                                                        ?.data
+                                                        .warehouseRequests[index];
+                                                return BinRequestCard(
+                                                  onPressed: () {
+                                                    showModalBottomSheet(
+                                                      showDragHandle: true,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return BinBookingBottomSheet(
+                                                          customername:
+                                                              waredata
+                                                                  ?.customerName ??
+                                                              '',
+                                                          location:
+                                                              waredata
+                                                                  ?.location ??
+                                                              '',
+                                                          endDate:
+                                                              waredata
+                                                                  ?.endDate ??
+                                                              '',
+                                                          type:
+                                                              waredata?.type ??
+                                                              '',
+                                                          binsizeName:
+                                                              waredata
+                                                                  ?.binSizeName ??
+                                                              '',
+                                                          bookingId:
+                                                              waredata?.id
+                                                                  .toString() ??
+                                                              '',
+                                                          userId:
+                                                              log
+                                                                  .user
+                                                                  ?.data
+                                                                  ?.user
+                                                                  ?.id
+                                                                  .toString() ??
+                                                              '',
+                                                          usertoken:
+                                                              log
+                                                                  .user
+                                                                  ?.data
+                                                                  ?.token ??
+                                                              '',
+                                                        );
+                                                      },
+                                                    );
+                                                  },
+                                                  address:
+                                                      waredata?.location ??
+                                                      'N/A',
+                                                  quantity:
+                                                      waredata?.quantity
+                                                          .toString() ??
+                                                      '',
+                                                  startdate:
+                                                      waredata?.startDate ?? '',
+                                                  duration:
+                                                      waredata?.orderDuration
+                                                          .toString() ??
+                                                      '',
+                                                  binsizename:
+                                                      waredata?.binSizeName ??
+                                                      '',
+                                                );
+                                              },
+                                            ),
                                           ),
-                                        ),
-                                      ),
-                                    )
-                                    : Column(
-                                      spacing: 15.r,
-                                      children: List.generate(
-                                        binr
-                                                .binbook
-                                                ?.data
-                                                .siteRequests
-                                                .length ??
-                                            0,
-                                        (index) {
-                                          var bindata =
-                                              binr
-                                                  .binbook
-                                                  ?.data
-                                                  .siteRequests[index];
-                                          return BinRequestCard(
-                                            onPressed: () {
-                                              showModalBottomSheet(
-                                                showDragHandle: true,
-                                                context: context,
-                                                builder: (context) {
-                                                  return BinBookingBottomSheet(
-                                                    customername:
-                                                        bindata?.customerName ??
-                                                        '',
-                                                    location:
-                                                        bindata?.location ?? '',
-                                                    endDate:
-                                                        bindata?.endDate ?? '',
-                                                    type: bindata?.type ?? '',
-                                                    binsizeName:
-                                                        bindata?.binSizeName ??
-                                                        '',
-                                                    bookingId:
-                                                        bindata?.id
-                                                            .toString() ??
-                                                        '',
-                                                    userId:
-                                                        log.user?.data?.user?.id
-                                                            .toString() ??
-                                                        '',
-                                                    usertoken:
-                                                        log.user?.data?.token ??
-                                                        '',
-                                                  );
-                                                },
-                                              );
-                                            },
-                                            address: bindata?.location ?? 'N/A',
-                                            quantity:
-                                                bindata?.quantity.toString() ??
-                                                '0',
-                                            startdate: bindata?.startDate ?? '',
-                                            duration: bindata?.endDate ?? '0',
-                                            binsizename: '',
-                                          );
-                                        },
-                                      ),
-                                    ),
-                              if (binr.currenttab == 1)
-                                (binr.binbook?.data.warehouseRequests.isEmpty ??
-                                        true)
-                                    ? Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        vertical: 300.r,
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          'No Pick Up Request Found',
-                                          style: resendfont,
-                                        ),
-                                      ),
-                                    )
-                                    : Column(
-                                      spacing: 15.r,
-                                      children: List.generate(
-                                        binr
-                                                .binbook
-                                                ?.data
-                                                .warehouseRequests
-                                                .length ??
-                                            0,
-                                        (index) {
-                                          final waredata =
-                                              binr
-                                                  .binbook
-                                                  ?.data
-                                                  .warehouseRequests[index];
-                                          return BinRequestCard(
-                                            onPressed: () {
-                                              showModalBottomSheet(
-                                                showDragHandle: true,
-                                                context: context,
-                                                builder: (context) {
-                                                  return BinBookingBottomSheet(
-                                                    customername:
-                                                        waredata
-                                                            ?.customerName ??
-                                                        '',
-                                                    location:
-                                                        waredata?.location ??
-                                                        '',
-                                                    endDate:
-                                                        waredata?.endDate ?? '',
-                                                    type: waredata?.type ?? '',
-                                                    binsizeName:
-                                                        waredata?.binSizeName ??
-                                                        '',
-                                                    bookingId:
-                                                        waredata?.id
-                                                            .toString() ??
-                                                        '',
-                                                    userId:
-                                                        log.user?.data?.user?.id
-                                                            .toString() ??
-                                                        '',
-                                                    usertoken:
-                                                        log.user?.data?.token ??
-                                                        '',
-                                                  );
-                                                },
-                                              );
-                                            },
-                                            address:
-                                                waredata?.location ?? 'N/A',
-                                            quantity:
-                                                waredata?.quantity.toString() ??
-                                                '',
-                                            startdate:
-                                                waredata?.startDate ?? '',
-                                            duration:
-                                                waredata?.orderDuration
-                                                    .toString() ??
-                                                '',
-                                            binsizename:
-                                                waredata?.binSizeName ?? '',
-                                          );
-                                        },
-                                      ),
-                                    ),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                         ),

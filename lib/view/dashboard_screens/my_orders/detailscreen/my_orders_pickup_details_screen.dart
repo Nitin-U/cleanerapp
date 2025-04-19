@@ -60,7 +60,7 @@ class _MyOrdersPickupDetailsScreenState extends State<MyOrdersPickupDetailsScree
         height: 95.r,
         child:  CleanerButton.elevated(
               width: MediaQuery.sizeOf(context).width,
-              backgroundcolor: CleanerAppcolors.primarybrowncolor,
+              backgroundcolor: CleanerAppcolors.primarypurple,
               label:order.loadingserialdata == true?'Please Wait...' :'Update Order',
               onPressed: () {
                 order.getSerialData(context, log.user?.data?.token??'',widget.bookingid, userdata?.id.toString()??'');

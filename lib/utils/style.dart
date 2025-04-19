@@ -110,7 +110,7 @@ TextStyle get resendwhitefont {
   return GoogleFonts.roboto(
     fontWeight: FontWeight.w500,
     color: CleanerAppcolors.primaryWhitecolor,
-    fontSize: 15.r,
+    fontSize: 18.r,
   );
 }
 

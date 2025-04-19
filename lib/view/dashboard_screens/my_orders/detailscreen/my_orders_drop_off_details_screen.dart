@@ -90,7 +90,7 @@ class _MyOrdersDropOffDetailsScreenState
             height: 90.r,
             elevation: 0,
             child: CleanerButton.elevated(
-              backgroundcolor: CleanerAppcolors.primarybrowncolor,
+              backgroundcolor: CleanerAppcolors.primarypurple,
               label: 'Update Order',
               onPressed: () {
                order.printMultipartDebug();
@@ -110,7 +110,7 @@ class _MyOrdersDropOffDetailsScreenState
                   order.loadingmyorderdropoffdetail == true
                       ? Center(
                         child: LoadingAnimationWidget.hexagonDots(
-                          color: CleanerAppcolors.primarybrowncolor,
+                          color: CleanerAppcolors.primarypurple,
                           size: 30.r,
                         ),
                       )

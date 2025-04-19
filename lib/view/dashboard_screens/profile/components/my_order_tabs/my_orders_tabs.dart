@@ -30,8 +30,8 @@ class MyOrdersTabs extends StatelessWidget {
                           myorder.tabs == 0
                               ? LinearGradient(
                                 colors: [
-                                  const Color.fromARGB(255, 121, 123, 245),
-                                  const Color.fromARGB(255, 123, 125, 246),
+                                   const Color.fromARGB(255, 76, 78, 231),
+                      const Color.fromARGB(255, 92, 94, 218)
                                 ],
                               )
                               : LinearGradient(
@@ -77,8 +77,8 @@ class MyOrdersTabs extends StatelessWidget {
                           myorder.tabs == 1
                               ? LinearGradient(
                                 colors: [
-                                  const Color.fromARGB(255, 121, 123, 245),
-                                  const Color.fromARGB(255, 123, 125, 246),
+                                         const Color.fromARGB(255, 76, 78, 231),
+                      const Color.fromARGB(255, 92, 94, 218)
                                 ],
                               )
                               : LinearGradient(

@@ -19,15 +19,16 @@ class ProfileScreen extends StatelessWidget {
         var userdata = log.user?.data?.user;
         return Scaffold(
           appBar: AppBar(
+            scrolledUnderElevation: 0.r,
             centerTitle: true,
             automaticallyImplyLeading: false,
-            backgroundColor: CleanerAppcolors.primarylightgreycolor,
+                backgroundColor: CleanerAppcolors.primaryminigreycolor,
             title: Text(
               'Profile',
               style: appbartitlefont,
             ),
           ),
-          backgroundColor: CleanerAppcolors.primarylightgreycolor,
+          backgroundColor: CleanerAppcolors.primaryminigreycolor,
           body: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10).r,
             child: Column(
