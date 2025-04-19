@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:binbookingapp/custom_widget/button.dart';
@@ -205,7 +204,8 @@ class DropOffSelectImageCard extends StatelessWidget {
                                       'Is Damaged',
                                       style: dashboardlabelfontblack,
                                     ),
-                                    Checkbox(
+                                    Checkbox(side: BorderSide(color: CleanerAppcolors.primaryminidarkgreycolor),
+                                      activeColor: CleanerAppcolors.primarypurple,
                                       visualDensity: VisualDensity(
                                         horizontal: -4,
                                         vertical: -4,
@@ -346,13 +346,13 @@ class DropOffSelectImageCard extends StatelessWidget {
                                                         size: 30.r,
                                                         color:
                                                             CleanerAppcolors
-                                                                .primarybrowncolor,
+                                                                .primarypurple,
                                                       ),
                                                       SizedBox(height: 5.r),
                                                       Text(
                                                         'Add Image',
                                                         style:
-                                                            dashboardlablefontbrown,
+                                                            dashboardlablefontpurple,
                                                       ),
                                                       Text(
                                                         'Only 3 images allowed',

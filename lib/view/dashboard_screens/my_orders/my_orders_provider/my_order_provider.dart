@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
