@@ -5,6 +5,7 @@ import 'package:binbookingapp/view/authentication/login/login_provider/login_pro
 import 'package:binbookingapp/view/dashboard_screens/my_orders/components/details_card.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/components/form_card.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart';
+import 'package:binbookingapp/view/no_internet/no_internet_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -70,7 +71,8 @@ class _MyOrdersPickupDetailsScreenState extends State<MyOrdersPickupDetailsScree
         backgroundColor: CleanerAppcolors.primaryWhitecolor,
         scrolledUnderElevation: 0.r,
         title: Text('Pick Up Details', style: appbartitlefont)),
-      body: Padding(
+      body: NoInternetBanner(
+        child: Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20).r,
         child: SingleChildScrollView(
           child: Column(
@@ -90,6 +92,7 @@ class _MyOrdersPickupDetailsScreenState extends State<MyOrdersPickupDetailsScree
           ),
         ),
       ),
+      )
     );
       },);
     },);
