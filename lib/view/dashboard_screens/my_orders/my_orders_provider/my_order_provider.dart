@@ -43,7 +43,7 @@ class MyOrderProvider extends ChangeNotifier {
 
  Future<void> getMyorderDropOffDetail(String token, String id) async {
   try {
-    loadingmyorderdata = true;
+    loadingmyorderdropoffdetail = true;
     notifyListeners();
 
     final binbook = await fetchmyordersdropoff(token, id);
@@ -55,10 +55,10 @@ class MyOrderProvider extends ChangeNotifier {
 
     print('myorder $binbook');
 
-    loadingmyorderdata = false;
+    loadingmyorderdropoffdetail = false;
     notifyListeners();
   } catch (e) {
-    loadingmyorderdata = false;
+    loadingmyorderdropoffdetail = false;
     notifyListeners();
     print('Error in getfetchdetailsdata: $e');
     rethrow;

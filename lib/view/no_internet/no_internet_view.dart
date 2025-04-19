@@ -1,9 +1,13 @@
+import 'package:binbookingapp/utils/appcolors.dart';
+import 'package:binbookingapp/utils/style.dart';
 import 'package:binbookingapp/view/no_internet/no_internet_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class NoInternetBanner extends StatefulWidget {
-  const NoInternetBanner({super.key});
+  final Widget? child;
+
+  const NoInternetBanner({super.key, this.child});
 
   @override
   State<NoInternetBanner> createState() => _NoInternetBannerState();
@@ -21,15 +25,14 @@ class _NoInternetBannerState extends State<NoInternetBanner> {
     if (!provider.hasInternet && !_wasOffline) {
       _wasOffline = true;
 
-      // Show "No Internet" Snackbar
       WidgetsBinding.instance.addPostFrameCallback((_) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            backgroundColor: Colors.red,
-            duration: const Duration(days: 1), // persistent until internet is back
-            content: const Text(
+            backgroundColor:CleanerAppcolors.primaryRedcolor,
+            duration: const Duration(days: 1),
+            content:  Text(
               'No Internet Connection',
-              style: TextStyle(color: Colors.white),
+              style: buttonfond,
             ),
             action: SnackBarAction(
               label: 'Retry',
@@ -41,22 +44,19 @@ class _NoInternetBannerState extends State<NoInternetBanner> {
           ),
         );
       });
-    }
-
-    // Internet is back after being offline
-    else if (provider.hasInternet && _wasOffline) {
+    } else if (provider.hasInternet && _wasOffline) {
       _wasOffline = false;
 
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
 
-      // Show "Connected" Snackbar for 2 seconds
       WidgetsBinding.instance.addPostFrameCallback((_) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            backgroundColor: Colors.green,
+           SnackBar(
+            
+            backgroundColor:CleanerAppcolors.primarydarkGreencolor,
             content: Text(
               'Connected to Internet',
-              style: TextStyle(color: Colors.white),
+              style: buttonfond
             ),
             duration: Duration(seconds: 2),
           ),
@@ -67,6 +67,7 @@ class _NoInternetBannerState extends State<NoInternetBanner> {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox.shrink(); // No UI needed, just logic
+    // If child is passed, return it — else return nothing
+    return widget.child ?? const SizedBox.shrink();
   }
 }

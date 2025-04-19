@@ -8,6 +8,7 @@ import 'package:binbookingapp/view/authentication/login/login_provider/login_pro
 import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/components/details_card.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart';
+import 'package:binbookingapp/view/no_internet/no_internet_view.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -104,18 +105,18 @@ class _MyOrdersDropOffDetailsScreenState
             scrolledUnderElevation: 0,
             title: Text('Drop Off Details', style: appbartitlefont),
           ),
-          body:
-              order.loadingmyorderdropoffdetail == true
+          body: NoInternetBanner(
+            child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 10, horizontal: 15).r,
+                    child:  order.loadingmyorderdropoffdetail == true
                   ? Center(
                     child: LoadingAnimationWidget.hexagonDots(
                       color: CleanerAppcolors.primarybrowncolor,
                       size: 30.r,
                     ),
                   )
-                  : Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15).r,
-                    child: SingleChildScrollView(
+                  : SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         spacing: 15.r,
@@ -137,6 +138,8 @@ class _MyOrdersDropOffDetailsScreenState
                       ),
                     ),
                   ),
+          )
+             
         );
       },
     );

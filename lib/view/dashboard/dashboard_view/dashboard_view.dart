@@ -6,6 +6,7 @@ import 'package:binbookingapp/view/authentication/login/login_provider/login_pro
 import 'package:binbookingapp/view/dashboard/dashboard_provider/dashboard_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart';
+import 'package:binbookingapp/view/no_internet/no_internet_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -207,7 +208,12 @@ await myordersdata.getMyordersData(logindata.user?.data?.token??'', logindata.us
               ),
             ),
           ),
-          body: dash.screens[dash.currenttab],
+          body: Column(
+            children: [
+              NoInternetBanner(),
+              Expanded(child: dash.screens[dash.currenttab])
+            ],
+          ),
         );
       },
     );
