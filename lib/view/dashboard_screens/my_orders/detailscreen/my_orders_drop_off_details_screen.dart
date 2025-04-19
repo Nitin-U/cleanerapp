@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:binbookingapp/custom_widget/button.dart';
 import 'package:binbookingapp/utils/appcolors.dart';
+import 'package:binbookingapp/utils/cleanericonspng.dart';
 import 'package:binbookingapp/utils/style.dart';
 import 'package:binbookingapp/view/authentication/login/login_provider/login_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
@@ -107,39 +108,38 @@ class _MyOrdersDropOffDetailsScreenState
           ),
           body: NoInternetBanner(
             child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15).r,
-                    child:  order.loadingmyorderdropoffdetail == true
-                  ? Center(
-                    child: LoadingAnimationWidget.hexagonDots(
-                      color: CleanerAppcolors.primarybrowncolor,
-                      size: 30.r,
-                    ),
-                  )
-                  : SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        spacing: 15.r,
-                        children: [
-                          DetailsCard(
-                            customername: orderdata?.customerName ?? '',
-                            duration:
-                                orderdata?.orderDuration.toString() ?? '0',
-                            binsizename: widget.binsizename,
-                            quantity: widget.quantity.toString(),
-                            location: widget.location,
-                          ),
-                          Text(
-                            'Please Fill The Neccessary Information',
-                            style: ordercardheaderfont,
-                          ),
-                          DropOffSelectImageCard(),
-                        ],
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15).r,
+              child:
+                  order.loadingmyorderdropoffdetail == true
+                      ? Center(
+                        child: LoadingAnimationWidget.hexagonDots(
+                          color: CleanerAppcolors.primarybrowncolor,
+                          size: 30.r,
+                        ),
+                      )
+                      : SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          spacing: 15.r,
+                          children: [
+                            DetailsCard(
+                              customername: orderdata?.customerName ?? '',
+                              duration:
+                                  orderdata?.orderDuration.toString() ?? '0',
+                              binsizename: widget.binsizename,
+                              quantity: widget.quantity.toString(),
+                              location: widget.location,
+                            ),
+                            Text(
+                              'Please Fill The Neccessary Information',
+                              style: ordercardheaderfont,
+                            ),
+                            DropOffSelectImageCard(),
+                          ],
+                        ),
                       ),
-                    ),
-                  ),
-          )
-             
+            ),
+          ),
         );
       },
     );
@@ -154,201 +154,231 @@ class DropOffSelectImageCard extends StatelessWidget {
     return Consumer<MyOrderProvider>(
       builder: (context, order, child) {
         return SizedBox(
-          child: Column(
-            spacing: 20.r,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: List.generate(
-              order.orderdetail?.bookingSerialNumbers?.length ?? 0,
-              (index) {
-                final serialdatta =
-                    order.orderdetail?.bookingSerialNumbers?[index];
-                return SizedBox(
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.r),
-                      border: Border.all(
-                        color: CleanerAppcolors.primaryminidarkgreycolor,
-                      ),
-                    ),
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 10).r,
+          child:
+              order.orderdetail?.bookingSerialNumbers?.isEmpty ?? true
+                  ? Padding(
+                    padding: EdgeInsets.symmetric(vertical: 250.r),
+                    child: Center(
                       child: Column(
                         children: [
-                          Row(
-                            children: [
-                              Icon(Icons.list, size: 30.r),
-                              SizedBox(width: 8.r),
-                              Text(
-                                'SN#${serialdatta?.serialNumber ?? ''}',
-                                style: ordercardheaderfont,
-                              ),
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            children: [
-                              Text(
-                                'Is Damaged',
-                                style: dashboardlabelfontblack,
-                              ),
-                              Checkbox(
-                                visualDensity: VisualDensity(
-                                  horizontal: -4,
-                                  vertical: -4,
-                                ),
-                                value: order.isDamagedList[index],
-                                onChanged: (value) {
-                                  order.toggleCheckbox(index, value);
-                                },
-                              ),
-                            ],
-                          ),
-
-                          // ✅ Unified layout with image list + add image section
-                          SizedBox(
-                            width: MediaQuery.sizeOf(context).width,
-                            child: DottedBorder(
-                              color: CleanerAppcolors.primaryminidarkgreycolor,
-                              dashPattern: [3, 3],
-                              borderType: BorderType.RRect,
-                              radius: Radius.circular(10.r),
-                              child: Padding(
-                                padding: EdgeInsets.all(10.r),
-                                child: Column(
-                                  children: [
-                                    // ✅ Show selected images
-                                    Wrap(
-                                      alignment: WrapAlignment.center,
-                                      spacing: 10.r,
-                                      runSpacing: 10.r,
-                                      children: List.generate(
-                                        order.imagesPerBin[index].length,
-                                        (imgIndex) {
-                                          var image =
-                                              order
-                                                  .imagesPerBin[index][imgIndex];
-                                          return SelectedImageCard(
-                                            imagepath: image,
-                                            onTap: () {
-                                              order.removeImage(
-                                                index,
-                                                imgIndex,
-                                              );
-                                            },
-                                          );
-                                        },
-                                      ),
-                                    ),
-
-                                    // ✅ Add image button if less than 3 images
-                                    if (order.imagesPerBin[index].length < 3)
-                                      GestureDetector(
-                                        onTap: () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return AlertDialog(
-                                                title: Center(
-                                                  child: Text(
-                                                    'Choose Image',
-                                                    style: resendfont,
-                                                  ),
-                                                ),
-                                                content: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
-                                                  children: [
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        order.pickImage(
-                                                          index,
-                                                          context,
-                                                        );
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        children: [
-                                                          Icon(Icons.image),
-                                                          Text(
-                                                            'Gallery',
-                                                            style:
-                                                                dashboardlabelfontblack,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        order.captureImage(
-                                                          index,
-                                                        );
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        children: [
-                                                          Icon(Icons.camera),
-                                                          Text(
-                                                            'Camera',
-                                                            style:
-                                                                dashboardlabelfontblack,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
-                                            },
-                                          );
-                                        },
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                            vertical: 10.r,
-                                          ),
-                                          child: Center(
-                                            child: Column(
-                                              children: [
-                                                Icon(
-                                                  Icons.image_outlined,
-                                                  size: 30.r,
-                                                  color:
-                                                      CleanerAppcolors
-                                                          .primarybrowncolor,
-                                                ),
-                                                SizedBox(height: 5.r),
-                                                Text(
-                                                  'Add Image',
-                                                  style:
-                                                      dashboardlablefontbrown,
-                                                ),
-                                                Text(
-                                                  'Only 3 images allowed',
-                                                  style: dashboardlablefontgrey,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
+                          Image.asset(AppIcons.nodatafound, height: 70.r),
+                          Text('No Serial Numbers Found', style: resendfont),
                         ],
                       ),
                     ),
+                  )
+                  : Column(
+                    spacing: 20.r,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: List.generate(order.orderdetail?.bookingSerialNumbers?.length ?? 0, (
+                      index,
+                    ) {
+                      final serialdatta =
+                          order.orderdetail?.bookingSerialNumbers?[index];
+                      return SizedBox(
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.r),
+                            border: Border.all(
+                              color: CleanerAppcolors.primaryminidarkgreycolor,
+                            ),
+                          ),
+                          child: Padding(
+                            padding:
+                                EdgeInsets.symmetric(
+                                  horizontal: 15,
+                                  vertical: 10,
+                                ).r,
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.list, size: 30.r),
+                                    SizedBox(width: 8.r),
+                                    Text(
+                                      'SN#${serialdatta?.serialNumber ?? ''}',
+                                      style: ordercardheaderfont,
+                                    ),
+                                  ],
+                                ),
+                                Divider(),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Is Damaged',
+                                      style: dashboardlabelfontblack,
+                                    ),
+                                    Checkbox(
+                                      visualDensity: VisualDensity(
+                                        horizontal: -4,
+                                        vertical: -4,
+                                      ),
+                                      value: order.isDamagedList[index],
+                                      onChanged: (value) {
+                                        order.toggleCheckbox(index, value);
+                                      },
+                                    ),
+                                  ],
+                                ),
+
+                                // ✅ Unified layout with image list + add image section
+                                SizedBox(
+                                  width: MediaQuery.sizeOf(context).width,
+                                  child: DottedBorder(
+                                    color:
+                                        CleanerAppcolors
+                                            .primaryminidarkgreycolor,
+                                    dashPattern: [3, 3],
+                                    borderType: BorderType.RRect,
+                                    radius: Radius.circular(10.r),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(10.r),
+                                      child: Column(
+                                        children: [
+                                          // ✅ Show selected images
+                                          Wrap(
+                                            alignment: WrapAlignment.center,
+                                            spacing: 10.r,
+                                            runSpacing: 10.r,
+                                            children: List.generate(
+                                              order.imagesPerBin[index].length,
+                                              (imgIndex) {
+                                                var image =
+                                                    order
+                                                        .imagesPerBin[index][imgIndex];
+                                                return SelectedImageCard(
+                                                  imagepath: image,
+                                                  onTap: () {
+                                                    order.removeImage(
+                                                      index,
+                                                      imgIndex,
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                            ),
+                                          ),
+
+                                          // ✅ Add image button if less than 3 images
+                                          if (order.imagesPerBin[index].length <
+                                              3)
+                                            GestureDetector(
+                                              onTap: () {
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return AlertDialog(
+                                                      title: Center(
+                                                        child: Text(
+                                                          'Choose Image',
+                                                          style: resendfont,
+                                                        ),
+                                                      ),
+                                                      content: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceAround,
+                                                        children: [
+                                                          GestureDetector(
+                                                            onTap: () {
+                                                              order.pickImage(
+                                                                index,
+                                                                context,
+                                                              );
+                                                              Navigator.pop(
+                                                                context,
+                                                              );
+                                                            },
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .min,
+                                                              children: [
+                                                                Icon(
+                                                                  Icons.image,
+                                                                ),
+                                                                Text(
+                                                                  'Gallery',
+                                                                  style:
+                                                                      dashboardlabelfontblack,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          GestureDetector(
+                                                            onTap: () {
+                                                              order
+                                                                  .captureImage(
+                                                                    index,
+                                                                  );
+                                                              Navigator.pop(
+                                                                context,
+                                                              );
+                                                            },
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .min,
+                                                              children: [
+                                                                Icon(
+                                                                  Icons.camera,
+                                                                ),
+                                                                Text(
+                                                                  'Camera',
+                                                                  style:
+                                                                      dashboardlabelfontblack,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                  vertical: 10.r,
+                                                ),
+                                                child: Center(
+                                                  child: Column(
+                                                    children: [
+                                                      Icon(
+                                                        Icons.image_outlined,
+                                                        size: 30.r,
+                                                        color:
+                                                            CleanerAppcolors
+                                                                .primarybrowncolor,
+                                                      ),
+                                                      SizedBox(height: 5.r),
+                                                      Text(
+                                                        'Add Image',
+                                                        style:
+                                                            dashboardlablefontbrown,
+                                                      ),
+                                                      Text(
+                                                        'Only 3 images allowed',
+                                                        style:
+                                                            dashboardlablefontgrey,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
                   ),
-                );
-              },
-            ),
-          ),
         );
       },
     );

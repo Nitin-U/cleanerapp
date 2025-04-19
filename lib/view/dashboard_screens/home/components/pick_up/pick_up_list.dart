@@ -1,5 +1,6 @@
 
 import 'package:binbookingapp/utils/appcolors.dart';
+import 'package:binbookingapp/utils/cleanericonspng.dart';
 import 'package:binbookingapp/utils/style.dart';
 import 'package:binbookingapp/view/authentication/login/login_provider/login_provider.dart';
 import 'package:binbookingapp/view/dashboard/dashboard_provider/dashboard_provider.dart';
@@ -22,16 +23,23 @@ class PickUp extends StatelessWidget {
           return Consumer<BinRequestProvider>(
             builder: (context, bindata, child) {
               if (bindata.loadingbinbooking == true) {
-                return LoadingAnimationWidget.hexagonDots(
-                    color: CleanerAppcolors.primarybrowncolor, size: 20.r);
+                return Center(
+                  child: LoadingAnimationWidget.hexagonDots(
+                      color: CleanerAppcolors.primarybrowncolor, size: 20.r),
+                );
               } else if ((bindata.binbook?.data.siteRequests.length ?? 0) == 0) {
                 // If the data is empty, show "No data found"
                 return Padding(
-                  padding:  EdgeInsets.symmetric(vertical: 120.r),
+                  padding:  EdgeInsets.symmetric(vertical: 90.r),
                   child: Center(
-                    child: Text(
-                      'No Pick Up Request Found',
-                      style: resendfont,
+                    child: Column(
+                      children: [
+                        Image.asset(AppIcons.nodatafound,height: 70.r),
+                        Text(
+                          'No Pick Up Request Found',
+                          style: resendfont,
+                        ),
+                      ],
                     ),
                   ),
                 );

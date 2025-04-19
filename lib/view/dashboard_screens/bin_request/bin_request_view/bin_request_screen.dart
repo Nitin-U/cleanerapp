@@ -1,4 +1,5 @@
 import 'package:binbookingapp/utils/appcolors.dart';
+import 'package:binbookingapp/utils/cleanericonspng.dart' show AppIcons;
 import 'package:binbookingapp/utils/style.dart'
     show appbartitlefont, resendfont;
 import 'package:binbookingapp/view/authentication/login/login_provider/login_provider.dart';
@@ -56,11 +57,21 @@ class BinRequestView extends StatelessWidget {
                                     ? Center(
                                       child: Padding(
                                         padding: EdgeInsets.symmetric(
-                                          vertical: 300.r,
+                                          vertical: 250.r,
                                         ),
-                                        child: Text(
-                                          'No Pick Up Request Found',
-                                          style: resendfont,
+                                        child: Center(
+                                          child: Column(
+                                            children: [
+                                              Image.asset(
+                                                AppIcons.nodatafound,
+                                                height: 70.r,
+                                              ),
+                                              Text(
+                                                'No Pick Up Request Found',
+                                                style: resendfont,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     )

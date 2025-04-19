@@ -1,4 +1,6 @@
 import 'package:binbookingapp/custom_widget/transaction_route.dart';
+import 'package:binbookingapp/utils/cleanericonspng.dart';
+import 'package:binbookingapp/utils/style.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/components/my_orders_card.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/detailscreen/my_orders_pickup_details_screen.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart';
@@ -18,10 +20,14 @@ class MyOrdersPickUpList extends StatelessWidget {
         if (siteRequests.isEmpty) {
           return Center(
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 330).r,
-              child: Text(
-                'No Pickup Order Found',
-                style: TextStyle(fontSize: 22.r, color: Colors.black),
+              padding: EdgeInsets.symmetric(vertical: 250.r),
+              child: Center(
+                child: Column(
+                  children: [
+                    Image.asset(AppIcons.nodatafound, height: 70.r),
+                    Text('No Pick Up Request Found', style: resendfont),
+                  ],
+                ),
               ),
             ),
           );
@@ -32,10 +38,11 @@ class MyOrdersPickUpList extends StatelessWidget {
           children: List.generate(siteRequests.length, (index) {
             var sitedata = siteRequests[index];
             return MyOrdersCard(
-              
               onPressed: () {
                 if (sitedata.stage == 'order_picked_up') {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('lol')));
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text('lol')));
                 } else {
                   Navigator.push(
                     context,
@@ -59,7 +66,10 @@ class MyOrdersPickUpList extends StatelessWidget {
               startdate: sitedata.startDate,
               endDate: sitedata.endDate,
               binsizename: sitedata.binSizeName,
-              buttonlabel: sitedata.stage == 'order_picked_up'?'Confirm Delivery':'View',
+              buttonlabel:
+                  sitedata.stage == 'order_picked_up'
+                      ? 'Confirm Delivery'
+                      : 'View',
               stage: '',
             );
           }),

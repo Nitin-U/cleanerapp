@@ -1,4 +1,5 @@
 import 'package:binbookingapp/utils/appcolors.dart';
+import 'package:binbookingapp/utils/cleanericonspng.dart';
 import 'package:binbookingapp/utils/style.dart';
 import 'package:binbookingapp/view/authentication/login/login_provider/login_provider.dart';
 import 'package:binbookingapp/view/dashboard/dashboard_provider/dashboard_provider.dart';
@@ -28,14 +29,19 @@ class DropOff extends StatelessWidget {
                     )
                     : bindata.binbook?.data.warehouseRequests.isEmpty ?? true
                     ? Padding(
-                      padding: EdgeInsets.symmetric(vertical: 300.r),
-                      child: Center(
-                        child: Text(
+                  padding:  EdgeInsets.symmetric(vertical: 90.r),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Image.asset(AppIcons.nodatafound,height: 70.r),
+                        Text(
                           'No Pick Up Request Found',
                           style: resendfont,
                         ),
-                      ),
-                    )
+                      ],
+                    ),
+                  ),
+                )
                     : Column(
                       spacing: 15.r,
                       children: [
