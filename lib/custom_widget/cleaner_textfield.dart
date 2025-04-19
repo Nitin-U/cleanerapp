@@ -39,6 +39,9 @@ class CleanerTextfield extends StatelessWidget {
       controller: controller,
       style: dashboardlabelfontblack,
       decoration: InputDecoration(
+        focusedErrorBorder:OutlineInputBorder(
+              borderSide: BorderSide(color: CleanerAppcolors.primaryRedcolor),
+              borderRadius: BorderRadius.circular(2.r)),
           fillColor: fillColor,
           filled: true,
           prefixIconConstraints: BoxConstraints(minWidth: 45.r),
@@ -47,7 +50,7 @@ class CleanerTextfield extends StatelessWidget {
           errorStyle: errorstyle,
           isDense: true,
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: CleanerAppcolors.primarybrowncolor),
+              borderSide: BorderSide(color: CleanerAppcolors.primaryminidarkgreycolor),
               borderRadius: BorderRadius.circular(20.r)),
           border: InputBorder.none,
           contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 20).r,
@@ -58,7 +61,7 @@ class CleanerTextfield extends StatelessWidget {
               borderRadius: BorderRadius.circular(20.r)),
           errorBorder: OutlineInputBorder(
               borderSide:
-                  BorderSide(color: CleanerAppcolors.primaryminidarkgreycolor),
+                  BorderSide(color: CleanerAppcolors.primaryRedcolor),
               borderRadius: BorderRadius.circular(20.r)),
           enabledBorder: OutlineInputBorder(
               borderSide:

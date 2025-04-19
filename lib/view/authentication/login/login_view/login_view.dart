@@ -24,14 +24,15 @@ class LoginView extends StatelessWidget {
 
         return Scaffold(
           backgroundColor: CleanerAppcolors.primaryminigreycolor,
-          body: Padding(
+          body: NoInternetBanner(
+            child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 25,
             ).r,
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  NoInternetBanner(),
+                
                   Form(
                     key: loginkey,
                     child: Column(
@@ -141,6 +142,7 @@ class LoginView extends StatelessWidget {
               ),
             ),
           ),
+          )
         );
       },
     );

@@ -57,7 +57,7 @@ await myordersdata.getMyordersData(logindata.user?.data?.token??'', logindata.us
                     child: DecoratedBox(
                       decoration: BoxDecoration(),
                       child: Column(
-                        spacing: 5.r,
+                        spacing: 4.5.r,
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           SizedBox(

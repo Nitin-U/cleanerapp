@@ -197,6 +197,6 @@ TextStyle get errorstyle {
   return GoogleFonts.roboto(
     fontWeight: FontWeight.w400,
     color: CleanerAppcolors.primaryRedcolor,
-    fontSize: 15.r,
+    fontSize: 16.r,
   );
 }

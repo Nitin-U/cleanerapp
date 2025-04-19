@@ -8,8 +8,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BinRequestProvider extends ChangeNotifier {
   int currenttab = 0;
-  bool loadingbinbooking = true;
-  bool loadingrequestaccept = true;
+  bool loadingbinbooking = false;
+  bool loadingrequestaccept = false;
   TextEditingController driveridcontroller = TextEditingController();
   TextEditingController bookingidcontroller = TextEditingController();
   BinBookingModel? _binBookingModel;
