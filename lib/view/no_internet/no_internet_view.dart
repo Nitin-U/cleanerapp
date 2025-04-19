@@ -1,45 +1,72 @@
-// widgets/no_internet_overlay.dart
 import 'package:binbookingapp/view/no_internet/no_internet_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class NoInternetOverlay extends StatelessWidget {
-  final Widget child;
-  const NoInternetOverlay({super.key, required this.child});
+class NoInternetBanner extends StatefulWidget {
+  const NoInternetBanner({super.key});
+
+  @override
+  State<NoInternetBanner> createState() => _NoInternetBannerState();
+}
+
+class _NoInternetBannerState extends State<NoInternetBanner> {
+  bool _wasOffline = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final provider = Provider.of<InternetProvider>(context);
+
+    if (!provider.hasInternet && !_wasOffline) {
+      _wasOffline = true;
+
+      // Show "No Internet" Snackbar
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.red,
+            duration: const Duration(days: 1), // persistent until internet is back
+            content: const Text(
+              'No Internet Connection',
+              style: TextStyle(color: Colors.white),
+            ),
+            action: SnackBarAction(
+              label: 'Retry',
+              textColor: Colors.white,
+              onPressed: () async {
+                await provider.checkInitialConnection();
+              },
+            ),
+          ),
+        );
+      });
+    }
+
+    // Internet is back after being offline
+    else if (provider.hasInternet && _wasOffline) {
+      _wasOffline = false;
+
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+
+      // Show "Connected" Snackbar for 2 seconds
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            backgroundColor: Colors.green,
+            content: Text(
+              'Connected to Internet',
+              style: TextStyle(color: Colors.white),
+            ),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final hasInternet = context.watch<InternetProvider>().hasInternet;
-
-    return Stack(
-      children: [
-        child,
-        if (!hasInternet)
-          Positioned.fill(
-            child: Container(
-              color: Colors.white.withOpacity(0.95),
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(Icons.wifi_off, size: 60, color: Colors.red),
-                    const SizedBox(height: 12),
-                    const Text("No Internet Connection",
-                        style: TextStyle(fontSize: 18)),
-                    const SizedBox(height: 16),
-                    ElevatedButton.icon(
-                      icon: const Icon(Icons.refresh),
-                      label: const Text("Reload"),
-                      onPressed: () {
-                        context.read<InternetProvider>().checkConnection();
-                      },
-                    )
-                  ],
-                ),
-              ),
-            ),
-          )
-      ],
-    );
+    return const SizedBox.shrink(); // No UI needed, just logic
   }
 }
