@@ -3,6 +3,7 @@ import 'package:binbookingapp/custom_widget/transaction_route.dart';
 import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
 import 'package:binbookingapp/view/authentication/login/login_provider/login_provider.dart';
+import 'package:binbookingapp/view/dashboard/dashboard_provider/dashboard_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/model/bin_booking_model.dart';
 import 'package:binbookingapp/view/dashboard_screens/home/bin_search_bar/bin_search_bar_view.dart' show BinSearchScreen;
@@ -53,7 +54,8 @@ class _HomeScreenState extends State<HomeScreen> {
           builder: (context, binr, child) {
             return Consumer<LoginProvider>(
               builder: (context, log, child) {
-                return Scaffold(
+                return Consumer<DashboardProvider>(builder: (context, dash, child) {
+                  return Scaffold(
                   drawer: CleanerAppDrawer(),
                   appBar: AppBar(
                     scrolledUnderElevation: 0,
@@ -133,17 +135,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                     'Active Orders',
                                     style: greetingsStyleblack,
                                   ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'View more',
-                                        style: dashboardlabelfontdarkgrey,
-                                      ),
-                                      Icon(
-                                        Icons.keyboard_arrow_right_outlined,
-                                        size: 30.r,
-                                      ),
-                                    ],
+                                  GestureDetector(
+                                    onTap: () {
+                                      dash.screenTabs(dash.currenttab =1);
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'View more',
+                                          style: dashboardlabelfontdarkgrey,
+                                        ),
+                                        Icon(
+                                          Icons.keyboard_arrow_right_outlined,
+                                          size: 30.r,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
@@ -157,6 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 );
+                },);
               },
             );
           },
