@@ -16,12 +16,11 @@ class BinRequestProvider extends ChangeNotifier {
   BinBookingModel? _binBookingModel;
   BinBookingModel? get binbook => _binBookingModel;
 
-  Future<void> getBinRequestData() async {
-    final token = getToken();
+  Future<void> getBinRequestData(token) async {
     try {
       loadingbinbooking = true;
       notifyListeners();
-      final binbook = await fetchBinbooking(token.toString());
+      final binbook = await fetchBinbooking(token);
       _binBookingModel = BinBookingModel.fromJson(binbook);
       print('book${binbook}');
       loadingbinbooking = false;

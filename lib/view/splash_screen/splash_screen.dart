@@ -27,13 +27,15 @@ class _SplashScreen extends State<SplashScreen> {
 
 
   Future<void> checkLoginStatus() async {
-    final isLoggedIn = await context.read<LoginProvider>().isSessionActive();
-
-    if (isLoggedIn) {
-     Navigator.pushAndRemoveUntil(context, CustomPageRoute(child: DashboardView()), (route) => false,);
-    } else {
-      Navigator.pushAndRemoveUntil(context, CustomPageRoute(child: LoginView()), (route) => false,);
-    }
+   Future.delayed(const Duration(seconds: 2), () {
+      // ignore: use_build_context_synchronously
+     Navigator.pushAndRemoveUntil(
+        // ignore: use_build_context_synchronously
+        context,
+        CustomPageRoute(child: const LoginView()),
+        (route) => false,
+      );
+    });
   }
 
   @override

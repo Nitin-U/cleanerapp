@@ -25,8 +25,8 @@ class MyOrderProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getMyordersData(id) async {
-    var token = getToken();
+  Future<void> getMyordersData(token,id) async {
+  
     try {
       loadingmyorderdata = true;
       notifyListeners();
