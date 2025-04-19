@@ -24,7 +24,7 @@ class _SplashScreen extends State<SplashScreen> {
 
   void nextPage() {
     Timer(const Duration(seconds: 3), () {
-      Navigator.push(context, CustomPageRoute(child: LoginView()));
+      Navigator.pushAndRemoveUntil(context, CustomPageRoute(child: LoginView()), (route) => false,);
     });
   }
 

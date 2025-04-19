@@ -149,7 +149,7 @@ TextStyle get splashloadingfond {
 TextStyle get seeallfont {
   return GoogleFonts.roboto(
     fontWeight: FontWeight.w600,
-    color: CleanerAppcolors.primarybrowncolor,
+    color: CleanerAppcolors.primarypurple,
     fontSize: 20.r,
   );
 }

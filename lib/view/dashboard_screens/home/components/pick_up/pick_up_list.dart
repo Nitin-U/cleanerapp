@@ -25,7 +25,7 @@ class PickUp extends StatelessWidget {
               if (bindata.loadingbinbooking == true) {
                 return Center(
                   child: LoadingAnimationWidget.hexagonDots(
-                      color: CleanerAppcolors.primarybrowncolor, size: 20.r),
+                      color: CleanerAppcolors.primarypurple, size: 20.r),
                 );
               } else if ((bindata.binbook?.data.siteRequests.length ?? 0) == 0) {
                 // If the data is empty, show "No data found"

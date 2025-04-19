@@ -24,7 +24,7 @@ class DropOff extends StatelessWidget {
               builder: (context, log, child) {
                 return bindata.loadingbinbooking == true
                     ? LoadingAnimationWidget.hexagonDots(
-                      color: CleanerAppcolors.primarybrowncolor,
+                      color: CleanerAppcolors.primarypurple,
                       size: 20.r,
                     )
                     : bindata.binbook?.data.warehouseRequests.isEmpty ?? true
@@ -42,65 +42,46 @@ class DropOff extends StatelessWidget {
                     ),
                   ),
                 )
-                    : Column(
-                      spacing: 15.r,
-                      children: [
-                        ...List.generate(
-                          (bindata.binbook?.data.warehouseRequests.length ??
-                                      0) >
-                                  6
-                              ? 6
-                              : (bindata
-                                      .binbook
-                                      ?.data
-                                      .warehouseRequests
-                                      .length ??
-                                  0),
-                          (index) {
-                            final waredata =
-                                bindata.binbook?.data.warehouseRequests[index];
-                            return BinRequestCard(
-                              onPressed: () {
-                                showModalBottomSheet(
-                                  showDragHandle: true,
-                                  context: context,
-                                  builder: (context) {
-                                    return BinBookingBottomSheet(
-                                      customername:
-                                          waredata?.customerName ?? '',
-                                      location: waredata?.location ?? '',
-                                      endDate: waredata?.endDate ?? '',
-                                      type: waredata?.type ?? '',
-                                      binsizeName: waredata?.binSizeName ?? '',
-                                      bookingId: waredata?.id.toString() ?? '',
-                                      userId:
-                                          log.user?.data?.user?.id.toString() ??
-                                          '',
-                                      usertoken: log.user?.data?.token ?? '',
-                                    );
-                                  },
-                                );
-                              },
-                              quantity: waredata?.quantity.toString() ?? '0',
-                              address: waredata?.location ?? 'N/A',
-                              startdate: waredata?.startDate ?? 'N/A',
-                              binsizename: waredata?.binSizeName ?? 'N/A',
-                              duration:
-                                  waredata?.orderDuration.toString() ?? '',
-                            );
-                          },
-                        ),
-                        if ((bindata.binbook?.data.warehouseRequests.length ??
-                                0) >
-                            6)
-                          GestureDetector(
-                            onTap: () {
-                              dash.screenTabs(dash.currenttab = 2);
-                            },
-                            child: Text('See all', style: seeallfont),
-                          ),
-                      ],
-                    );
+                     : ListView.separated(
+    shrinkWrap: true,
+    physics: NeverScrollableScrollPhysics(),
+    itemCount: (bindata.binbook?.data.warehouseRequests.length ?? 0) > 6
+        ? 6
+        : (bindata.binbook?.data.warehouseRequests.length ?? 0),
+    separatorBuilder: (context, index) => SizedBox(height: 15.r),
+    itemBuilder: (context, index) {
+      final waredata = bindata.binbook?.data.warehouseRequests[index];
+      return Padding(
+        padding: EdgeInsets.symmetric(horizontal: 3.w), // give space for shadow
+        child: BinRequestCard(
+          onPressed: () {
+            showModalBottomSheet(
+              showDragHandle: true,
+              context: context,
+              builder: (context) {
+                return BinBookingBottomSheet(
+                  customername: waredata?.customerName ?? '',
+                  location: waredata?.location ?? '',
+                  endDate: waredata?.endDate ?? '',
+                  type: waredata?.type ?? '',
+                  binsizeName: waredata?.binSizeName ?? '',
+                  bookingId: waredata?.id.toString() ?? '',
+                  userId: log.user?.data?.user?.id.toString() ?? '',
+                  usertoken: log.user?.data?.token ?? '',
+                );
+              },
+            );
+          },
+          quantity: waredata?.quantity.toString() ?? '0',
+          address: waredata?.location ?? 'N/A',
+          startdate: waredata?.startDate ?? 'N/A',
+          binsizename: waredata?.binSizeName ?? 'N/A',
+          duration: waredata?.orderDuration.toString() ?? '',
+        ),
+      );
+    },
+  );
+
               },
             );
           },

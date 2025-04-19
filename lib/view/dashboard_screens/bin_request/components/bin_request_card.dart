@@ -1,4 +1,3 @@
-
 import 'package:binbookingapp/custom_widget/cleaner_chip.dart' show CleanerChip;
 import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
@@ -34,12 +33,12 @@ class BinRequestCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: CleanerAppcolors.primaryWhitecolor,
             boxShadow: [
-               BoxShadow(
-        color:  Color.fromRGBO(105, 108, 255, 0.4).withOpacity(0.5.r), 
-        spreadRadius: 1,  
-        blurRadius: 1,   
-        offset: Offset(0, 0), 
-      ),
+              BoxShadow(
+                color: Color.fromRGBO(105, 108, 255, 0.4).withOpacity(0.5.r),
+                spreadRadius: 1.5.r,
+                blurRadius: 1.5.r,
+                offset: Offset(0, 0),
+              ),
             ],
             borderRadius: BorderRadius.circular(20.r),
           ),
@@ -52,39 +51,32 @@ class BinRequestCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
+                      spacing: 5.r,
                       children: [
                         Icon(
                           Icons.pin_drop_outlined,
                           size: 20.r,
                           color: CleanerAppcolors.primarylightbrowncolor,
                         ),
-                        Text(
-                          address,
-                          style: listiletitlefont,
-                        ),
+                        Text(address, style: listiletitlefont),
                       ],
                     ),
                     CleanerChip(
                       onPressed: onPressed,
                       label: 'View',
-                      backgroundColor:
-                          CleanerAppcolors.primarypurple,
+                      backgroundColor: CleanerAppcolors.primarypurple,
                     ),
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 19).r,
-                  child: Text(
-                    'Bin Size:$binsizename',
-                    style: listiletitlefont,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 26).r,
+                  child: Text('Bin Size:$binsizename', style: listiletitlefont),
                 ),
-                SizedBox(
-                  height: 5.r,
-                ),
+                SizedBox(height: 5.r),
                 Card(
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.r)),
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
                   color: CleanerAppcolors.primaryminigreycolor,
                   child: Padding(
                     padding:
@@ -95,44 +87,26 @@ class BinRequestCard extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              'Start Date',
-                              style: greetingsStyleblack,
-                            ),
-                            Text(
-                              startdate,
-                              style: dashboardlabelfontdarkgrey,
-                            )
+                            Text('Start Date', style: greetingsStyleblack),
+                            Text(startdate, style: dashboardlabelfontdarkgrey),
                           ],
                         ),
                         Column(
                           children: [
-                            Text(
-                              'Quantity',
-                              style: greetingsStyleblack,
-                            ),
-                            Text(
-                              quantity,
-                              style: dashboardlabelfontdarkgrey,
-                            )
+                            Text('Quantity', style: greetingsStyleblack),
+                            Text(quantity, style: dashboardlabelfontdarkgrey),
                           ],
                         ),
                         Column(
                           children: [
-                            Text(
-                              'Duration',
-                              style: greetingsStyleblack,
-                            ),
-                            Text(
-                              duration,
-                              style: dashboardlabelfontdarkgrey,
-                            )
+                            Text('Duration', style: greetingsStyleblack),
+                            Text(duration, style: dashboardlabelfontdarkgrey),
                           ],
                         ),
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),

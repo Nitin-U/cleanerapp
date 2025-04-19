@@ -1,4 +1,3 @@
-
 import 'package:binbookingapp/custom_widget/button.dart';
 import 'package:binbookingapp/custom_widget/cleaner_textfield.dart';
 import 'package:binbookingapp/custom_widget/transaction_route.dart';
@@ -26,58 +25,34 @@ class LoginView extends StatelessWidget {
           backgroundColor: CleanerAppcolors.primaryminigreycolor,
           body: NoInternetBanner(
             child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 25,
-            ).r,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                
-                  Form(
-                    key: loginkey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 180.r,
-                        ),
-                        Text('Hello!', style: loginscreentitlefont),
-                        SizedBox(
-                          height: 5.r,
-                        ),
-                        Text('Welcome Back', style: loginscreentitlefont),
-                        SizedBox(
-                          height: 40.r,
-                        ),
-                        Text(
-                          'Email',
-                          style: dashboardlablefontgrey,
-                        ),
-                        SizedBox(
-                          height: 8.r,
-                        ),
-                        CleanerTextfield(
-                          fillColor: CleanerAppcolors.primaryWhitecolor,
-                          autofills: [AutofillHints.email],
-                          validation: validateEmail,
-                          controller: login.emailcontroller,
-                          prefix: Icon(
-                            Icons.email_outlined,
-                            size: 18.r,
+              padding: EdgeInsets.symmetric(horizontal: 25).r,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Form(
+                      key: loginkey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 180.r),
+                          Text('Hello!', style: loginscreentitlefont),
+                          SizedBox(height: 5.r),
+                          Text('Welcome Back', style: loginscreentitlefont),
+                          SizedBox(height: 40.r),
+                          Text('Email', style: dashboardlablefontgrey),
+                          SizedBox(height: 8.r),
+                          CleanerTextfield(
+                            fillColor: CleanerAppcolors.primaryWhitecolor,
+                            autofills: [AutofillHints.email],
+                            validation: validateEmail,
+                            controller: login.emailcontroller,
+                            prefix: Icon(Icons.email_outlined, size: 18.r),
+                            hintlabel: 'Enter your email',
                           ),
-                          hintlabel: 'Enter your email',
-                        ),
-                        SizedBox(
-                          height: 15.r,
-                        ),
-                        Text(
-                          'Password',
-                          style: dashboardlablefontgrey,
-                        ),
-                        SizedBox(
-                          height: 5.r,
-                        ),
-                        CleanerTextfield(
+                          SizedBox(height: 15.r),
+                          Text('Password', style: dashboardlablefontgrey),
+                          SizedBox(height: 5.r),
+                          CleanerTextfield(
                             fillColor: CleanerAppcolors.primaryWhitecolor,
                             autofills: [AutofillHints.password],
                             validation: validatePassword,
@@ -92,39 +67,40 @@ class LoginView extends StatelessWidget {
                                     ? Icons.visibility_off_outlined
                                     : Icons.visibility_off_outlined,
                                 size: 18.r,
-                                color: login.hidepassword == true
-                                    ? CleanerAppcolors.primarygreycolor
-                                    : CleanerAppcolors.primarybrowncolor,
+                                color:
+                                    login.hidepassword == true
+                                        ? CleanerAppcolors.primarygreycolor
+                                        : CleanerAppcolors.primarypurple,
                               ),
                             ),
-                            prefix: Icon(
-                              Icons.lock_clock_outlined,
-                              size: 18.r,
-                            ),
-                            hintlabel: 'Enter your password'),
-                        SizedBox(
-                          height: 10.r,
-                        ),
-                        Align(
+                            prefix: Icon(Icons.lock_clock_outlined, size: 18.r),
+                            hintlabel: 'Enter your password',
+                          ),
+                          SizedBox(height: 10.r),
+                          Align(
                             alignment: Alignment.bottomRight,
                             child: InkWell(
                               onTap: () {
-                                Navigator.push(context,
-                                    CustomPageRoute(child: ForgotPasswordScreen()));
+                                Navigator.push(
+                                  context,
+                                  CustomPageRoute(
+                                    child: ForgotPasswordScreen(),
+                                  ),
+                                );
                               },
                               child: Text(
                                 'Forgot Password',
                                 style: forgotpasswordfont,
                               ),
-                            )),
-                        SizedBox(
-                          height: 10.r,
-                        ),
-                        login.loadinglogin == true
-                            ? LoadingAnimationWidget.hexagonDots(
-                                color: CleanerAppcolors.primarybrowncolor,
-                                size: 55.r)
-                            : CleanerButton.elevated(
+                            ),
+                          ),
+                          SizedBox(height: 10.r),
+                          login.loadinglogin == true
+                              ? LoadingAnimationWidget.hexagonDots(
+                                color: CleanerAppcolors.primarypurple,
+                                size: 55.r,
+                              )
+                              : CleanerButton.elevated(
                                 height: 55.r,
                                 width: MediaQuery.sizeOf(context).width,
                                 backgroundcolor: CleanerAppcolors.primarypurple,
@@ -135,14 +111,14 @@ class LoginView extends StatelessWidget {
                                   }
                                 },
                               ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
-          )
         );
       },
     );

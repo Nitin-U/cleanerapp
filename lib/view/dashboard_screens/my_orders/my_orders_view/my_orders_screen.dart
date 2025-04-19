@@ -54,18 +54,21 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10).r,
                 child:RefreshIndicator(
                   onRefresh: refestdata,
-                  child: ListView(
-                    children: [ Column(
+                  child: Column(
                     spacing: 15.r,
                     children: [
                       MyOrdersTabs(),
-                      if(orders.tabs ==0)
-                       MyOrdersPickUpList(),
-                  
-                       if(orders.tabs ==1)
-                      MyOrdersDropOffList()
+                      Expanded(
+                        child: ListView(
+                          children: [ 
+                          if(orders.tabs ==0)
+                           MyOrdersPickUpList(),
+                                            
+                           if(orders.tabs ==1)
+                          MyOrdersDropOffList()],
+                        ),
+                      ),
                     ],
-                  )],
                   ),
                 )));
       },
