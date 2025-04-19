@@ -31,15 +31,15 @@ class _SplashScreen extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CleanerAppcolors.primarylightgreycolor,
+      backgroundColor: CleanerAppcolors.primaryminigreycolor,
       body: Center(
         child: Column(
           spacing: 5.r,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(AppIcons.cleanerbinlogo),
+            Image.asset(AppIcons.cleanerbinlogo,height: 90.r,),
             LoadingAnimationWidget.dotsTriangle(
-                color: CleanerAppcolors.primarybrowncolor, size: 25.r)
+                color: CleanerAppcolors.primarypurple, size: 40.r)
           ],
         ),
       ),

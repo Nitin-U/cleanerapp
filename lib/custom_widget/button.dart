@@ -67,7 +67,9 @@ class CleanerButton extends StatelessWidget {
           height: height,
           width: width,
           child: ElevatedButton(
+            
             style: ElevatedButton.styleFrom(
+              elevation: 5.r,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.r)),
               backgroundColor:

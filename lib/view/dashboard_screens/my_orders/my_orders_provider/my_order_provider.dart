@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/model/my_order_dropoff_details_model.dart';
@@ -58,79 +60,14 @@ class MyOrderProvider extends ChangeNotifier {
     loadingmyorderdropoffdetail = false;
     notifyListeners();
   } catch (e) {
-    loadingmyorderdropoffdetail = false;
+    loadingmyorderdata = false;
     notifyListeners();
     print('Error in getfetchdetailsdata: $e');
     rethrow;
   }
 }
-
-  List<bool> isDamagedList = [];
-  List<List<XFile>> imagesPerBin = [];
-
- void initializeDamagedList(int count) {
-  isDamagedList = List.generate(count, (_) => false);
-  imagesPerBin = List.generate(count, (_) => []);
-  notifyListeners();
-}
-
-
-  void toggleCheckbox(int index, bool? value) {
-    if (value != null && index >= 0 && index < isDamagedList.length) {
-      isDamagedList[index] = value;
-      notifyListeners();
-    }
-  }
-
-  Future<void> pickImage(int index, BuildContext context) async {
-    final picker = ImagePicker();
-    final pickedFiles = await picker.pickMultiImage();
-
-    if (pickedFiles.isNotEmpty) {
-      int availableSlots = 3 - imagesPerBin[index].length;
-
-      if (availableSlots <= 0) {
-        showLimitSnackbar(context);
-        return;
-      }
-
-      // Add only allowed number of images
-      final filesToAdd = pickedFiles.take(availableSlots);
-      imagesPerBin[index].addAll(filesToAdd);
-      notifyListeners();
-
-      if (pickedFiles.length > availableSlots) {
-        showLimitSnackbar(context); // Notify user only 3 allowed
-      }
-    }
-  }
-
-  Future<void> captureImage(int index) async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: ImageSource.camera);
-    if (pickedFile != null && imagesPerBin[index].length < 3) {
-      imagesPerBin[index].add(pickedFile);
-      notifyListeners();
-    }
-  }
-
-  void removeImage(int binIndex, int imageIndex) {
-    imagesPerBin[binIndex].removeAt(imageIndex);
-    notifyListeners();
-  }
-
-  void showLimitSnackbar(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('You can only select up to 3 images.'),
-        duration: Duration(seconds: 2),
-      ),
-    );
-  }
-
   List<TextEditingController> serialControllers = [];
   List<String> binSerialNumbers = [];
-
   Future<void> getSerialData(
     BuildContext context,
     String token,
@@ -196,6 +133,72 @@ class MyOrderProvider extends ChangeNotifier {
       throw {"error": e};
     }
   }
+  List<bool> isDamagedList = [];
+  List<List<XFile>> imagesPerBin = [];
+
+ void initializeDamagedList(int count) {
+  isDamagedList = List.generate(count, (_) => false);
+  imagesPerBin = List.generate(count, (_) => []);
+  notifyListeners();
+}
+
+
+  void toggleCheckbox(int index, bool? value) {
+    if (value != null && index >= 0 && index < isDamagedList.length) {
+      isDamagedList[index] = value;
+      notifyListeners();
+    }
+  }
+
+  Future<void> pickImage(int index, BuildContext context) async {
+    final picker = ImagePicker();
+    final pickedFiles = await picker.pickMultiImage();
+
+    if (pickedFiles.isNotEmpty) {
+      int availableSlots = 3 - imagesPerBin[index].length;
+
+      if (availableSlots <= 0) {
+        showLimitSnackbar(context);
+        return;
+      }
+
+      // Add only allowed number of images
+      final filesToAdd = pickedFiles.take(availableSlots);
+      imagesPerBin[index].addAll(filesToAdd);
+      notifyListeners();
+
+      if (pickedFiles.length > availableSlots) {
+        showLimitSnackbar(context); // Notify user only 3 allowed
+      }
+    }
+  }
+
+  Future<void> captureImage(int index) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+    if (pickedFile != null && imagesPerBin[index].length < 3) {
+      imagesPerBin[index].add(pickedFile);
+      notifyListeners();
+    }
+  }
+
+  void removeImage(int binIndex, int imageIndex) {
+    imagesPerBin[binIndex].removeAt(imageIndex);
+    notifyListeners();
+  }
+
+  void showLimitSnackbar(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('You can only select up to 3 images.'),
+        duration: Duration(seconds: 2),
+      ),
+    );
+  }
+
+
+
+
 
   void initializeControllers(int quantity) {
     serialControllers = List.generate(quantity, (_) => TextEditingController());
@@ -210,13 +213,21 @@ class MyOrderProvider extends ChangeNotifier {
     }
   }
 
-  void submitSerials() {
-    // Print all serials to console
-    debugPrint("Final Serial List:");
-    for (int i = 0; i < binSerialNumbers.length; i++) {
-      debugPrint(binSerialNumbers.toString());
+
+void printMultipartDebug() {
+  final data = buildDropOffSubmissionData();
+
+  for (var key in data.keys) {
+    final binInfo = data[key]; // ✅ No conflict
+    print('Bin ID: $key');
+    print('Is Damaged: ${binInfo['isDamaged']}');
+    print('Images:');
+    for (var image in binInfo['images']) {
+      print('  - $image');
     }
   }
+}
+
 Map<String, dynamic> buildDropOffSubmissionData() {
   final serialNumbers = orderdetail?.bookingSerialNumbers ?? [];
   Map<String, dynamic> result = {};
@@ -234,8 +245,5 @@ Map<String, dynamic> buildDropOffSubmissionData() {
 
   return result;
 }
-
-
-
 
 }

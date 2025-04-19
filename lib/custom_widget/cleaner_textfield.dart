@@ -41,7 +41,7 @@ class CleanerTextfield extends StatelessWidget {
       decoration: InputDecoration(
         focusedErrorBorder:OutlineInputBorder(
               borderSide: BorderSide(color: CleanerAppcolors.primaryRedcolor),
-              borderRadius: BorderRadius.circular(2.r)),
+              borderRadius: BorderRadius.circular(20.r)),
           fillColor: fillColor,
           filled: true,
           prefixIconConstraints: BoxConstraints(minWidth: 45.r),

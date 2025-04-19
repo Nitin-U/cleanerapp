@@ -41,9 +41,11 @@ await myordersdata.getMyordersData(logindata.user?.data?.token??'', logindata.us
     return Consumer<DashboardProvider>(
       builder: (context, dash, child) {
         return Scaffold(
-          backgroundColor: CleanerAppcolors.primarylightgreycolor,
+          backgroundColor: CleanerAppcolors.primaryminigreycolor,
           bottomNavigationBar: DecoratedBox(
-            decoration: BoxDecoration(),
+            decoration: BoxDecoration(
+          color: CleanerAppcolors.primaryminigreycolor
+            ),
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 15).r,
               child: Row(

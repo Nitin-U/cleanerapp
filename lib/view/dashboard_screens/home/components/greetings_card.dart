@@ -26,8 +26,8 @@ class GreetingsCard extends StatelessWidget {
               child: DecoratedBox(
                 decoration: BoxDecoration(
                     gradient: LinearGradient(colors: [
-                      CleanerAppcolors.primarylightbrowncolor,
-                      CleanerAppcolors.primarybrowncolor
+                      const Color.fromARGB(255, 121, 123, 245),
+                      const Color.fromARGB(255, 123, 125, 246)
                     ]),
                     borderRadius: BorderRadius.circular(20.r)),
                 child: Padding(
@@ -54,7 +54,7 @@ class GreetingsCard extends StatelessWidget {
                           dash.screenTabs(dash.currenttab = 2);
                         },
                         label: 'My Orders',
-                        backgroundColor: CleanerAppcolors.primarybrowncolor,
+                        backgroundColor: const Color.fromARGB(255, 54, 57, 251),
                       )
                     ],
                   ),

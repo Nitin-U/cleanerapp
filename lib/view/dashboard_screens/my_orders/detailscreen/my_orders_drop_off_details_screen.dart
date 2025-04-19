@@ -93,11 +93,8 @@ class _MyOrdersDropOffDetailsScreenState
               backgroundcolor: CleanerAppcolors.primarybrowncolor,
               label: 'Update Order',
               onPressed: () {
-                final data =
-                    context
-                        .read<MyOrderProvider>()
-                        .buildDropOffSubmissionData();
-                print("FINAL SUBMISSION STRUCTURE:\n${jsonEncode(data)}"); // ✅
+               order.printMultipartDebug();
+                 // ✅
               },
             ),
           ),

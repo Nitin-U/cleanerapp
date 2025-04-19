@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CleanerAppcolors {
-  static const primaryminigreycolor = Color(0xffe5e7e9);
+  static const primaryminigreycolor = Color.fromARGB(255, 236, 236, 254);
   static const primarygreycolor = Color(0xff2e4053);
   static const primaryminidarkgreycolor = Color(0xffbfc9ca);
   static const primarylightgreencolor = Color(0xffabebc6);

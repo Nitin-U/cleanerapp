@@ -30,8 +30,8 @@ class HomeTabs extends StatelessWidget {
                     decoration: BoxDecoration(
                         gradient: home.tabs == 0
                             ? LinearGradient(colors: [
-                                CleanerAppcolors.primarylightbrowncolor,
-                                CleanerAppcolors.primarybrowncolor
+                                const Color.fromARGB(255, 121, 123, 245),
+                      const Color.fromARGB(255, 123, 125, 246)
                               ])
                             : LinearGradient(colors: [
                                 CleanerAppcolors.primarylightgreycolor,
@@ -68,8 +68,8 @@ class HomeTabs extends StatelessWidget {
                     decoration: BoxDecoration(
                         gradient: home.tabs == 1
                             ? LinearGradient(colors: [
-                                CleanerAppcolors.primarylightbrowncolor,
-                                CleanerAppcolors.primarybrowncolor
+                               const Color.fromARGB(255, 121, 123, 245),
+                      const Color.fromARGB(255, 123, 125, 246)
                               ])
                             : LinearGradient(colors: [
                                 CleanerAppcolors.primarylightgreycolor,
