@@ -68,20 +68,20 @@ await myordersdata.getMyordersData(logindata.user?.data?.token??'', logindata.us
                             child: DecoratedBox(
                                 decoration: BoxDecoration(
                                     color: dash.currenttab == 0
-                                        ? CleanerAppcolors.primarybrowncolor
+                                        ?  const Color.fromARGB(255, 54, 57, 251)
                                         : null)),
                           ),
                           Image.asset(
                             AppIcons.homeicon,
                             height: 23.r,
                             color: dash.currenttab == 0
-                                ? CleanerAppcolors.primarybrowncolor
+                                ?  const Color.fromARGB(255, 54, 57, 251)
                                 : null,
                           ),
                           Text(
                             'Home',
                             style: dash.currenttab == 0
-                                ? dashboardlablefontbrown
+                                ? dashboardlablefontpurple
                                 : dashboardlabelfontblack,
                           ),
                           SizedBox(
@@ -107,20 +107,20 @@ await myordersdata.getMyordersData(logindata.user?.data?.token??'', logindata.us
                             child: DecoratedBox(
                                 decoration: BoxDecoration(
                                     color: dash.currenttab == 1
-                                        ? CleanerAppcolors.primarybrowncolor
+                                        ? const Color.fromARGB(255, 54, 57, 251)
                                         : null)),
                           ),
                           Image.asset(
                             AppIcons.requesticon,
                             height: 23.r,
                             color: dash.currenttab == 1
-                                ? CleanerAppcolors.primarybrowncolor
+                                ?  const Color.fromARGB(255, 54, 57, 251)
                                 : null,
                           ),
                           Text(
                             'Bin Request',
                             style: dash.currenttab == 1
-                                ? dashboardlablefontbrown
+                                ? dashboardlablefontpurple
                                 : dashboardlabelfontblack,
                           ),
                           SizedBox(
@@ -146,20 +146,20 @@ await myordersdata.getMyordersData(logindata.user?.data?.token??'', logindata.us
                             child: DecoratedBox(
                                 decoration: BoxDecoration(
                                     color: dash.currenttab == 2
-                                        ? CleanerAppcolors.primarybrowncolor
+                                        ? const Color.fromARGB(255, 54, 57, 251)
                                         : null)),
                           ),
                           Image.asset(
                             AppIcons.myordersicon,
                             height: 23.r,
                             color: dash.currenttab == 2
-                                ? CleanerAppcolors.primarybrowncolor
+                                ?  const Color.fromARGB(255, 54, 57, 251)
                                 : null,
                           ),
                           Text(
                             'My Orders',
                             style: dash.currenttab == 2
-                                ? dashboardlablefontbrown
+                                ? dashboardlablefontpurple
                                 : dashboardlabelfontblack,
                           ),
                           SizedBox(
@@ -185,18 +185,18 @@ await myordersdata.getMyordersData(logindata.user?.data?.token??'', logindata.us
                             child: DecoratedBox(
                                 decoration: BoxDecoration(
                                     color: dash.currenttab == 3
-                                        ? CleanerAppcolors.primarybrowncolor
+                                        ?  const Color.fromARGB(255, 54, 57, 251)
                                         : null)),
                           ),
                           Image.asset(AppIcons.profileicon,
                               height: 23.r,
                               color: dash.currenttab == 3
-                                  ? CleanerAppcolors.primarybrowncolor
+                                  ? const Color.fromARGB(255, 54, 57, 251)
                                   : null),
                           Text(
                             'Profile',
                             style: dash.currenttab == 3
-                                ? dashboardlablefontbrown
+                                ? dashboardlablefontpurple
                                 : dashboardlabelfontblack,
                           ),
                           SizedBox(

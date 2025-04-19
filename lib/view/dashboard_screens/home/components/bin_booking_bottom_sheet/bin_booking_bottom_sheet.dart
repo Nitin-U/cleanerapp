@@ -87,7 +87,7 @@ class BinBookingBottomSheet extends StatelessWidget {
                 ),
                 CleanerButton.elevated(
                   width: MediaQuery.sizeOf(context).width,
-                  backgroundcolor: CleanerAppcolors.primarybrowncolor,
+                  backgroundcolor: CleanerAppcolors.primarypurple,
                   label:
                       binr.loadingrequestaccept == true
                           ? 'Please Wait....'

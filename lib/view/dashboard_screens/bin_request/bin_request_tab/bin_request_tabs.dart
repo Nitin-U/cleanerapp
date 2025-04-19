@@ -1,4 +1,3 @@
-
 import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/style.dart';
 import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_provider/bin_request_provider.dart';
@@ -7,9 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class BinRequestTabs extends StatelessWidget {
-  const BinRequestTabs({
-    super.key,
-  });
+  const BinRequestTabs({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,28 +24,37 @@ class BinRequestTabs extends StatelessWidget {
                   width: MediaQuery.sizeOf(context).width,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                        gradient: home.currenttab == 0
-                            ? LinearGradient(colors: [
-                                CleanerAppcolors.primarylightbrowncolor,
-                                CleanerAppcolors.primarybrowncolor
-                              ])
-                            : LinearGradient(colors: [
-                                CleanerAppcolors.primarylightgreycolor,
-                                CleanerAppcolors.primarylightgreycolor
-                              ]),
-                        border: Border.all(
-                            color: home.currenttab == 0
+                      gradient:
+                          home.currenttab == 0
+                              ? LinearGradient(
+                                colors: [
+                                  const Color.fromARGB(255, 121, 123, 245),
+                                  const Color.fromARGB(255, 123, 125, 246),
+                                ],
+                              )
+                              : LinearGradient(
+                                colors: [
+                                  CleanerAppcolors.primarylightgreycolor,
+                                  CleanerAppcolors.primarylightgreycolor,
+                                ],
+                              ),
+                      border: Border.all(
+                        color:
+                            home.currenttab == 0
                                 ? Colors.transparent
-                                : CleanerAppcolors.primaryminidarkgreycolor),
-                        borderRadius: BorderRadius.circular(20.r)),
+                                : CleanerAppcolors.primaryminidarkgreycolor,
+                      ),
+                      borderRadius: BorderRadius.circular(20.r),
+                    ),
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 13).r,
                       child: Center(
                         child: Text(
                           'On Site',
-                          style: home.currenttab == 0
-                              ? resendwhitefont
-                              : resendfontminigrey,
+                          style:
+                              home.currenttab == 0
+                                  ? resendwhitefont
+                                  : resendfontminigrey,
                         ),
                       ),
                     ),
@@ -65,28 +71,37 @@ class BinRequestTabs extends StatelessWidget {
                   width: MediaQuery.sizeOf(context).width,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                        gradient: home.currenttab == 1
-                            ? LinearGradient(colors: [
-                                CleanerAppcolors.primarylightbrowncolor,
-                                CleanerAppcolors.primarybrowncolor
-                              ])
-                            : LinearGradient(colors: [
-                                CleanerAppcolors.primarylightgreycolor,
-                                CleanerAppcolors.primarylightgreycolor
-                              ]),
-                        border: Border.all(
-                            color: home.currenttab == 1
+                      gradient:
+                          home.currenttab == 1
+                              ? LinearGradient(
+                                colors: [
+                                  const Color.fromARGB(255, 121, 123, 245),
+                                  const Color.fromARGB(255, 123, 125, 246),
+                                ],
+                              )
+                              : LinearGradient(
+                                colors: [
+                                  CleanerAppcolors.primarylightgreycolor,
+                                  CleanerAppcolors.primarylightgreycolor,
+                                ],
+                              ),
+                      border: Border.all(
+                        color:
+                            home.currenttab == 1
                                 ? Colors.transparent
-                                : CleanerAppcolors.primaryminidarkgreycolor),
-                        borderRadius: BorderRadius.circular(20.r)),
+                                : CleanerAppcolors.primaryminidarkgreycolor,
+                      ),
+                      borderRadius: BorderRadius.circular(20.r),
+                    ),
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 13).r,
                       child: Center(
                         child: Text(
                           'DropOff',
-                          style: home.currenttab == 1
-                              ? resendwhitefont
-                              : resendfontminigrey,
+                          style:
+                              home.currenttab == 1
+                                  ? resendwhitefont
+                                  : resendfontminigrey,
                         ),
                       ),
                     ),

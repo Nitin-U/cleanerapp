@@ -61,7 +61,7 @@ class BinRequestCard extends StatelessWidget {
                         onPressed: onPressed,
                         label: 'View',
                         backgroundColor:
-                            CleanerAppcolors.primarybrowncolor,
+                            CleanerAppcolors.primarypurple,
                       ),
                     ],
                   ),

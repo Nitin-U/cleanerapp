@@ -9,7 +9,12 @@ TextStyle get dashboardlablefontbrown {
       fontSize: 18.r,
       color: CleanerAppcolors.primarybrowncolor);
 }
-
+TextStyle get dashboardlablefontpurple {
+  return GoogleFonts.roboto(
+      fontWeight: FontWeight.w400,
+      fontSize: 18.r,
+      color:  const Color.fromARGB(255, 54, 57, 251));
+}
 TextStyle get dashboardlablefontgrey {
   return GoogleFonts.roboto(
       fontWeight: FontWeight.w500,

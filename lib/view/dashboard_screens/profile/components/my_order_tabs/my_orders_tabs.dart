@@ -1,6 +1,6 @@
-
 import 'package:binbookingapp/utils/style.dart';
-import 'package:binbookingapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart' show MyOrderProvider;
+import 'package:binbookingapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart'
+    show MyOrderProvider;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -8,9 +8,7 @@ import 'package:provider/provider.dart';
 import '../../../../../utils/appcolors.dart';
 
 class MyOrdersTabs extends StatelessWidget {
-  const MyOrdersTabs({
-    super.key,
-  });
+  const MyOrdersTabs({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,28 +26,37 @@ class MyOrdersTabs extends StatelessWidget {
                   width: MediaQuery.sizeOf(context).width,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                        gradient: myorder.tabs == 0
-                            ? LinearGradient(colors: [
-                                CleanerAppcolors.primarylightbrowncolor,
-                                CleanerAppcolors.primarybrowncolor
-                              ])
-                            : LinearGradient(colors: [
-                                CleanerAppcolors.primarylightgreycolor,
-                                CleanerAppcolors.primarylightgreycolor
-                              ]),
-                        border: Border.all(
-                            color: myorder.tabs == 0
+                      gradient:
+                          myorder.tabs == 0
+                              ? LinearGradient(
+                                colors: [
+                                  const Color.fromARGB(255, 121, 123, 245),
+                                  const Color.fromARGB(255, 123, 125, 246),
+                                ],
+                              )
+                              : LinearGradient(
+                                colors: [
+                                  CleanerAppcolors.primarylightgreycolor,
+                                  CleanerAppcolors.primarylightgreycolor,
+                                ],
+                              ),
+                      border: Border.all(
+                        color:
+                            myorder.tabs == 0
                                 ? Colors.transparent
-                                : CleanerAppcolors.primaryminidarkgreycolor),
-                        borderRadius: BorderRadius.circular(20.r)),
+                                : CleanerAppcolors.primaryminidarkgreycolor,
+                      ),
+                      borderRadius: BorderRadius.circular(20.r),
+                    ),
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 13).r,
                       child: Center(
                         child: Text(
                           'Pick Up',
-                          style: myorder.tabs == 0
-                              ? resendwhitefont
-                              : resendfontminigrey,
+                          style:
+                              myorder.tabs == 0
+                                  ? resendwhitefont
+                                  : resendfontminigrey,
                         ),
                       ),
                     ),
@@ -66,28 +73,37 @@ class MyOrdersTabs extends StatelessWidget {
                   width: MediaQuery.sizeOf(context).width,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                        gradient: myorder.tabs == 1
-                            ? LinearGradient(colors: [
-                                CleanerAppcolors.primarylightbrowncolor,
-                                CleanerAppcolors.primarybrowncolor
-                              ])
-                            : LinearGradient(colors: [
-                                CleanerAppcolors.primarylightgreycolor,
-                                CleanerAppcolors.primarylightgreycolor
-                              ]),
-                        border: Border.all(
-                            color: myorder.tabs == 1
+                      gradient:
+                          myorder.tabs == 1
+                              ? LinearGradient(
+                                colors: [
+                                  const Color.fromARGB(255, 121, 123, 245),
+                                  const Color.fromARGB(255, 123, 125, 246),
+                                ],
+                              )
+                              : LinearGradient(
+                                colors: [
+                                  CleanerAppcolors.primarylightgreycolor,
+                                  CleanerAppcolors.primarylightgreycolor,
+                                ],
+                              ),
+                      border: Border.all(
+                        color:
+                            myorder.tabs == 1
                                 ? Colors.transparent
-                                : CleanerAppcolors.primaryminidarkgreycolor),
-                        borderRadius: BorderRadius.circular(20.r)),
+                                : CleanerAppcolors.primaryminidarkgreycolor,
+                      ),
+                      borderRadius: BorderRadius.circular(20.r),
+                    ),
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 13).r,
                       child: Center(
                         child: Text(
                           'Drop Off',
-                          style: myorder.tabs == 1
-                              ? resendwhitefont
-                              : resendfontminigrey,
+                          style:
+                              myorder.tabs == 1
+                                  ? resendwhitefont
+                                  : resendfontminigrey,
                         ),
                       ),
                     ),
