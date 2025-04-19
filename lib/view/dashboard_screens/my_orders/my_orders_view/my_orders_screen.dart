@@ -25,8 +25,8 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
      final logindata = Provider.of<LoginProvider>(context, listen: false);
     final myordersdata = Provider.of<MyOrderProvider>(context, listen: false);
       await myordersdata.getMyordersData(
-      logindata.user?.data?.token ?? '',
       logindata.user?.data?.user?.id.toString() ?? '',
+     
     );
   }
   @override

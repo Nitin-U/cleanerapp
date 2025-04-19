@@ -1,7 +1,10 @@
 
+import 'package:binbookingapp/custom_widget/cleaner_chip.dart';
 import 'package:binbookingapp/custom_widget/custom_tile.dart';
+import 'package:binbookingapp/utils/appcolors.dart';
 import 'package:binbookingapp/utils/cleanericonspng.dart';
 import 'package:binbookingapp/utils/style.dart';
+import 'package:binbookingapp/view/authentication/login/login_provider/login_provider.dart';
 import 'package:binbookingapp/view/dashboard/dashboard_provider/dashboard_provider.dart';
 import 'package:binbookingapp/view/dashboard_screens/profile/components/profile_card.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +19,8 @@ class CleanerAppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<DashboardProvider>(builder: (context, dash, child) {
-      return Drawer(
+      return Consumer<LoginProvider>(builder: (context, log, child) {
+        return Drawer(
       width: 350.r,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 90).r,
@@ -50,8 +54,16 @@ class CleanerAppDrawer extends StatelessWidget {
                 showDialog(context: context, builder: (context) {
                   return AlertDialog(
                     actions: [
-                      Text('Cancel',style: dashboardlabelfontblack,),
-                      Text('Logout',style: errorstyle,)
+                    CleanerChip(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      label: 'Cancel',backgroundColor: CleanerAppcolors.primaryGreencolor,),
+                    CleanerChip(
+                      onPressed: () {
+                        log.getLogout(context);
+                      },
+                      label:log.loadinglogout == true?'Please Wait': 'Logout',backgroundColor: CleanerAppcolors.primaryRedcolor,)
                     ],
                     title: Center(child: Text('Log out of your account?',style: dashboardlabelfontblack,)),
                   );
@@ -67,6 +79,7 @@ class CleanerAppDrawer extends StatelessWidget {
         ),
       ),
     );
+      },);
     },);
   }
 }

@@ -4,6 +4,7 @@ import 'package:binbookingapp/utils/style.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/model/my_order_dropoff_details_model.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/model/my_order_model.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/service/my_order_api_service.dart';
+import 'package:binbookingapp/view/shared_preference/binbooking_shared_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
@@ -24,11 +25,12 @@ class MyOrderProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getMyordersData(token, id) async {
+  Future<void> getMyordersData(id) async {
+    var token = getToken();
     try {
       loadingmyorderdata = true;
       notifyListeners();
-      final binbook = await fetchMyorders(token, id);
+      final binbook = await fetchMyorders(token.toString(), id);
       _myOrderModel = MyOrderModel.fromJson(binbook);
       print('myorderdetails $binbook');
 

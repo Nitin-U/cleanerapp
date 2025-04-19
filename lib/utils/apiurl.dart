@@ -9,4 +9,5 @@ class AppUrl {
   static const updateserialnumber =
       '${mainUrl}bin-bookings/update-serial-number/';
   static const binbookingdetails = '${mainUrl}bin-bookings/';
+    static const logout = '${mainUrl}logout';
 }

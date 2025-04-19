@@ -9,6 +9,7 @@ import 'package:binbookingapp/view/dashboard_screens/bin_request/bin_request_pro
 import 'package:binbookingapp/view/dashboard_screens/my_orders/components/details_card.dart';
 import 'package:binbookingapp/view/dashboard_screens/my_orders/my_orders_provider/my_order_provider.dart';
 import 'package:binbookingapp/view/no_internet/no_internet_view.dart';
+import 'package:binbookingapp/view/session_expire_dialog/session_expire_dialog.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -57,14 +58,14 @@ class _MyOrdersDropOffDetailsScreenState
     final logindata = Provider.of<LoginProvider>(context, listen: false);
     final myordersdata = Provider.of<MyOrderProvider>(context, listen: false);
     await myordersdata.getMyordersData(
-      logindata.user?.data?.token ?? '',
       logindata.user?.data?.user?.id.toString() ?? '',
+    
     );
     final binrequestdata = Provider.of<BinRequestProvider>(
       context,
       listen: false,
     );
-    await binrequestdata.getBinRequestData(logindata.user?.data?.token ?? '');
+    await binrequestdata.getBinRequestData();
   }
 
   void refreshdata() async {
@@ -103,37 +104,39 @@ class _MyOrdersDropOffDetailsScreenState
             title: Text('Drop Off Details', style: appbartitlefont),
           ),
           body: NoInternetBanner(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15).r,
-              child:
-                  order.loadingmyorderdropoffdetail == true
-                      ? Center(
-                        child: LoadingAnimationWidget.hexagonDots(
-                          color: CleanerAppcolors.primarypurple,
-                          size: 30.r,
+            child: SessionWrapper(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15).r,
+                child:
+                    order.loadingmyorderdropoffdetail == true
+                        ? Center(
+                          child: LoadingAnimationWidget.hexagonDots(
+                            color: CleanerAppcolors.primarypurple,
+                            size: 30.r,
+                          ),
+                        )
+                        : SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            spacing: 15.r,
+                            children: [
+                              DetailsCard(
+                                customername: orderdata?.customerName ?? '',
+                                duration:
+                                    orderdata?.orderDuration.toString() ?? '0',
+                                binsizename: widget.binsizename,
+                                quantity: widget.quantity.toString(),
+                                location: widget.location,
+                              ),
+                              Text(
+                                'Please Fill The Neccessary Information',
+                                style: ordercardheaderfont,
+                              ),
+                              DropOffSelectImageCard(),
+                            ],
+                          ),
                         ),
-                      )
-                      : SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          spacing: 15.r,
-                          children: [
-                            DetailsCard(
-                              customername: orderdata?.customerName ?? '',
-                              duration:
-                                  orderdata?.orderDuration.toString() ?? '0',
-                              binsizename: widget.binsizename,
-                              quantity: widget.quantity.toString(),
-                              location: widget.location,
-                            ),
-                            Text(
-                              'Please Fill The Neccessary Information',
-                              style: ordercardheaderfont,
-                            ),
-                            DropOffSelectImageCard(),
-                          ],
-                        ),
-                      ),
+              ),
             ),
           ),
         );
