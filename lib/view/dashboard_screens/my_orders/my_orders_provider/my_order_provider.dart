@@ -15,6 +15,7 @@ class MyOrderProvider extends ChangeNotifier {
   bool loadingserialdata = false;
   bool loadingmyorderdropoffdetail = false;
   bool loadingmyorderdata = false;
+  bool loadingattachments = false;
   MyOrderModel? _myOrderModel;
   MyOrderModel? get order => _myOrderModel;
   MyOrdersDropOffDetailModel? _myOrdersDropOffDetailModel;
@@ -197,6 +198,62 @@ class MyOrderProvider extends ChangeNotifier {
     );
   }
 
+getUpdateAttachments(
+  BuildContext context,
+  String token,
+  String bookingid,
+  String driverid,
+) async {
+  try {
+    loadingattachments = true;
+    notifyListeners();
+
+    final Map<String, dynamic> attachments = buildAttachmentData();
+
+    final accept = await fetchUpdateAttachments(
+      driverid,
+      bookingid,
+      attachments,
+      token,
+    );
+    loadingattachments = false;
+    notifyListeners();
+print('accept${accept}');
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          behavior: SnackBarBehavior.floating,
+          margin: EdgeInsets.only(
+            bottom: MediaQuery.sizeOf(context).height - 170.r,
+            left: 10.r,
+            right: 10.r,
+          ),
+          dismissDirection: DismissDirection.up,
+          content: Text(
+            accept['message'] ?? 'Unknown response',
+            style: buttonfond,
+          ),
+          backgroundColor: accept['status'] == 'success'
+              ? CleanerAppcolors.primarydarkGreencolor
+              : CleanerAppcolors.primaryRedcolor,
+        ),
+      );
+    }
+  } catch (e) {
+    loadingattachments = false;
+    notifyListeners();
+
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
+      );
+    }
+
+    print('Error: $e');
+    throw {"error": e};
+  }
+}
+
 
 
 
@@ -216,7 +273,7 @@ class MyOrderProvider extends ChangeNotifier {
 
 
 void printMultipartDebug() {
-  final data = buildDropOffSubmissionData();
+  final data = buildAttachmentData();
 
   for (var key in data.keys) {
     final binInfo = data[key]; // ✅ No conflict
@@ -229,12 +286,13 @@ void printMultipartDebug() {
   }
 }
 
-Map<String, dynamic> buildDropOffSubmissionData() {
+Map<String, dynamic> buildAttachmentData() {
   final serialNumbers = orderdetail?.bookingSerialNumbers ?? [];
+
   Map<String, dynamic> result = {};
 
   for (int i = 0; i < serialNumbers.length; i++) {
-    final binId = serialNumbers[i].id?.toString(); // Convert ID to String
+    final binId = serialNumbers[i].id?.toString();
 
     if (binId != null) {
       result[binId] = {

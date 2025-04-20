@@ -83,7 +83,8 @@ class _MyOrdersDropOffDetailsScreenState
     return Consumer<MyOrderProvider>(
       builder: (context, order, child) {
         final orderdata = order.orderdetail?.data;
-        return Scaffold(
+        return Consumer<LoginProvider>(builder: (context, log, child) {
+          return Scaffold(
           backgroundColor: CleanerAppcolors.primaryWhitecolor,
           bottomNavigationBar: BottomAppBar(
             color: CleanerAppcolors.primaryWhitecolor,
@@ -91,10 +92,9 @@ class _MyOrdersDropOffDetailsScreenState
             elevation: 0,
             child: CleanerButton.elevated(
               backgroundcolor: CleanerAppcolors.primarypurple,
-              label: 'Update Order',
+              label:order.loadingattachments == true?'Please Wait...': 'Update Order',
               onPressed: () {
-               order.buildDropOffSubmissionData();
-                 // ✅
+              order.getUpdateAttachments(context,log.user?.data?.token??'' , widget.bookingid, log.user?.data?.user?.id.toString()??'');
               },
             ),
           ),
@@ -140,6 +140,7 @@ class _MyOrdersDropOffDetailsScreenState
             ),
           ),
         );
+        },);
       },
     );
   }
